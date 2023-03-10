@@ -581,7 +581,7 @@ function get_controller_name($seo)
     $tr = [
         'dashboard' => "Dashboard",
         'settings' => "Ayarlar",
-        'emailsettings' => "E-Posta Ayarları",
+        'email_settings' => "E-Posta Ayarları",
         'galleries' => "Galeri İşlemleri",
         'stories' => "Hikaye İşlemleri",
         'slides' => "Slider",

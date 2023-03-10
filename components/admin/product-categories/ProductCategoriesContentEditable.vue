@@ -31,30 +31,6 @@
               </ValidationProvider>
             </div>
           </div>
-          <div class="col-sm-4">
-            <div class="form-group my-1">
-              <ValidationProvider
-                vid="codes_id"
-                :name="$t('panel.productCategories.codesId')"
-                rules="required"
-                v-slot="{ errors }"
-              >
-                <label for="codes_id" class="mb-5">{{
-                  $t("panel.productCategories.codesId")
-                }}</label>
-                <input
-                  id="codes_id"
-                  class="form-control form-control-sm rounded-0"
-                  :placeholder="$t('panel.productCategories.codesId')"
-                  type="text"
-                  required
-                  name="codes_id"
-                  v-model="formData.codes_id"
-                />
-                <span class="mt-5 d-block text-danger">{{ errors[0] }}</span>
-              </ValidationProvider>
-            </div>
-          </div>
         </div>
 
         <div class="row mb-1">
@@ -74,7 +50,7 @@
                     <img
                       :src="
                         $config.API_URL +
-                        'uploads/productcategories/' +
+                        'uploads/product-categories/' +
                         formData.img_url
                       "
                       class="img-fluid"
@@ -113,7 +89,7 @@
                     <img
                       :src="
                         $config.API_URL +
-                        'uploads/productcategories/' +
+                        'uploads/product-categories/' +
                         view_banner_url
                       "
                       class="img-fluid"
@@ -168,7 +144,6 @@ export default {
     return {
       formData: {
         title: null,
-        codes_id: null,
         img_url: null,
         banner_url: null,
       },
@@ -194,8 +169,8 @@ export default {
       try {
         const formData = this.getFormData(this.formData);
         let url = this.id
-          ? "panel/productcategories/update/" + this.id
-          : "panel/productcategories/save/";
+          ? "panel/product-categories/update/" + this.id
+          : "panel/product-categories/save/";
         let { data } = await this.$axios.post(url, formData, {
           headers: {
             "Content-Type":
@@ -215,7 +190,7 @@ export default {
     async getProductCategory(id) {
       try {
         let { data } = await this.$axios.get(
-          "panel/productcategories/" + id
+          "panel/product-categories/" + id
         );
         if (data && data.productCategory) {
           this.formData = data.productCategory;

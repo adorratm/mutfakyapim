@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Emailsettings_model extends CI_Model
+class Email_settings_model extends CI_Model
 {
     public $tableName = "email_settings";
     public function __construct()

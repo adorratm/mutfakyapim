@@ -30,10 +30,10 @@
                 </div>
                 <div class="card-body">
                   <ProductCategoriesContent :rankurl="
-                      $config.API_URL + 'backend/productCategoriesController/rank/'
-                    " :deleteurl="$config.API_URL+'panel/productcategories/delete/'" :isactiveurl="
+                      $config.API_URL + 'panel/product-categories/rank/'
+                    " :deleteurl="$config.API_URL+'panel/product-categories/delete/'" :isactiveurl="
                       $config.API_URL +
-                      'backend/productCategoriesController/isactive/'
+                      'panel/product-categories/isactive/'
                     " />
                 </div>
               </div>

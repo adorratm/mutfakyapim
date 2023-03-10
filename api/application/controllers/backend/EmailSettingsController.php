@@ -27,7 +27,7 @@ class EmailSettingsController extends RestController
 
         // Load the model
         $this->load->model('user_model');
-        $this->load->model('emailsettings_model');
+        $this->load->model('email_settings_model');
         $this->token = AUTHORIZATION::verifyHeaderToken();
         $this->moduleName = ucfirst($this->router->fetch_class());
     }
@@ -42,11 +42,11 @@ class EmailSettingsController extends RestController
                 ], RestController::HTTP_UNAUTHORIZED);
             }
             if (!empty($id)) {
-                $emailsettings = $this->emailsettings_model->get(null, ["id" => $id]);
+                $email_settings = $this->email_settings_model->get(null, ["id" => $id]);
                 $this->response([
                     'status' => TRUE,
                     'message' => "Email Ayarı Başarıyla Getirildi.",
-                    'emailsettings' => $emailsettings
+                    'email_settings' => $email_settings
                 ], RestController::HTTP_OK);
             }
         }
@@ -67,7 +67,7 @@ class EmailSettingsController extends RestController
                     'message' => "Bu İşlemi Yapabilmeniz İçin Yetkiniz Bulunmamaktadır."
                 ], RestController::HTTP_UNAUTHORIZED);
             }
-            $items = $this->emailsettings_model->getRows([], $this->post(null, true));
+            $items = $this->email_settings_model->getRows([], $this->post(null, true));
             $data = [];
             if (!empty($items)) :
                 foreach ($items as $item) :
@@ -75,8 +75,8 @@ class EmailSettingsController extends RestController
                 endforeach;
             endif;
             $output = [
-                "recordsTotal" => $this->emailsettings_model->rowCount(),
-                "recordsFiltered" => $this->emailsettings_model->countFiltered([], (!empty($this->post(null, true)) ? $this->post(null, true) : [])),
+                "recordsTotal" => $this->email_settings_model->rowCount(),
+                "recordsFiltered" => $this->email_settings_model->countFiltered([], (!empty($this->post(null, true)) ? $this->post(null, true) : [])),
                 "data" => $data,
             ];
         }
@@ -93,7 +93,7 @@ class EmailSettingsController extends RestController
                     'message' => "Bu İşlemi Yapabilmeniz İçin Yetkiniz Bulunmamaktadır."
                 ], RestController::HTTP_UNAUTHORIZED);
             }
-            if ($this->emailsettings_model->update(["id" => $id], ["rank" => $this->put('rank', true)])) {
+            if ($this->email_settings_model->update(["id" => $id], ["rank" => $this->put('rank', true)])) {
                 $this->response([
                     'status' => TRUE,
                     'message' => "Sıralama Başarıyla Güncellendi."
@@ -116,7 +116,7 @@ class EmailSettingsController extends RestController
                 ], RestController::HTTP_UNAUTHORIZED);
             }
             $isActive = boolval($this->put("isActive", true)) === true ? 1 : 0;
-            if ($this->emailsettings_model->update(["id" => $id], ["isActive" => $isActive])) {
+            if ($this->email_settings_model->update(["id" => $id], ["isActive" => $isActive])) {
                 $this->response([
                     'status' => TRUE,
                     'message' => "Durum Başarıyla Güncellendi."
@@ -139,8 +139,8 @@ class EmailSettingsController extends RestController
                 ], RestController::HTTP_UNAUTHORIZED);
             }
             $data = $this->post();
-            $data["rank"] = $this->emailsettings_model->rowCount() + 1;
-            if ($this->emailsettings_model->add($data)) {
+            $data["rank"] = $this->email_settings_model->rowCount() + 1;
+            if ($this->email_settings_model->add($data)) {
                 $this->response([
                     'status' => TRUE,
                     'message' => "Email Ayarları Başarıyla Kayıt Edildi."
@@ -163,10 +163,10 @@ class EmailSettingsController extends RestController
                 ], RestController::HTTP_UNAUTHORIZED);
             }
             if (!empty($id)) {
-                $settings = $this->emailsettings_model->get(null, ["id" => $id]);
+                $settings = $this->email_settings_model->get(null, ["id" => $id]);
                 if (!empty($settings)) {
                     $data = $this->post();
-                    if ($this->emailsettings_model->update(["id" => $id], $data)) {
+                    if ($this->email_settings_model->update(["id" => $id], $data)) {
                         $this->response([
                             'status' => TRUE,
                             'message' => "Email Ayarları Başarıyla Güncellendi."
@@ -190,7 +190,7 @@ class EmailSettingsController extends RestController
                     'message' => "Bu İşlemi Yapabilmeniz İçin Yetkiniz Bulunmamaktadır."
                 ], RestController::HTTP_UNAUTHORIZED);
             }
-            if ($this->emailsettings_model->delete(["id" => $id])) {
+            if ($this->email_settings_model->delete(["id" => $id])) {
                 $this->response([
                     'status' => TRUE,
                     'message' => "Email Ayarları Başarıyla Silindi."
@@ -214,7 +214,7 @@ class EmailSettingsController extends RestController
             }
             if (!empty($this->post("id", true))) {
                 $ids = @explode(",", $this->post("id", true));
-                if ($this->emailsettings_model->deleteBulk("id", $ids)) {
+                if ($this->email_settings_model->deleteBulk("id", $ids)) {
                     $this->response([
                         'status' => TRUE,
                         'message' => "Email Ayarları Başarıyla Silindi."

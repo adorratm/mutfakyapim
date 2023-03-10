@@ -68,18 +68,11 @@ $route['panel/settings/delete'] = 'backend/SettingsController/delete';
 $route['panel/settings/delete/(:num)'] = 'backend/SettingsController/delete/$1';
 
 // EMAIL SETTINGS
-$route['panel/emailsettings/(:num)'] = 'backend/EmailSettingsController/$1';
-$route['panel/emailsettings/save'] = 'backend/EmailSettingsController/save';
-$route['panel/emailsettings/update/(:num)'] = 'backend/EmailSettingsController/update/$1';
-$route['panel/emailsettings/delete'] = 'backend/EmailSettingsController/delete';
-$route['panel/emailsettings/delete/(:num)'] = 'backend/EmailSettingsController/delete/$1';
-
-// CODES SETTINGS
-$route['panel/codes/(:num)'] = 'backend/codesController/$1';
-$route['panel/codes/save'] = 'backend/codesController/save';
-$route['panel/codes/update/(:num)'] = 'backend/codesController/update/$1';
-$route['panel/codes/delete'] = 'backend/codesController/delete';
-$route['panel/codes/delete/(:num)'] = 'backend/codesController/delete/$1';
+$route['panel/email-settings/(:num)'] = 'backend/EmailSettingsController/$1';
+$route['panel/email-settings/save'] = 'backend/EmailSettingsController/save';
+$route['panel/email-settings/update/(:num)'] = 'backend/EmailSettingsController/update/$1';
+$route['panel/email-settings/delete'] = 'backend/EmailSettingsController/delete';
+$route['panel/email-settings/delete/(:num)'] = 'backend/EmailSettingsController/delete/$1';
 
 // USERS
 $route['panel/users'] = 'backend/UsersController';
@@ -90,12 +83,12 @@ $route['panel/users/delete'] = 'backend/UsersController/delete';
 $route['panel/users/delete/(:num)'] = 'backend/UsersController/delete/$1';
 
 // USER ROLES
-$route['panel/userroles'] = 'backend/UserRolesController';
-$route['panel/userroles/(:num)'] = 'backend/UserRolesController/$1';
-$route['panel/userroles/save'] = 'backend/UserRolesController/save';
-$route['panel/userroles/update/(:num)'] = 'backend/UserRolesController/update/$1';
-$route['panel/userroles/delete'] = 'backend/UserRolesController/delete';
-$route['panel/userroles/delete/(:num)'] = 'backend/UserRolesController/delete/$1';
+$route['panel/user-roles'] = 'backend/UserRolesController';
+$route['panel/user-roles/(:num)'] = 'backend/UserRolesController/$1';
+$route['panel/user-roles/save'] = 'backend/UserRolesController/save';
+$route['panel/user-roles/update/(:num)'] = 'backend/UserRolesController/update/$1';
+$route['panel/user-roles/delete'] = 'backend/UserRolesController/delete';
+$route['panel/user-roles/delete/(:num)'] = 'backend/UserRolesController/delete/$1';
 
 // MENUS
 $route['panel/menus'] = 'backend/MenusController';
@@ -106,12 +99,12 @@ $route['panel/menus/delete'] = 'backend/MenusController/delete';
 $route['panel/menus/delete/(:num)'] = 'backend/MenusController/delete/$1';
 
 // PRODUCT CATEGORIES
-$route['panel/productcategories'] = 'backend/ProductCategoriesController';
-$route['panel/productcategories/(:num)'] = 'backend/ProductCategoriesController/$1';
-$route['panel/productcategories/save'] = 'backend/ProductCategoriesController/save';
-$route['panel/productcategories/update/(:num)'] = 'backend/ProductCategoriesController/update/$1';
-$route['panel/productcategories/delete'] = 'backend/ProductCategoriesController/delete';
-$route['panel/productcategories/delete/(:num)'] = 'backend/ProductCategoriesController/delete/$1';
+$route['panel/product-categories'] = 'backend/ProductCategoriesController';
+$route['panel/product-categories/(:num)'] = 'backend/ProductCategoriesController/$1';
+$route['panel/product-categories/save'] = 'backend/ProductCategoriesController/save';
+$route['panel/product-categories/update/(:num)'] = 'backend/ProductCategoriesController/update/$1';
+$route['panel/product-categories/delete'] = 'backend/ProductCategoriesController/delete';
+$route['panel/product-categories/delete/(:num)'] = 'backend/ProductCategoriesController/delete/$1';
 
 // PRODUCTS SETTINGS
 $route['panel/products/(:num)'] = 'backend/productsController/$1';
@@ -119,4 +112,3 @@ $route['panel/products/save'] = 'backend/productsController/save';
 $route['panel/products/update/(:num)'] = 'backend/productsController/update/$1';
 $route['panel/products/delete'] = 'backend/productsController/delete';
 $route['panel/products/delete/(:num)'] = 'backend/productsController/delete/$1';
-$route['panel/products/sync'] = 'backend/productsController/sync_products';

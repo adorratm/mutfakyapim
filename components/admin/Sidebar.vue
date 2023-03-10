@@ -54,21 +54,6 @@
                   }}</span></a
                 >
               </nuxt-link>
-              <nuxt-link
-                tag="li"
-                class="nav-item"
-                to="/panel/codes/"
-                exact
-                exact-active-class="active"
-                custom
-              >
-                <a class="nav-link"
-                  ><i class="fa fa-sliders"></i>
-                  <span class="nav-link-text">{{
-                    $t("panel.codesSettings.codesSettings")
-                  }}</span></a
-                >
-              </nuxt-link>
               <li class="nav-item">
                 <a
                   class="nav-link"
@@ -118,7 +103,7 @@
                   class="nav-link"
                   href="javascript:void(0);"
                   data-toggle="collapse"
-                  data-target="#productcategoriesnav"
+                  data-target="#product-categories-nav"
                 >
                   <i class="fa fa-dropbox"></i>
                   <span class="nav-link-text">{{
@@ -126,7 +111,7 @@
                   }}</span>
                 </a>
                 <ul
-                  id="productcategoriesnav"
+                  id="product-categories-nav"
                   class="nav flex-column collapse collapse-level-1"
                 >
                   <li class="nav-item">

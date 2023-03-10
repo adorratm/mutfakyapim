@@ -33,13 +33,8 @@ module.exports = {
             email: "E-Mail Adresiniz",
             facebook: "Facebook",
             instagram: "Instagram",
-            twitter: "Twitter",
             youtube: "Youtube",
             linkedin: "Linkedin",
-            medium: "Medium",
-            pinterest: "Pinterest",
-            appstore: "App Store Uygulama Linki",
-            playstore: "Play Store Uygulama Linki",
             mobile_logo: "Mobil Logo",
             favicon: "Favicon",
             meta_description: "Meta Açıklaması",
@@ -52,14 +47,6 @@ module.exports = {
             emailSettingsDesc: "Websitenizin E-Mail Ayarlarını Buradan Yönetebilirsiniz.",
             email: "E-Mail",
             protocol: "Protokol",
-            port: "Port",
-            host: "Host",
-            password: "Şifre"
-        },
-        codesSettings: {
-            codesSettings: "Codes Ayarları",
-            codesSettingsDesc: "Websitenizin Codes Ayarlarını Buradan Yönetebilirsiniz.",
-            email: "E-Mail",
             port: "Port",
             host: "Host",
             password: "Şifre"
@@ -90,7 +77,6 @@ module.exports = {
             productCategories: "Ürün Kategorileri",
             productCategoriesDesc: "Websitenizdeki Ürün Kategorilerini Buradan Yönetebilirsiniz.",
             title: "Başlık",
-            codesId: "CODES ID",
             imgUrl: "Kategori Görseli",
             bannerUrl: "Banner Görseli",
             noProductCategoriesFound: "Henüz Eklenmiş Bir Ürün Kategorisi Bulunamadı"
@@ -98,7 +84,6 @@ module.exports = {
         products: {
             products: "Ürünler",
             productsDesc:"Websitenizdeki Ürünleri Buradan Yönetebilirsiniz.",
-            syncProducts: "Codes İle Ürünleri Senkronize Et",
             thisProcessTakingLongTime: "Bu İşlem Biraz Zaman Alabilir.",
             yesUpdateIt: "Evet, Güncelleme İşlemini Başlat",
             title: "Başlık"

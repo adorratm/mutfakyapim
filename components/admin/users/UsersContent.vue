@@ -249,7 +249,7 @@ export default {
     },
     async getRoles() {
       try {
-        let { data } = await this.$axios.get("panel/userroles/");
+        let { data } = await this.$axios.get("panel/user-roles/");
         if (data && data.user_roles) {
           this.user_roles = data.user_roles;
         }

@@ -28,7 +28,6 @@ class ProductsController extends RestController
         // Load the model
         $this->load->model('user_model');
         $this->load->model('product_model');
-        $this->load->model('codes_model');
         $this->token = AUTHORIZATION::verifyHeaderToken();
         $this->moduleName = ucfirst($this->router->fetch_class());
     }
@@ -229,76 +228,5 @@ class ProductsController extends RestController
             'status' => FALSE,
             'message' => "Ürünler Silinirken Hata Oluştu."
         ], RestController::HTTP_BAD_REQUEST);
-    }
-
-    public function sync_products_get()
-    {
-        if ($this->token) {
-            if (!isAllowedUpdateViewModule($this->token, $this->moduleName)) {
-                $this->response([
-                    'status' => FALSE,
-                    'message' => "Bu İşlemi Yapabilmeniz İçin Yetkiniz Bulunmamaktadır."
-                ], RestController::HTTP_UNAUTHORIZED);
-            }
-            // Login Token Update After 2 Hour
-            if (strtotime('now') >= strtotime($this->codes_model->get(null, ["isActive" => 1])->updatedAt) + 7200) {
-                $this->login_api();
-            }
-            $this->get_stocks();
-            $this->response([
-                'status' => TRUE,
-                'message' => "Ürünler Başarıyla Güncellendi."
-            ], RestController::HTTP_OK);
-        }
-        $this->response([
-            'status' => FALSE,
-            'message' => "Ürünler Güncellenirken Hata Oluştu."
-        ], RestController::HTTP_BAD_REQUEST);
-    }
-
-    public function login_api()
-    {
-        $codesConnections = $this->codes_model->get_all(null, null, ["isActive" => 1]);
-        if (!empty($codesConnections)) {
-            foreach ($codesConnections as $codesConnectionsKey => $codesConnectionsValue) {
-                $token = @curl_request($codesConnectionsValue->host, $codesConnectionsValue->port, "login", ['email' => $codesConnectionsValue->email, 'password' => $codesConnectionsValue->password])->message;
-                if (!empty($token)) {
-                    $this->codes_model->update(["id" => $codesConnectionsValue->id], ["token" => $token]);
-                }
-            }
-        }
-    }
-
-    public function get_stocks()
-    {
-        set_time_limit(0);
-        ini_set('memory_limit', '-1');
-        $codesConnections = $this->codes_model->get_all(null, null, ["isActive" => 1]);
-
-        if (!empty($codesConnections)) {
-            $rank = 1;
-            foreach ($codesConnections as $codesConnectionsKey => $codesConnectionsValue) {
-                $data = @curl_request($codesConnectionsValue->host, $codesConnectionsValue->port, "stoklistele", [], ['Content-Type: application/json', 'Accept: application/json', 'X-TOKEN: ' . $codesConnectionsValue->token])->data;
-                if (!empty($data)) {
-                    foreach ($data as $returnKey => $returnValue) {
-                        $this->product_model->replace([
-                            'id' => $rank,
-                            'codes_id' => intval(clean($returnValue->Id)) ?? NULL,
-                            'title' => clean($returnValue->Baslik) ?? NULL,
-                            'seo_url' => clean(seo($returnValue->Baslik)) ?? NULL,
-                            'barcode' => clean($returnValue->barcode) ?? NULL,
-                            'brand' => clean($returnValue->Marka) ?? NULL,
-                            'price' => clean($returnValue->Fiyat1) ?? NULL,
-                            'vat' => clean($returnValue->KDV) ?? NULL,
-                            'stock' => clean($returnValue->stok) ?? NULL,
-                            'isActive' => clean($returnValue->Durum) ?? NULL,
-                            'rank' => $rank,
-                            'codes' => clean($codesConnectionsValue->id) ?? NULL
-                        ]);
-                        $rank++;
-                    }
-                }
-            }
-        }
     }
 }

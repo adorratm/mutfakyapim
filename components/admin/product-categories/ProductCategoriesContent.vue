@@ -64,7 +64,7 @@
             class="mx-15"
           />
           <small class="font-weight-bold"
-            >#CODES ID : {{ node.codes_id }}</small
+            >#ID : {{ node.id }}</small
           >
 
           <span> - {{ node.title }}</span>
@@ -151,7 +151,7 @@ export default {
     },
     async getProductCategories() {
       try {
-        let { data } = await this.$axios.get("panel/productcategories/");
+        let { data } = await this.$axios.get("panel/product-categories/");
         if (data && data.productCategory) {
           this.product_categories = data.productCategory;
         }
@@ -163,8 +163,8 @@ export default {
       try {
         const formData = this.getFormData(this.formData);
         let url = this.id
-          ? "panel/productcategories/update/" + this.id
-          : "panel/productcategories/save/";
+          ? "panel/product-categories/update/" + this.id
+          : "panel/product-categories/save/";
         let { data } = await this.$axios.post(url, formData, {
           headers: {
             "Content-Type":

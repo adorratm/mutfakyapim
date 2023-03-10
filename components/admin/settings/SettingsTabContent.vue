@@ -31,15 +31,10 @@
         <div slot="socialMedia">
           <SocialMedia
             :email.sync="formData.email"
-            :facebook.sync="formData.sync"
+            :facebook.sync="formData.facebook"
             :instagram.sync="formData.instagram"
-            :twitter.sync="formData.instagram"
             :youtube.sync="formData.youtube"
             :linkedin.sync="formData.linkedin"
-            :medium.sync="formData.medium"
-            :pinterest.sync="formData.pinterest"
-            :appstore.sync="formData.appstore"
-            :playstore.sync="formData.playstore"
           />
         </div>
         <div slot="logo">
@@ -60,7 +55,7 @@
           />
         </div>
         <div slot="liveSupport">
-          <LiveSupport :live_support.sync="formData.sync" />
+          <LiveSupport :live_support.sync="formData.live_support" />
         </div>
       </VueGoodWizard>
     </ValidationObserver>
@@ -112,16 +107,15 @@ export default {
         email: null,
         facebook: null,
         instagram: null,
-        twitter: null,
-        youtube: null,
         linkedin: null,
-        medium: null,
-        pinterest: null,
-        appstore: null,
-        playstore: null,
+        youtube: null,
         logo: null,
         mobile_logo: null,
         favicon: null,
+        meta_description: null,
+        metrica: null,
+        analytics: null,
+        live_support: null,
       },
     };
   },

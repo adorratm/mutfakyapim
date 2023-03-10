@@ -192,8 +192,8 @@ export default {
       try {
         const formData = this.getFormData(this.formData);
         let url = this.id
-          ? "panel/emailsettings/update/" + this.id
-          : "panel/emailsettings/save/";
+          ? "panel/email-settings/update/" + this.id
+          : "panel/email-settings/save/";
         let { data } = await this.$axios.post(url, formData, {
           headers: {
             "Content-Type":
@@ -212,9 +212,9 @@ export default {
     },
     async getEmailSettings(id) {
       try {
-        let { data } = await this.$axios.get("panel/emailsettings/" + id);
-        if (data && data.emailsettings) {
-          this.formData = data.emailsettings;
+        let { data } = await this.$axios.get("panel/email-settings/" + id);
+        if (data && data.email_settings) {
+          this.formData = data.email_settings;
         }
       } catch (error) {
         console.log(error);
