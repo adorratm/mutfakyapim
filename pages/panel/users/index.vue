@@ -31,13 +31,13 @@
                 <div class="card-body">
                   <Datatable
                     :dataurl="
-                      $config.API_URL + 'backend/usersController/datatable'
+                      $config.API_URL + 'panel/users/datatable'
                     "
                     :rankurl="
-                      $config.API_URL + 'backend/usersController/rank/'
+                      $config.API_URL + 'panel/users/rank/'
                     "
                     :isactiveurl="
-                      $config.API_URL + 'backend/usersController/isactive/'
+                      $config.API_URL + 'panel/users/isactive/'
                     "
                     :editurl="'/panel/users/update/'"
                     :deleteurl="$config.API_URL + 'panel/users/delete/'"

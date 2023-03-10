@@ -30,14 +30,14 @@
                   <Datatable
                     :dataurl="
                       $config.API_URL +
-                      'backend/settingsController/datatable'
+                      'panel/settings/datatable'
                     "
                     :rankurl="
-                      $config.API_URL + 'backend/settingsController/rank/'
+                      $config.API_URL + 'panel/settings/rank/'
                     "
                     :isactiveurl="
                       $config.API_URL +
-                      'backend/settingsController/isactive/'
+                      'panel/settings/isactive/'
                     "
                     :editurl="'/panel/settings/update/'"
                     :deleteurl="$config.API_URL + 'panel/settings/delete/'"

@@ -30,10 +30,10 @@
                 </div>
                 <div class="card-body">
                   <MenusContent :rankurl="
-                      $config.API_URL + 'backend/menusController/rank/'
+                      $config.API_URL + 'panel/menus/rank/'
                     " :deleteurl="$config.API_URL+'panel/menus/delete/'" :isactiveurl="
                       $config.API_URL +
-                      'backend/menusController/isactive/'
+                      'panel/menus/isactive/'
                     " />
                 </div>
               </div>

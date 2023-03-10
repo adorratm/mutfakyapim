@@ -61,6 +61,9 @@ $route['panel/register'] = 'backend/AuthController/register';
 $route['panel/current-user'] = 'backend/AuthController/currentUser';
 
 // SETTINGS
+$route['panel/settings/datatable'] = 'backend/SettingsController/datatable';
+$route['panel/settings/rank/(:num)'] = 'backend/SettingsController/rank/$1';
+$route['panel/settings/isactive/(:num)'] = 'backend/SettingsController/isactive/$1';
 $route['panel/settings/(:num)'] = 'backend/SettingsController/$1';
 $route['panel/settings/save'] = 'backend/SettingsController/save';
 $route['panel/settings/update/(:num)'] = 'backend/SettingsController/update/$1';
@@ -68,6 +71,9 @@ $route['panel/settings/delete'] = 'backend/SettingsController/delete';
 $route['panel/settings/delete/(:num)'] = 'backend/SettingsController/delete/$1';
 
 // EMAIL SETTINGS
+$route['panel/email-settings/datatable'] = 'backend/EmailSettingsController/datatable';
+$route['panel/email-settings/rank/(:num)'] = 'backend/EmailSettingsController/rank/$1';
+$route['panel/email-settings/isactive/(:num)'] = 'backend/EmailSettingsController/isactive/$1';
 $route['panel/email-settings/(:num)'] = 'backend/EmailSettingsController/$1';
 $route['panel/email-settings/save'] = 'backend/EmailSettingsController/save';
 $route['panel/email-settings/update/(:num)'] = 'backend/EmailSettingsController/update/$1';
@@ -76,6 +82,9 @@ $route['panel/email-settings/delete/(:num)'] = 'backend/EmailSettingsController/
 
 // USERS
 $route['panel/users'] = 'backend/UsersController';
+$route['panel/users/datatable'] = 'backend/UsersController/datatable';
+$route['panel/users/rank/(:num)'] = 'backend/UsersController/rank/$1';
+$route['panel/users/isactive/(:num)'] = 'backend/UsersController/isactive/$1';
 $route['panel/users/(:num)'] = 'backend/UsersController/$1';
 $route['panel/users/save'] = 'backend/UsersController/save';
 $route['panel/users/update/(:num)'] = 'backend/UsersController/update/$1';
@@ -84,6 +93,9 @@ $route['panel/users/delete/(:num)'] = 'backend/UsersController/delete/$1';
 
 // USER ROLES
 $route['panel/user-roles'] = 'backend/UserRolesController';
+$route['panel/user-roles/datatable'] = 'backend/UserRolesController/datatable';
+$route['panel/user-roles/rank/(:num)'] = 'backend/UserRolesController/rank/$1';
+$route['panel/user-roles/isactive/(:num)'] = 'backend/UserRolesController/isactive/$1';
 $route['panel/user-roles/(:num)'] = 'backend/UserRolesController/$1';
 $route['panel/user-roles/save'] = 'backend/UserRolesController/save';
 $route['panel/user-roles/update/(:num)'] = 'backend/UserRolesController/update/$1';
@@ -92,6 +104,8 @@ $route['panel/user-roles/delete/(:num)'] = 'backend/UserRolesController/delete/$
 
 // MENUS
 $route['panel/menus'] = 'backend/MenusController';
+$route['panel/menus/rank/(:num)'] = 'backend/MenusController/rank/$1';
+$route['panel/menus/isactive/(:num)'] = 'backend/MenusController/isactive/$1';
 $route['panel/menus/(:num)'] = 'backend/MenusController/$1';
 $route['panel/menus/save'] = 'backend/MenusController/save';
 $route['panel/menus/update/(:num)'] = 'backend/MenusController/update/$1';
@@ -100,6 +114,8 @@ $route['panel/menus/delete/(:num)'] = 'backend/MenusController/delete/$1';
 
 // PRODUCT CATEGORIES
 $route['panel/product-categories'] = 'backend/ProductCategoriesController';
+$route['panel/product-categories/rank/(:num)'] = 'backend/ProductCategoriesController/rank/$1';
+$route['panel/product-categories/isactive/(:num)'] = 'backend/ProductCategoriesController/isactive/$1';
 $route['panel/product-categories/(:num)'] = 'backend/ProductCategoriesController/$1';
 $route['panel/product-categories/save'] = 'backend/ProductCategoriesController/save';
 $route['panel/product-categories/update/(:num)'] = 'backend/ProductCategoriesController/update/$1';
@@ -107,6 +123,9 @@ $route['panel/product-categories/delete'] = 'backend/ProductCategoriesController
 $route['panel/product-categories/delete/(:num)'] = 'backend/ProductCategoriesController/delete/$1';
 
 // PRODUCTS SETTINGS
+$route['panel/products/datatable'] = 'backend/productsController/datatable';
+$route['panel/products/rank/(:num)'] = 'backend/productsController/rank/$1';
+$route['panel/products/isactive/(:num)'] = 'backend/productsController/isactive/$1';
 $route['panel/products/(:num)'] = 'backend/productsController/$1';
 $route['panel/products/save'] = 'backend/productsController/save';
 $route['panel/products/update/(:num)'] = 'backend/productsController/update/$1';

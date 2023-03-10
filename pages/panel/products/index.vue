@@ -20,27 +20,19 @@
                       {{ $t("panel.products.productsDesc") }}
                     </p>
                   </div>
-                  <div class="d-flex align-items-center">
-                    <a
-                      class="btn btn-sm btn-outline-primary rounded-0"
-                      href="javascript:void(0)"
-                      @click.prevent="syncProducts()"
-                      >{{ $t("panel.products.syncProducts") }}</a
-                    >
-                  </div>
                 </div>
                 <div class="card-body">
                   <Datatable
                     :dataurl="
                       $config.API_URL +
-                      'backend/productsController/datatable'
+                      'panel/products/datatable'
                     "
                     :rankurl="
-                      $config.API_URL + 'backend/productsController/rank/'
+                      $config.API_URL + 'panel/products/rank/'
                     "
                     :isactiveurl="
                       $config.API_URL +
-                      'backend/productsController/isactive/'
+                      'panel/products/isactive/'
                     "
                     :editurl="'/panel/products/update/'"
                     :deleteurl="$config.API_URL + 'panel/products/delete/'"
@@ -166,33 +158,6 @@ export default {
     });
   },
   methods: {
-    async syncProducts() {
-      await this.$swal({
-        title: this.$t("panel.areYouSure"),
-        text: this.$t("panel.products.thisProcessTakingLongTime"),
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: this.$t("panel.products.yesUpdateIt"),
-        cancelButtonText: this.$t("panel.no"),
-      }).then(async (result) => {
-        if (result.value) {
-          try {
-            let { data } = await this.$axios.get(
-              this.$config.API_URL +
-                "backend/productsController/sync_products"
-            );
-            data.status
-              ? this.$toast.success(data.message, this.$t("successfully"))
-              : this.$toast.error(data.message, this.$t("unsuccessfully"));
-            this.$refs.dataTable.loadItems();
-          } catch (error) {
-            console.log(error);
-          }
-        }
-      });
-    },
   },
 };
 </script>
