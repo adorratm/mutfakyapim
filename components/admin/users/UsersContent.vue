@@ -229,7 +229,7 @@ export default {
         phone: null,
         password: null,
         password_repeat: null,
-        role_id: 3,
+        role_id: 1,
       },
     };
   },

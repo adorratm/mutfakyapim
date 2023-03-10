@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 use \chriskacerguis\RestServer\RestController;
-
+#[\AllowDynamicProperties]
 class UsersController extends RestController
 {
 
@@ -41,7 +41,7 @@ class UsersController extends RestController
                 ], RestController::HTTP_UNAUTHORIZED);
             }
             if (!empty($id)) {
-                $user = $this->user_model->get(["id" => $id]);
+                $user = $this->user_model->get(null,["id" => $id]);
                 $this->response([
                     'status' => TRUE,
                     'message' => "Kullanıcı Bilgileri Başarıyla Getirildi.",

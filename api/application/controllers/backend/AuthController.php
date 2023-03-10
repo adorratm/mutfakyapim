@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 use \chriskacerguis\RestServer\RestController;
-
+#[\AllowDynamicProperties]
 class AuthController extends RestController
 {
 
