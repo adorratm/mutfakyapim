@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 09:55 PM
+-- Generation Time: Mar 12, 2023 at 08:30 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -20,52 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mutfakyapim`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `codes`
---
-
-CREATE TABLE `codes` (
-  `id` int(11) NOT NULL,
-  `host` varchar(255) DEFAULT NULL,
-  `port` smallint(6) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `isActive` tinyint(4) DEFAULT 1,
-  `rank` int(11) DEFAULT 1,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `codes`
---
-
-INSERT INTO `codes` (`id`, `host`, `port`, `email`, `password`, `token`, `lang`, `isActive`, `rank`, `createdAt`, `updatedAt`) VALUES
-(1, '78.142.211.12', 90, 'ylcnirmak@ytd.com.tr', '1453', '92b735a9-482a-4242-bfb2-4fdddf04b87b', 'tr', 1, 1, '2022-12-19 11:00:49', '2022-12-28 10:30:54'),
-(2, '185.210.92.173', 90, 'mutfak@mutfak.com', '14531453', '52ad3bde-6c4a-414b-93de-52c29261a054', 'tr', 1, 2, '2022-12-19 11:05:11', '2022-12-28 10:30:54');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dimensions`
---
-
-CREATE TABLE `dimensions` (
-  `id` int(11) NOT NULL,
-  `codes_id` int(11) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `isActive` tinyint(4) DEFAULT 1,
-  `rank` int(11) DEFAULT 1,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `codes` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -262,37 +216,6 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `phon
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_addresses`
---
-
-CREATE TABLE `user_addresses` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `codes_id` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `country` varchar(255) DEFAULT 'Türkiye',
-  `city` varchar(255) DEFAULT NULL,
-  `district` varchar(255) DEFAULT NULL,
-  `neighborhood` varchar(255) DEFAULT NULL,
-  `quarter` varchar(255) DEFAULT NULL,
-  `addresss` longtext DEFAULT NULL,
-  `tax_no` varchar(12) DEFAULT NULL,
-  `tax_administration` varchar(255) DEFAULT NULL,
-  `id_no` varchar(11) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `company_name` varchar(1000) DEFAULT NULL,
-  `first_name` varchar(70) DEFAULT NULL,
-  `last_name` varchar(70) DEFAULT NULL,
-  `address_type` enum('Individual','Corporate') DEFAULT 'Individual',
-  `isActive` tinyint(4) DEFAULT 1,
-  `rank` int(11) DEFAULT 1,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user_roles`
 --
 
@@ -317,18 +240,6 @@ INSERT INTO `user_roles` (`id`, `title`, `permissions`, `isActive`, `isCover`, `
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `codes`
---
-ALTER TABLE `codes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `dimensions`
---
-ALTER TABLE `dimensions`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `email_settings`
@@ -373,16 +284,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_addresses`
---
-ALTER TABLE `user_addresses`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_USER_ID` (`user_id`),
-  ADD KEY `INDEX_TAX_NO` (`tax_no`),
-  ADD KEY `INDEX_ID_NO` (`id_no`),
-  ADD KEY `INDEX_CODES_ID` (`codes_id`);
-
---
 -- Indexes for table `user_roles`
 --
 ALTER TABLE `user_roles`
@@ -391,18 +292,6 @@ ALTER TABLE `user_roles`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `codes`
---
-ALTER TABLE `codes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `dimensions`
---
-ALTER TABLE `dimensions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `email_settings`
@@ -447,26 +336,10 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user_addresses`
---
-ALTER TABLE `user_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user_roles`
 --
 ALTER TABLE `user_roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `user_addresses`
---
-ALTER TABLE `user_addresses`
-  ADD CONSTRAINT `FK_USER_ID` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
