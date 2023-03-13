@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 12, 2023 at 08:30 PM
+-- Host: localhost
+-- Generation Time: Mar 13, 2023 at 03:22 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -168,7 +168,6 @@ CREATE TABLE `settings` (
   `meta_description` varchar(255) DEFAULT NULL,
   `analytics` longtext DEFAULT NULL,
   `metrica` longtext DEFAULT NULL,
-  `live_support` longtext DEFAULT NULL,
   `rank` int(11) DEFAULT 1,
   `createdAt` timestamp NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -181,8 +180,8 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `company_name`, `slogan`, `logo`, `mobile_logo`, `favicon`, `email`, `facebook`, `instagram`, `linkedin`, `youtube`, `meta_keywords`, `meta_description`, `analytics`, `metrica`, `live_support`, `rank`, `createdAt`, `updatedAt`, `isActive`, `lang`, `address_informations`) VALUES
-(1, 'Mutfak Yapım', 'Mutfak Yapım Filmcilik Müzik Organizasyon Sanayi ve Ticaret Limited Şirketi', 'b6531b6abce5d2f0c86796ea30b3983f.webp', 'f6827f8346e414e12e99908a95b215f8.webp', '9bd409d133ec939879a46831ceb2436a.webp', 'emrekilic@mutfakyapim.com', 'https://www.facebook.com/mutfakyapim', 'https://www.instagram.com/mutfak.yapim', 'https://tr.linkedin.com/company/mutfakyapim', 'https://www.youtube.com/@mutfakyapm1704', NULL, 'Mutfak Yapım; Sosyal Medya Yönetimi, Dijital Pazarlama, Web tasarım, E ticaret Sitesi, Tanıtım Filmi alanlarında faaliyet gösteren İzmir merkezli reklam şirketidir.', NULL, NULL, NULL, 1, '2022-11-07 13:18:03', '2023-03-10 20:38:55', 1, 'tr', '\"[{\\\"address\\\":\\\"Alsancak, Alsancak Mh. 1440 sk. No: 13 D:1, 35220 Konak\\/\\u0130zmir\\\",\\\"map\\\":\\\"<iframe class=\\\\\\\"lazyload\\\\\\\" data-src=\\\\\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m14!1m8!1m3!1d25001.90443331817!2d27.143839!3d38.43597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd8f738f4b3ef%3A0xc16c75aa798b6e48!2sMutfak%20Yap%C4%B1m%20Dijital%20Reklam%20Ajans%C4%B1!5e0!3m2!1sen!2str!4v1678468993989!5m2!1sen!2str\\\\\\\" width=\\\\\\\"100%\\\\\\\" height=\\\\\\\"450\\\\\\\" style=\\\\\\\"border:0;\\\\\\\" allowfullscreen=\\\\\\\"\\\\\\\" loading=\\\\\\\"lazy\\\\\\\" referrerpolicy=\\\\\\\"no-referrer-when-downgrade\\\\\\\"><\\/iframe>\\\",\\\"phones\\\":[{\\\"phone\\\":\\\"+90 232 403 20 02\\\",\\\"whatsapp\\\":\\\"+90 232 403 20 02\\\",\\\"fax\\\":\\\"+90 232 403 20 02\\\"}]}]\"');
+INSERT INTO `settings` (`id`, `company_name`, `slogan`, `logo`, `mobile_logo`, `favicon`, `email`, `facebook`, `instagram`, `linkedin`, `youtube`, `meta_keywords`, `meta_description`, `analytics`, `metrica`, `rank`, `createdAt`, `updatedAt`, `isActive`, `lang`, `address_informations`) VALUES
+(1, 'Mutfak Yapım', 'Mutfak Yapım Filmcilik Müzik Organizasyon Sanayi ve Ticaret Limited Şirketi', 'b6531b6abce5d2f0c86796ea30b3983f.webp', 'f6827f8346e414e12e99908a95b215f8.webp', '9bd409d133ec939879a46831ceb2436a.webp', 'emrekilic@mutfakyapim.com', 'https://www.facebook.com/mutfakyapim', 'https://www.instagram.com/mutfak.yapim', 'https://tr.linkedin.com/company/mutfakyapim', 'https://www.youtube.com/@mutfakyapm1704', NULL, 'Mutfak Yapım; Sosyal Medya Yönetimi, Dijital Pazarlama, Web tasarım, E ticaret Sitesi, Tanıtım Filmi alanlarında faaliyet gösteren İzmir merkezli reklam şirketidir.', NULL, NULL, 1, '2022-11-07 13:18:03', '2023-03-10 20:38:55', 1, 'tr', '\"[{\\\"address\\\":\\\"Alsancak, Alsancak Mh. 1440 sk. No: 13 D:1, 35220 Konak\\/\\u0130zmir\\\",\\\"map\\\":\\\"<iframe class=\\\\\\\"lazyload\\\\\\\" data-src=\\\\\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m14!1m8!1m3!1d25001.90443331817!2d27.143839!3d38.43597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd8f738f4b3ef%3A0xc16c75aa798b6e48!2sMutfak%20Yap%C4%B1m%20Dijital%20Reklam%20Ajans%C4%B1!5e0!3m2!1sen!2str!4v1678468993989!5m2!1sen!2str\\\\\\\" width=\\\\\\\"100%\\\\\\\" height=\\\\\\\"450\\\\\\\" style=\\\\\\\"border:0;\\\\\\\" allowfullscreen=\\\\\\\"\\\\\\\" loading=\\\\\\\"lazy\\\\\\\" referrerpolicy=\\\\\\\"no-referrer-when-downgrade\\\\\\\"><\\/iframe>\\\",\\\"phones\\\":[{\\\"phone\\\":\\\"+90 232 403 20 02\\\",\\\"whatsapp\\\":\\\"+90 232 403 20 02\\\",\\\"fax\\\":\\\"+90 232 403 20 02\\\"}]}]\"');
 
 -- --------------------------------------------------------
 
