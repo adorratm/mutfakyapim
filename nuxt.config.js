@@ -62,12 +62,6 @@ export default {
         iso: 'tr-TR',
         file: 'tr.js'
       },
-      {
-        name: 'English',
-        code: 'en',
-        iso: 'en-US',
-        file: 'en.js'
-      },
     ],
     langDir: 'locales/',
     defaultLocale: 'tr',
