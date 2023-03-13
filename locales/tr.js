@@ -40,7 +40,6 @@ module.exports = {
             meta_description: "Meta Açıklaması",
             metrica: "Yandex Metrica",
             analytics: "Google Analytics",
-            live_support: "Canlı Destek Kodları"
         },
         emailSettings: {
             emailSettings: "E-Mail Ayarları",

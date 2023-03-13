@@ -54,9 +54,6 @@
             :analytics.sync="formData.analytics"
           />
         </div>
-        <div slot="liveSupport">
-          <LiveSupport :live_support.sync="formData.live_support" />
-        </div>
       </VueGoodWizard>
     </ValidationObserver>
   </div>
@@ -71,7 +68,6 @@ import SocialMedia from "~/components/admin/settings/wizard/SocialMedia.vue";
 import Logo from "~/components/admin/settings/wizard/Logo.vue";
 import MetaTag from "~/components/admin/settings/wizard/MetaTag.vue";
 import SiteAnalytics from "~/components/admin/settings/wizard/SiteAnalytics.vue";
-import LiveSupport from "~/components/admin/settings/wizard/LiveSupport.vue";
 export default {
   components: {
     ValidationProvider,
@@ -83,7 +79,6 @@ export default {
     Logo,
     MetaTag,
     SiteAnalytics,
-    LiveSupport,
   },
   props: ["steps", "id"],
   data() {
@@ -115,7 +110,6 @@ export default {
         meta_description: null,
         metrica: null,
         analytics: null,
-        live_support: null,
       },
     };
   },
