@@ -213,7 +213,7 @@
     <div class="row">
         <div class="col-3">
             <picture>
-                <img src="<?= get_picture($viewFolder, $item->product_logo); ?>" alt="<?= $item->company_name; ?>" class="img-fluid" style="margin: 0px auto">
+                <img src="<?= get_picture($viewFolder, $item->service_logo); ?>" alt="<?= $item->company_name; ?>" class="img-fluid" style="margin: 0px auto">
             </picture>
         </div>
         <div class="form-group col-9">
@@ -224,7 +224,7 @@
                 <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                 <span class="input-group-append">
                     <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
-                        <input type="hidden"><input type="file" name="product_logo">
+                        <input type="hidden"><input type="file" name="service_logo">
                     </span>
                     <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
                 </span>
@@ -234,7 +234,7 @@
     <div class="row">
         <div class="col-3">
             <picture>
-                <img src="<?= get_picture($viewFolder, $item->product_detail_logo); ?>" alt="<?= $item->company_name; ?>" class="img-fluid" style="margin: 0px auto">
+                <img src="<?= get_picture($viewFolder, $item->service_detail_logo); ?>" alt="<?= $item->company_name; ?>" class="img-fluid" style="margin: 0px auto">
             </picture>
         </div>
         <div class="form-group col-9">
@@ -245,7 +245,7 @@
                 <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                 <span class="input-group-append">
                     <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
-                        <input type="hidden"><input type="file" name="product_detail_logo">
+                        <input type="hidden"><input type="file" name="service_detail_logo">
                     </span>
                     <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
                 </span>
@@ -255,7 +255,7 @@
     <div class="row">
         <div class="col-3">
             <picture>
-                <img src="<?= get_picture($viewFolder, $item->collection_logo); ?>" alt="<?= $item->company_name; ?>" class="img-fluid" style="margin: 0px auto">
+                <img src="<?= get_picture($viewFolder, $item->category_logo); ?>" alt="<?= $item->company_name; ?>" class="img-fluid" style="margin: 0px auto">
             </picture>
         </div>
         <div class="form-group col-9">
@@ -266,7 +266,7 @@
                 <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                 <span class="input-group-append">
                     <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
-                        <input type="hidden"><input type="file" name="collection_logo">
+                        <input type="hidden"><input type="file" name="category_logo">
                     </span>
                     <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
                 </span>

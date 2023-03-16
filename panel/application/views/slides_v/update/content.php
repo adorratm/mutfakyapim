@@ -98,12 +98,12 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-none">
                         <div class="form-group">
-                            <label>Ürün Linki</label>
-                            <select disabled class="form-control form-control-sm rounded-0 tagsInput" name="product_id" required>
-                                <option value="">Ürün Seçiniz.</option>
-                                <?php if (!empty($products)) : ?>
-                                    <?php foreach ($products as $product) : ?>
-                                        <option <?= ($product->id == $item->product_id ? "selected" : null) ?> value="<?= $product->id; ?>"><?= $product->title; ?></option>
+                            <label>Hizmet Linki</label>
+                            <select disabled class="form-control form-control-sm rounded-0 tagsInput" name="service_id" required>
+                                <option value="">Hizmet Seçiniz.</option>
+                                <?php if (!empty($services)) : ?>
+                                    <?php foreach ($services as $service) : ?>
+                                        <option <?= ($service->id == $item->service_id ? "selected" : null) ?> value="<?= $service->id; ?>"><?= $service->title; ?></option>
                                     <?php endforeach ?>
                                 <?php endif; ?>
                             </select>

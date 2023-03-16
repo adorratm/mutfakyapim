@@ -91,10 +91,10 @@ class Settings extends MY_Controller
             $sector_logo = upload_picture("sector_logo", "uploads/$this->viewFolder",[],"*");
             $about_logo = upload_picture("about_logo", "uploads/$this->viewFolder",[],"*");
             $gallery_logo = upload_picture("gallery_logo", "uploads/$this->viewFolder",[],"*");
-            $product_logo = upload_picture("product_logo", "uploads/$this->viewFolder",[],"*");
-            $product_detail_logo = upload_picture("product_detail_logo", "uploads/$this->viewFolder",[],"*");
+            $service_logo = upload_picture("service_logo", "uploads/$this->viewFolder",[],"*");
+            $service_detail_logo = upload_picture("service_detail_logo", "uploads/$this->viewFolder",[],"*");
             $gallery_logo = upload_picture("gallery_logo", "uploads/$this->viewFolder",[],"*");
-            $collection_logo = upload_picture("collection_logo", "uploads/$this->viewFolder",[],"*");
+            $category_logo = upload_picture("category_logo", "uploads/$this->viewFolder",[],"*");
             $catalog = upload_picture("catalog", "uploads/$this->viewFolder",[],"*");
             $getRank = $this->settings_model->rowCount();
             if ($logo["success"]) :
@@ -127,14 +127,14 @@ class Settings extends MY_Controller
             if ($gallery_logo["success"]) :
                 $data["gallery_logo"] = $gallery_logo["file_name"];
             endif;
-            if ($product_logo["success"]) :
-                $data["product_logo"] = $product_logo["file_name"];
+            if ($service_logo["success"]) :
+                $data["service_logo"] = $service_logo["file_name"];
             endif;
-            if ($product_detail_logo["success"]) :
-                $data["product_detail_logo"] = $product_detail_logo["file_name"];
+            if ($service_detail_logo["success"]) :
+                $data["service_detail_logo"] = $service_detail_logo["file_name"];
             endif;
-            if ($collection_logo["success"]) :
-                $data["collection_logo"] = $collection_logo["file_name"];
+            if ($category_logo["success"]) :
+                $data["category_logo"] = $category_logo["file_name"];
             endif;
             if ($catalog["success"]) :
                 $data["catalog"] = $catalog["file_name"];
@@ -294,28 +294,28 @@ class Settings extends MY_Controller
                         die();
                     endif;
                 endif;
-                if (!empty($_FILES["product_logo"]["name"])) :
-                    $image = upload_picture("product_logo", "uploads/$this->viewFolder",[],"*");
+                if (!empty($_FILES["service_logo"]["name"])) :
+                    $image = upload_picture("service_logo", "uploads/$this->viewFolder",[],"*");
                     if ($image["success"]) :
-                        $data["product_logo"] = $image["file_name"];
+                        $data["service_logo"] = $image["file_name"];
                     else :
                         echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Ürünler Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                         die();
                     endif;
                 endif;
-                if (!empty($_FILES["product_detail_logo"]["name"])) :
-                    $image = upload_picture("product_detail_logo", "uploads/$this->viewFolder",[],"*");
+                if (!empty($_FILES["service_detail_logo"]["name"])) :
+                    $image = upload_picture("service_detail_logo", "uploads/$this->viewFolder",[],"*");
                     if ($image["success"]) :
-                        $data["product_detail_logo"] = $image["file_name"];
+                        $data["service_detail_logo"] = $image["file_name"];
                     else :
                         echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Ürün Detay Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                         die();
                     endif;
                 endif;
-                if (!empty($_FILES["collection_logo"]["name"])) :
-                    $image = upload_picture("collection_logo", "uploads/$this->viewFolder",[],"*");
+                if (!empty($_FILES["category_logo"]["name"])) :
+                    $image = upload_picture("category_logo", "uploads/$this->viewFolder",[],"*");
                     if ($image["success"]) :
-                        $data["collection_logo"] = $image["file_name"];
+                        $data["category_logo"] = $image["file_name"];
                     else :
                         echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Kategori Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                         die();

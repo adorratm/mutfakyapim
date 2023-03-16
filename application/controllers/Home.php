@@ -54,9 +54,9 @@ class Home extends MY_Controller
          */
         $this->viewData->instagramPosts = $this->general_model->get_all("instagram_posts", null, "id ASC");
         /**
-         * Product Categories
+         * Service Categories
          */
-        $this->viewData->product_categories = $this->general_model->get_all("product_categories", null, "rand()", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [8]);
+        $this->viewData->service_categories = $this->general_model->get_all("service_categories", null, "rand()", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [8]);
 
         $this->viewData->meta_title = clean(strto("lower|ucwords", lang("home"))) . " - " . $this->viewData->settings->company_name;
         $this->viewData->meta_desc  = str_replace("”", "\"", @stripslashes($this->viewData->settings->meta_description));
@@ -146,31 +146,31 @@ class Home extends MY_Controller
             endforeach;
         endif;
         /**
-         * Product Categories
+         * Service Categories
          */
-        $product_categories = $this->general_model->get_all("product_categories", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang]);
-        if (!empty($product_categories)) :
-            foreach ($product_categories as $k => $v) :
+        $service_categories = $this->general_model->get_all("service_categories", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang]);
+        if (!empty($service_categories)) :
+            foreach ($service_categories as $k => $v) :
                 if (!empty($v->seo_url)) :
-                    $this->sitemapmodel->add(base_url(lang("routes_products") . "/{$v->seo_url}"), NULL, 'always', 1);
+                    $this->sitemapmodel->add(base_url(lang("routes_services") . "/{$v->seo_url}"), NULL, 'always', 1);
                 endif;
             endforeach;
         endif;
         /**
-         * Products
+         * Services
          */
-        $wheres["p.isActive"] = 1;
-        $wheres["pi.isCover"] = 1;
-        $wheres["p.lang"] = $this->viewData->lang;
-        $joins = ["product_categories pc" => ["p.category_id = pc.id", "left"], "product_images pi" => ["pi.product_id = p.id", "left"]];
-        $select = "p.id,p.title,p.seo_url,pi.url img_url";
+        $wheres["s.isActive"] = 1;
+        $wheres["si.isCover"] = 1;
+        $wheres["s.lang"] = $this->viewData->lang;
+        $joins = ["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]];
+        $select = "s.id,s.title,s.seo_url,si.url img_url";
         $distinct = true;
-        $groupBy = ["p.id"];
-        $products = $this->general_model->get_all("products p", $select, "p.id DESC", $wheres, [], $joins, [], [], $distinct, $groupBy);
-        if (!empty($products)) :
-            foreach ($products as $k => $v) :
+        $groupBy = ["s.id"];
+        $services = $this->general_model->get_all("services s", $select, "s.id DESC", $wheres, [], $joins, [], [], $distinct, $groupBy);
+        if (!empty($services)) :
+            foreach ($services as $k => $v) :
                 if (!empty($v->url)) :
-                    $this->sitemapmodel->add(base_url(lang("routes_products") . "/" . lang("routes_product") . "/{$v->url}"), NULL, 'always', 1);
+                    $this->sitemapmodel->add(base_url(lang("routes_services") . "/" . lang("routes_service") . "/{$v->url}"), NULL, 'always', 1);
                 endif;
             endforeach;
         endif;
@@ -236,31 +236,31 @@ class Home extends MY_Controller
             endforeach;
         endif;
         /**
-         * Product Categories
+         * Service Categories
          */
-        $product_categories = $this->general_model->get_all("product_categories", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang]);
-        if (!empty($product_categories)) :
-            foreach ($product_categories as $k => $v) :
+        $service_categories = $this->general_model->get_all("service_categories", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang]);
+        if (!empty($service_categories)) :
+            foreach ($service_categories as $k => $v) :
                 if (!empty($v->seo_url)) :
-                    $this->sitemapmodel->add(base_url(lang("routes_products") . "/{$v->seo_url}"), NULL, 'always', 1);
+                    $this->sitemapmodel->add(base_url(lang("routes_services") . "/{$v->seo_url}"), NULL, 'always', 1);
                 endif;
             endforeach;
         endif;
         /**
-         * Products
+         * Services
          */
-        $wheres["p.isActive"] = 1;
-        $wheres["pi.isCover"] = 1;
-        $wheres["p.lang"] = $this->viewData->lang;
-        $joins = ["product_categories pc" => ["p.category_id = pc.id", "left"], "product_images pi" => ["pi.product_id = p.id", "left"]];
-        $select = "p.id,p.title,p.seo_url,pi.url img_url";
+        $wheres["s.isActive"] = 1;
+        $wheres["si.isCover"] = 1;
+        $wheres["s.lang"] = $this->viewData->lang;
+        $joins = ["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]];
+        $select = "s.id,s.title,s.seo_url,si.url img_url";
         $distinct = true;
-        $groupBy = ["p.id"];
-        $products = $this->general_model->get_all("products p", $select, "p.id DESC", $wheres, [], $joins, [], [], $distinct, $groupBy);
-        if (!empty($products)) :
-            foreach ($products as $k => $v) :
+        $groupBy = ["s.id"];
+        $services = $this->general_model->get_all("services s", $select, "s.id DESC", $wheres, [], $joins, [], [], $distinct, $groupBy);
+        if (!empty($services)) :
+            foreach ($services as $k => $v) :
                 if (!empty($v->url)) :
-                    $this->sitemapmodel->add(base_url(lang("routes_products") . "/" . lang("routes_product") . "/{$v->url}"), NULL, 'always', 1);
+                    $this->sitemapmodel->add(base_url(lang("routes_services") . "/" . lang("routes_service") . "/{$v->url}"), NULL, 'always', 1);
                 endif;
             endforeach;
         endif;
@@ -291,154 +291,6 @@ class Home extends MY_Controller
     /**
      * ------------------------------------------------------------------------------------------------
      * ...:::!!! ============================== SITEMAP MODULE ============================== !!!:::...
-     * ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * ------------------------------------------------------------------------------------------------
-     * ...:::!!! ========================== FACEBOOK CATALOG MODULE ========================= !!!:::...
-     * ------------------------------------------------------------------------------------------------
-     */
-    function facebook_catalog()
-    {
-        $settings = get_settings();
-
-        $dom = xml_dom();
-        $rss = xml_add_child($dom, 'rss');
-        xml_add_attribute($rss, 'xmlns:g', 'https://base.google.com/ns/1.0');
-        xml_add_attribute($rss, 'version', '2.0');
-
-        $channel = xml_add_child($rss, 'channel');
-        xml_add_child($channel, 'title', $settings->company_name);
-        xml_add_child($channel, 'link', base_url());
-        xml_add_child($channel, 'description', $settings->meta_description);
-
-        /**
-         * Order
-         */
-        $order = "p.id DESC";
-        /**
-         * Likes
-         */
-        $likes = [];
-        $wheres = [];
-        /**
-         * Wheres
-         */
-        $wheres["p.isActive"] = 1;
-        $wheres["pi.isCover"] = 1;
-        $wheres["p.lang"] = $this->viewData->lang;
-        $joins = ["product_images pi" => ["pi.product_id = p.id", "left"], "product_details pd" => ["pd.product_id = p.id", "left"]];
-        $select = "pd.description,p.id,p.title,p.seo_url,pi.url img_url,p.isActive";
-        $distinct = true;
-        $groupBy = ["p.id"];
-        /** 
-         * Get Products
-         */
-        $products = $this->general_model->get_all("products p", $select, $order, $wheres, $likes, $joins, [], [], $distinct, $groupBy);
-        $this->viewData->products = $products;
-
-        //logg($prods);
-        if (!empty($products)) :
-            foreach ($products as $key => $prod) :
-                $item = xml_add_child($channel, 'item');
-                xml_add_child($item, 'g:id', $prod->id);
-                xml_add_child($item, 'g:title', strto("lower|ucwords", $prod->title));
-                xml_add_child($item, 'g:description', strto("lower|ucwords", $prod->title));
-                xml_add_child($item, 'g:link',  base_url(lang("routes_products") . "/" . lang("routes_product") . "/" . $prod->seo_url));
-                xml_add_child($item, 'g:image_link', get_picture("products_v", $prod->img_url));
-                xml_add_child($item, 'g:brand', strto("lower|ucwords", $settings->company_name));
-                xml_add_child($item, 'g:condition', 'new');
-                xml_add_child($item, 'g:availability', ($prod->stock > 0 ? 'in stock' : 'out stock'));
-                xml_add_child($item, 'g:price',  '0 ' . $this->viewData->currency);
-                //https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt
-                xml_add_child($item, 'g:google_product_category', 2826);
-            //xml_add_child($item, 'g:custom_label_0', $prod->);
-            endforeach;
-        endif;
-        $this->output->set_content_type('application/xml')->set_output(xml_print($dom, true));
-    }
-    /**
-     * ------------------------------------------------------------------------------------------------
-     * ...:::!!! ========================== FACEBOOK CATALOG MODULE ========================= !!!:::...
-     * ------------------------------------------------------------------------------------------------
-     */
-
-    /**
-     * ------------------------------------------------------------------------------------------------
-     * ...:::!!! ========================== GOOGLE CATALOG MODULE ========================= !!!:::...
-     * ------------------------------------------------------------------------------------------------
-     */
-    function google_catalog()
-    {
-        $settings = get_settings();
-
-        $dom = xml_dom();
-        $rss = xml_add_child($dom, 'rss');
-        xml_add_attribute($rss, 'xmlns:g', 'https://base.google.com/ns/1.0');
-        xml_add_attribute($rss, 'version', '2.0');
-
-        $channel = xml_add_child($rss, 'channel');
-        xml_add_child($channel, 'title', stripslashes($settings->company_name));
-        xml_add_child($channel, 'link', base_url());
-        xml_add_child($channel, 'description', clean($settings->meta_description));
-
-        /**
-         * Order
-         */
-        $order = "p.id DESC";
-        /**
-         * Likes
-         */
-        $likes = [];
-        $wheres = [];
-        /**
-         * Wheres
-         */
-        $wheres["p.isActive"] = 1;
-        $wheres["pi.isCover"] = 1;
-        $wheres["p.lang"] = $this->viewData->lang;
-        $joins = ["product_images pi" => ["pi.product_id = p.id", "left"], "product_details pd" => ["pd.product_id = p.id", "left"]];
-        $select = "p.stock,pd.description,p.id,p.title,p.seo_url,pi.url img_url,p.isActive";
-        $distinct = true;
-        $groupBy = ["p.id"];
-        /** 
-         * Get Products
-         */
-        $products = $this->general_model->get_all("products p", $select, $order, $wheres, $likes, $joins, [], [], $distinct, $groupBy);
-        $this->viewData->products = $products;
-
-        //logg($prods);
-        if (!empty($products)) :
-            foreach ($products as $key => $prod) :
-                $item = xml_add_child($channel, 'item');
-                xml_add_child($item, 'g:id', $prod->id);
-                $gtin = rand(100000000000, 999999999999);
-                xml_add_child($item, 'g:title', strto("lower|ucwords", $prod->title));
-                xml_add_child($item, 'g:description', strto("lower|ucwords", (!empty($prod->description) ? clean(@mb_word_wrap($prod->description, 500, "...")) : $prod->title)));
-                xml_add_child($item, 'g:link',  base_url(lang("routes_products") . "/" . lang("routes_product") . "/" . $prod->seo_url));
-                xml_add_child($item, 'g:image_link', get_picture("products_v", $prod->img_url));
-                xml_add_child($item, 'g:additional_image_link', get_picture("products_v", $prod->img_url));
-                xml_add_child($item, 'g:brand', strto("lower|ucwords", stripslashes($settings->company_name)));
-                xml_add_child($item, 'g:condition', 'new');
-                xml_add_child($item, 'g:availability', ($prod->stock > 0 ? 'in stock' : 'out of stock'));
-                xml_add_child($item, 'g:price', @number_format($prod->newPrice, 2) . ' ' . $this->viewData->currency);
-                xml_add_child($item, 'g:sale_price', @number_format($prod->discountedPrice, 2) . ' ' . $this->viewData->currency);
-                xml_add_child($item, 'g:mpn', $gtin);
-                xml_add_child($item, 'g:identifier_exists', "no");
-                $shipping = xml_add_child($item, 'g:shipping');
-                xml_add_child($shipping, 'g:country', "TR");
-                xml_add_child($shipping, 'g:service', "Standard");
-                xml_add_child($shipping, 'g:price', 0 . ' ' . $this->viewData->currency);
-                //https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt
-                xml_add_child($item, 'g:google_product_category', 2826);
-            //xml_add_child($item, 'g:custom_label_0', $prod->);
-            endforeach;
-        endif;
-        $this->output->set_content_type('application/xml')->set_output(xml_print($dom, true));
-    }
-    /**
-     * ------------------------------------------------------------------------------------------------
-     * ...:::!!! ========================== GOOGLE CATALOG MODULE ========================= !!!:::...
      * ------------------------------------------------------------------------------------------------
      */
 

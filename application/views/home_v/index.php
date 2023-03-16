@@ -26,21 +26,21 @@
                                 <?php $sUrl = $value->button_url ?>
                             <?php endif ?>
                             <?php if (!empty($value->category_id) && $value->category_id > 0) : ?>
-                                <?php $sCategory = $this->general_model->get("product_categories", null, ["isActive" => 1, "id" => $value->category_id]); ?>
+                                <?php $sCategory = $this->general_model->get("service_categories", null, ["isActive" => 1, "id" => $value->category_id]); ?>
                                 <?php if (!empty($sCategory)) : ?>
-                                    <?php $sUrl = base_url(lang("routes_products") . "/" . $sCategory->seo_url) ?>
+                                    <?php $sUrl = base_url(lang("routes_services") . "/" . $sCategory->seo_url) ?>
                                 <?php endif ?>
                             <?php endif ?>
-                            <?php if (!empty($value->product_id) && $value->product_id > 0) : ?>
-                                <?php $sProduct = $this->general_model->get("products", null, ["isActive" => 1, "id" => $value->product_id]); ?>
-                                <?php if (!empty($sProduct)) : ?>
-                                    <?php $sUrl = base_url(lang("routes_products") . "/" . lang("routes_product") . "/" . $sProduct->url) ?>
+                            <?php if (!empty($value->service_id) && $value->service_id > 0) : ?>
+                                <?php $sService = $this->general_model->get("services", null, ["isActive" => 1, "id" => $value->service_id]); ?>
+                                <?php if (!empty($sService)) : ?>
+                                    <?php $sUrl = base_url(lang("routes_services") . "/" . lang("routes_service") . "/" . $sService->url) ?>
                                 <?php endif ?>
                             <?php endif ?>
                             <?php if (!empty($value->page_id) && $value->page_id > 0) : ?>
-                                <?php $sPage = $this->general_model->get("product_categories", null, ["isActive" => 1, "id" => $value->page_id]); ?>
+                                <?php $sPage = $this->general_model->get("service_categories", null, ["isActive" => 1, "id" => $value->page_id]); ?>
                                 <?php if (!empty($sPage)) : ?>
-                                    <?php $sUrl = base_url(lang("routes_products") . "/" . $sPage->url) ?>
+                                    <?php $sUrl = base_url(lang("routes_services") . "/" . $sPage->url) ?>
                                 <?php endif ?>
                             <?php endif ?>
                             <?php if (!empty($value->sector_id) && $value->sector_id > 0) : ?>
@@ -97,21 +97,21 @@
                                     <?php $sUrl = $value->button_url ?>
                                 <?php endif ?>
                                 <?php if (!empty($value->category_id) && $value->category_id > 0) : ?>
-                                    <?php $sCategory = $this->general_model->get("product_categories", null, ["isActive" => 1, "id" => $value->category_id]); ?>
+                                    <?php $sCategory = $this->general_model->get("service_categories", null, ["isActive" => 1, "id" => $value->category_id]); ?>
                                     <?php if (!empty($sCategory)) : ?>
-                                        <?php $sUrl = base_url(lang("routes_products") . "/" . $sCategory->seo_url) ?>
+                                        <?php $sUrl = base_url(lang("routes_services") . "/" . $sCategory->seo_url) ?>
                                     <?php endif ?>
                                 <?php endif ?>
-                                <?php if (!empty($value->product_id) && $value->product_id > 0) : ?>
-                                    <?php $sProduct = $this->general_model->get("products", null, ["isActive" => 1, "id" => $value->product_id]); ?>
-                                    <?php if (!empty($sProduct)) : ?>
-                                        <?php $sUrl = base_url(lang("routes_products") . "/" . lang("routes_product") . "/" . $sProduct->url) ?>
+                                <?php if (!empty($value->service_id) && $value->service_id > 0) : ?>
+                                    <?php $sService = $this->general_model->get("services", null, ["isActive" => 1, "id" => $value->service_id]); ?>
+                                    <?php if (!empty($sService)) : ?>
+                                        <?php $sUrl = base_url(lang("routes_services") . "/" . lang("routes_service") . "/" . $sService->url) ?>
                                     <?php endif ?>
                                 <?php endif ?>
                                 <?php if (!empty($value->page_id) && $value->page_id > 0) : ?>
-                                    <?php $sPage = $this->general_model->get("product_categories", null, ["isActive" => 1, "id" => $value->page_id]); ?>
+                                    <?php $sPage = $this->general_model->get("service_categories", null, ["isActive" => 1, "id" => $value->page_id]); ?>
                                     <?php if (!empty($sPage)) : ?>
-                                        <?php $sUrl = base_url(lang("routes_products") . "/" . $sPage->url) ?>
+                                        <?php $sUrl = base_url(lang("routes_services") . "/" . $sPage->url) ?>
                                     <?php endif ?>
                                 <?php endif ?>
                                 <?php if (!empty($value->sector_id) && $value->sector_id > 0) : ?>
@@ -137,29 +137,29 @@
     <!-- END: Slider Section -->
 <?php endif ?>
 
-<?php if (!empty($product_categories)) : ?>
+<?php if (!empty($service_categories)) : ?>
     <!-- END: Categories Section -->
     <section class="latestArrivalSection">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="secTitle text-center mb-5"><?= lang("productCategories") ?></h2>
+                    <h2 class="secTitle text-center mb-5"><?= lang("serviceCategories") ?></h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="productCarousel  owl-carousel">
-                        <?php foreach ($product_categories as $k => $v) : ?>
-                            <div class="productItem01 w-100 border rounded p-3 h-100 shadow-sm">
+                    <div class="serviceCarousel  owl-carousel">
+                        <?php foreach ($service_categories as $k => $v) : ?>
+                            <div class="serviceItem01 w-100 border rounded p-3 h-100 shadow-sm">
                                 <div class="pi01Thumb">
-                                    <img data-src="<?= get_picture("product_categories_v", $v->img_url) ?>" class="img-fluid lazyload" alt="<?= $v->title ?>" title="<?= $v->title ?>" />
-                                    <img data-src="<?= get_picture("product_categories_v", $v->img_url) ?>" class="img-fluid lazyload" alt="<?= $v->title ?>" title="<?= $v->title ?>" />
+                                    <img data-src="<?= get_picture("service_categories_v", $v->img_url) ?>" class="img-fluid lazyload" alt="<?= $v->title ?>" title="<?= $v->title ?>" />
+                                    <img data-src="<?= get_picture("service_categories_v", $v->img_url) ?>" class="img-fluid lazyload" alt="<?= $v->title ?>" title="<?= $v->title ?>" />
                                     <div class="pi01Actions">
-                                        <a href="<?= base_url(lang("routes_products") . "/" . $v->seo_url) ?>" rel="dofollow" title="<?= lang("viewProducts") ?>"><i class="fa-solid fa-arrows-up-down-left-right"></i></a>
+                                        <a href="<?= base_url(lang("routes_services") . "/" . $v->seo_url) ?>" rel="dofollow" title="<?= lang("viewServices") ?>"><i class="fa-solid fa-arrows-up-down-left-right"></i></a>
                                     </div>
                                 </div>
                                 <div class="pi01Details">
-                                    <h3 class="secTitle text-center fw-medium fs-6"><a href="<?= base_url(lang("routes_products") . "/" . $v->seo_url) ?>" rel="dofollow" title="<?= lang("viewProducts") ?>"><?= $v->title ?></a></h3>
+                                    <h3 class="secTitle text-center fw-medium fs-6"><a href="<?= base_url(lang("routes_services") . "/" . $v->seo_url) ?>" rel="dofollow" title="<?= lang("viewServices") ?>"><?= $v->title ?></a></h3>
                                 </div>
                             </div>
                         <?php endforeach ?>

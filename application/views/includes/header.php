@@ -131,7 +131,7 @@
             <div class="logo-box">
                 <a rel="dofollow" href="<?= base_url() ?>" title="<?= $settings->company_name ?>">
                     <picture>
-                        <img width="200" height="90" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid rounded">
+                        <img width="200" height="90" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
                     </picture>
                 </a>
             </div>
@@ -142,19 +142,54 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@packageName__.com">needhelp@bcorz.com</a>
+                    <?php if (!empty($settings->email)) : ?>
+                        <a rel="dofollow" title="Email" href="mailto:<?= $settings->email ?>"><?= $settings->email ?></a>
+                    <?php endif ?>
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:666-888-0000">666 888 0000</a>
+                    <?php if (!empty(@json_decode($settings->phone, TRUE)[0])) : ?>
+                        <a rel="dofollow" title="<?= lang("phone") ?>" href="tel:<?= @json_decode($settings->phone, TRUE)[0] ?>"><?= @json_decode($settings->phone, TRUE)[0] ?></a>
+                    <?php endif ?>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-facebook-square"></a>
-                    <a href="#" class="fab fa-pinterest-p"></a>
-                    <a href="#" class="fab fa-instagram"></a>
+                    <?php if (!empty($settings->facebook)) : ?>
+                        <a class="facebook" rel="nofollow" href="<?= $settings->facebook ?>" title="Facebook" target="_blank">
+                            <i aria-hidden="true" class="fa fa-facebook"></i>
+                        </a>
+                    <?php endif ?>
+                    <?php if (!empty($settings->twitter)) : ?>
+                        <a class="twitter" rel="nofollow" href="<?= $settings->twitter ?>" title="Twitter" target="_blank">
+                            <i aria-hidden="true" class="fa fa-twitter"></i>
+                        </a>
+                    <?php endif ?>
+                    <?php if (!empty($settings->instagram)) : ?>
+                        <a class="instagram" rel="nofollow" href="<?= $settings->instagram ?>" title="Instagram" target="_blank">
+                            <i aria-hidden="true" class="fa fa-instagram"></i>
+                        </a>
+                    <?php endif ?>
+                    <?php if (!empty($settings->linkedin)) : ?>
+                        <a class="linkedin" rel="nofollow" href="<?= $settings->linkedin ?>" title="Linkedin" target="_blank">
+                            <i aria-hidden="true" class="fa fa-linkedin"></i>
+                        </a>
+                    <?php endif ?>
+                    <?php if (!empty($settings->youtube)) : ?>
+                        <a class="youtube" rel="nofollow" href="<?= $settings->youtube ?>" title="Youtube" target="_blank">
+                            <i aria-hidden="true" class="fa fa-youtube"></i>
+                        </a>
+                    <?php endif ?>
+                    <?php if (!empty($settings->medium)) : ?>
+                        <a class="medium" rel="nofollow" href="<?= $settings->medium ?>" title="Medium" target="_blank">
+                            <i aria-hidden="true" class="fa fa-medium"></i>
+                        </a>
+                    <?php endif ?>
+                    <?php if (!empty($settings->pinterest)) : ?>
+                        <a class="pinterest" rel="nofollow" href="<?= $settings->pinterest ?>" title="Pinterest" target="_blank">
+                            <i aria-hidden="true" class="fa fa-pinterest"></i>
+                        </a>
+                    <?php endif ?>
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
 

@@ -888,11 +888,11 @@ function in_parent($in_parent = null, $position = null, $lang = null, $store_all
             endif;
             if ($value->showCategories) :
                 $html .= "<ul>";
-                $product_categories = $t->general_model->get_all("product_categories", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang]);
-                if (!empty($product_categories)) :
-                    foreach ($product_categories as $pcKey => $pcValue) :
+                $service_categories = $t->general_model->get_all("service_categories", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang]);
+                if (!empty($service_categories)) :
+                    foreach ($service_categories as $pcKey => $pcValue) :
                         $html .= '<li>';
-                        $html .= '<a rel="dofollow" ' . (($position == "MOBILE" || $position == "HEADER") && in_array($pcValue->id, $store_all_id) ? ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || $t->uri->segment(2) == strto("lower", seo($value->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') ? "class='current'" : "class=''") : ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') || $t->uri->segment(2) == strto("lower", seo($pcValue->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) ? "class='current'" : "class=''")) . ' href="' . base_url(lang("routes_products") . "/" . $pcValue->seo_url) . '" target="' . $value->target . '" title="' . $pcValue->title . '">' . strto("lower|ucwords", $pcValue->title) . '</a>';
+                        $html .= '<a rel="dofollow" ' . (($position == "MOBILE" || $position == "HEADER") && in_array($pcValue->id, $store_all_id) ? ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || $t->uri->segment(2) == strto("lower", seo($value->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') ? "class='current'" : "class=''") : ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') || $t->uri->segment(2) == strto("lower", seo($pcValue->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) ? "class='current'" : "class=''")) . ' href="' . base_url(lang("routes_services") . "/" . $pcValue->seo_url) . '" target="' . $value->target . '" title="' . $pcValue->title . '">' . strto("lower|ucwords", $pcValue->title) . '</a>';
                         $html .= '</li>';
                     endforeach;
                 endif;
@@ -923,12 +923,12 @@ function show_categories($lang = "tr")
     // this variable to save all concatenated html
     $html = "";
     // build hierarchy  html structure based on ul li (parent-child) nodes
-    $result = $t->general_model->get_all("product_categories", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang]);
+    $result = $t->general_model->get_all("service_categories", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang]);
     $html .=  '<ul>';
     foreach ($result as $key => $value) :
         $html .= '<li>';
         $html .= '<a rel="dofollow" ' .
-            ($t->uri->segment(3) == $value->seo_url ? "class='current link'" : "class='link'") . ' href="' . base_url(lang("routes_products") . "/{$value->seo_url}") . '" title="' . $value->title . '"><i class="bx bx-chevron-right"></i> ' . $value->title . '</a>';
+            ($t->uri->segment(3) == $value->seo_url ? "class='current link'" : "class='link'") . ' href="' . base_url(lang("routes_services") . "/{$value->seo_url}") . '" title="' . $value->title . '"><i class="bx bx-chevron-right"></i> ' . $value->title . '</a>';
         $html .= show_categories($value->id, $lang);
         $html .= "</li>";
     endforeach;
@@ -953,12 +953,12 @@ function show_header_categories($lang = "tr")
     // this variable to save all concatenated html
     $html = "";
     // build hierarchy  html structure based on ul li (parent-child) nodes
-    $result = $t->general_model->get_all("product_categories", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang]);
+    $result = $t->general_model->get_all("service_categories", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang]);
     $html .=  '<ul>';
     foreach ($result as $key => $value) :
         $html .= '<li class="nav-item">';
         $html .= '<a rel="dofollow"' .
-            ($t->uri->segment(3) == $value->seo_url ? "current nav-link" : "nav-link") . '" href="' . base_url(lang("routes_products") . "/{$value->seo_url}") . '" title="' . $value->title . '">' . $value->title . '</a>';
+            ($t->uri->segment(3) == $value->seo_url ? "current nav-link" : "nav-link") . '" href="' . base_url(lang("routes_services") . "/{$value->seo_url}") . '" title="' . $value->title . '">' . $value->title . '</a>';
         $html .= show_header_categories($value->id, $lang);
         $html .= "</li>";
     endforeach;
@@ -966,10 +966,10 @@ function show_header_categories($lang = "tr")
     return $html;
 }
 
-function get_secondary_image($product_id = null,$cover_url = null, $lang = "tr")
+function get_secondary_image($service_id = null,$cover_url = null, $lang = "tr")
 {
     $t = &get_instance();
-    $result = $t->general_model->get("product_images", "url", ["product_id" => $product_id, "isActive" => 1, "isCover" => 0, "lang" => $lang]);
+    $result = $t->general_model->get("service_images", "url", ["service_id" => $service_id, "isActive" => 1, "isCover" => 0, "lang" => $lang]);
     if (!empty($result)) :
         return $result->url;
     endif;

@@ -59,8 +59,8 @@ class Slides extends MY_Controller
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "add";
         $viewData->pages = $this->general_model->get_all("pages",null,"rank ASC", ["isActive" => 1]);
-        $viewData->categories = $this->general_model->get_all("product_categories",null,"rank ASC", ["isActive" => 1]);
-        $viewData->products = $this->general_model->get_all("products p","p.id,p.title","p.rank ASC", ["p.isActive" => 1,"pi.isCover" => 1],[],["product_categories pc" => ["p.category_id = pc.id", "left"], "product_images pi" => ["pi.product_id = p.id", "left"]],[],[],true,["p.id"]);
+        $viewData->categories = $this->general_model->get_all("service_categories",null,"rank ASC", ["isActive" => 1]);
+        $viewData->services = $this->general_model->get_all("services s","s.id,s.title","s.rank ASC", ["s.isActive" => 1,"pi.isCover" => 1],[],["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]],[],[],true,["s.id"]);
         $viewData->settings = $this->general_model->get_all("settings", null, null, ["isActive" => 1]);
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/content", $viewData);
     }
@@ -106,8 +106,8 @@ class Slides extends MY_Controller
         $viewData->subViewFolder = "update";
         $viewData->item = $this->slide_model->get(["id" => $id]);
         $viewData->pages = $this->general_model->get_all("pages",null,"rank ASC", ["isActive" => 1]);
-        $viewData->categories = $this->general_model->get_all("product_categories",null,"rank ASC", ["isActive" => 1]);
-        $viewData->products = $this->general_model->get_all("products p","p.id,p.title","p.rank ASC", ["p.isActive" => 1,"pi.isCover" => 1],[],["product_categories pc" => ["p.category_id = pc.id", "left"], "product_images pi" => ["pi.product_id = p.id", "left"]],[],[],true,["p.id"]);
+        $viewData->categories = $this->general_model->get_all("service_categories",null,"rank ASC", ["isActive" => 1]);
+        $viewData->services = $this->general_model->get_all("services s","s.id,s.title","s.rank ASC", ["s.isActive" => 1,"si.isCover" => 1],[],["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]],[],[],true,["s.id"]);
         $viewData->settings = $this->general_model->get_all("settings", null, null, ["isActive" => 1]);
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/content", $viewData);
     }

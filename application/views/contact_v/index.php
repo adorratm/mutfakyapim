@@ -40,7 +40,7 @@
             <div class="col-lg-12">
                 <div class="contactCarousel owl-carousel">
                     <?php foreach ($addresses as $key => $value) : ?>
-                        <div class="productItem01 border p-3">
+                        <div class="serviceItem01 border p-3">
                             <div class="pi01Details">
                                 <h4 class="text-center"><?= @$addressTitles[$key] ?></h4>
                                 <ul class="nav">
