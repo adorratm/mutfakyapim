@@ -853,7 +853,7 @@ function in_parent($in_parent = null, $position = null, $lang = null, $store_all
     // build hierarchy  html structure based on ul li (parent-child) nodes
     if (in_array($in_parent, $store_all_id)) :
         $result = $t->general_model->get_all("menus", "url,title,id,top_id,page_id,target,showCategories", "rank ASC", ["position" => $position, "top_id" => $in_parent, "isActive" => 1, "lang" => $lang]);
-        $html .=  '<ul ' . ($position == "HEADER" && $in_parent == 0 ? "class='main-menu__list'" : "class='footer-widget-two__quick-links-list list-unstyled'") . '>';
+        $html .=  '<ul ' . ($position == "HEADER" && $in_parent == 0 ? "class='main-menu__list'" : ($position == "FOOTER" ? "class='footer-widget-two__quick-links-list list-unstyled'" : null)) . '>';
         foreach ($result as $key => $value) :
             $page = $t->general_model->get("pages", "url,title", ["isActive" => 1, "id" => $value->page_id, "lang" => $lang]);
             if ($value->page_id !== 0) :
@@ -891,8 +891,18 @@ function in_parent($in_parent = null, $position = null, $lang = null, $store_all
                 $service_categories = $t->general_model->get_all("service_categories", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang]);
                 if (!empty($service_categories)) :
                     foreach ($service_categories as $pcKey => $pcValue) :
+                        $services = $t->general_model->get_all("services", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang, "category_id" => $pcValue->id]);
                         $html .= '<li>';
                         $html .= '<a rel="dofollow" ' . (($position == "MOBILE" || $position == "HEADER") && in_array($pcValue->id, $store_all_id) ? ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || $t->uri->segment(2) == strto("lower", seo($value->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') ? "class='current'" : "class=''") : ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') || $t->uri->segment(2) == strto("lower", seo($pcValue->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) ? "class='current'" : "class=''")) . ' href="' . base_url(lang("routes_services") . "/" . $pcValue->seo_url) . '" target="' . $value->target . '" title="' . $pcValue->title . '">' . strto("lower|ucwords", $pcValue->title) . '</a>';
+                        if(!empty($services)):
+                            $html .= "<ul>";
+                            foreach ($services as $sKey => $sValue) :
+                                $html .= '<li>';
+                                $html .= '<a rel="dofollow" ' . (($position == "MOBILE" || $position == "HEADER") && in_array($sValue->id, $store_all_id) ? ((!empty($sValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($sValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($sValue->seo_url)))) || $t->uri->segment(2) == strto("lower", seo($value->title)) || $t->uri->segment(3) == strto("lower", seo($sValue->title)) || ($t->uri->segment(2) === null && $sValue->seo_url === '/') ? "class='current'" : "class=''") : ((!empty($sValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($sValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($sValue->seo_url)))) || ($t->uri->segment(2) === null && $sValue->seo_url === '/') || $t->uri->segment(2) == strto("lower", seo($sValue->title)) || $t->uri->segment(3) == strto("lower", seo($sValue->title)) ? "class='current'" : "class=''")) . ' href="' . base_url(lang("routes_services") . "/" . $pcValue->seo_url . "/" . $sValue->seo_url) . '" target="' . $value->target . '" title="' . $sValue->title . '">' . strto("lower|ucwords", $sValue->title) . '</a>';
+                                $html .= '</li>';
+                            endforeach;
+                            $html .= "</ul>";
+                        endif;
                         $html .= '</li>';
                     endforeach;
                 endif;

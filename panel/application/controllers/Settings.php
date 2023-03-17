@@ -299,7 +299,7 @@ class Settings extends MY_Controller
                     if ($image["success"]) :
                         $data["service_logo"] = $image["file_name"];
                     else :
-                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Ürünler Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
+                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Hizmet Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                         die();
                     endif;
                 endif;
@@ -308,7 +308,7 @@ class Settings extends MY_Controller
                     if ($image["success"]) :
                         $data["service_detail_logo"] = $image["file_name"];
                     else :
-                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Ürün Detay Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
+                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Hizmet Detay Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                         die();
                     endif;
                 endif;

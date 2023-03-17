@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <h4 class="mb-3">
-                Ürün Koleksiyonları
-                <a href="javascript:void(0)" data-url="<?= base_url("service_categories/getCategories"); ?>" class="btn btn-sm btn-outline-primary rounded-0 btn-sm float-right syncServiceCategoryBtn"> <i class="fa fa-sync"></i> Ürün Kategorisi Ekle</a>
+                Hizmet Kategorileri
+                <a href="javascript:void(0)" data-url="<?= base_url("service_categories/getCategories"); ?>" class="btn btn-sm btn-outline-primary rounded-0 btn-sm float-right syncServiceCategoryBtn"> <i class="fa fa-plus"></i> Hizmet Kategorisi Ekle</a>
             </h4>
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -17,7 +17,7 @@
                         <button class="btn btn-sm btn-outline-danger rounded-0 " onclick="clearFilter('filter_form','serviceCategoryTable')" id="clear_button" data-toggle="tooltip" data-placement="top" data-title="Filtreyi Temizle" data-original-title="" title=""><i class="fa fa-eraser"></i></button>
                     </label>
                     <label for="search_button" class="mx-1">
-                        <button class="btn btn-sm btn-outline-success rounded-0 " onclick="reloadTable('serviceCategoryTable')" id="search_button" data-toggle="tooltip" data-placement="top" data-title="Ürün Koleksiyonu Ara"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-sm btn-outline-success rounded-0 " onclick="reloadTable('serviceCategoryTable')" id="search_button" data-toggle="tooltip" data-placement="top" data-title="Hizmet Kategorisi Ara"><i class="fa fa-search"></i></button>
                 </div>
             </form>
             <table class="table table-hover table-striped table-bordered content-container serviceCategoryTable">
@@ -62,7 +62,7 @@
             e.stopImmediatePropagation();
             $('#serviceCategoryModal').iziModal('destroy');
             let url = $(this).data("url");
-            createModal("#serviceCategoryModal", "Ürün Koleksiyonu Düzenle", "Ürün Koleksiyonu Düzenle", 600, true, "20px", 0, "#e20e17", "#fff", 1040, function() {
+            createModal("#serviceCategoryModal", "Hizmet Kategorisi Düzenle", "Hizmet Kategorisi Düzenle", 600, true, "20px", 0, "#e20e17", "#fff", 1040, function() {
                 $.post(url, {}, function(response) {
                     $("#serviceCategoryModal .iziModal-content").html(response);
                     TinyMCEInit();

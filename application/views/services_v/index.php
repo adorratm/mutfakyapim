@@ -1,19 +1,14 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<!-- BEGIN: Page Banner Section -->
-<section class="pageBannerSection" style="background-image: url(<?= !empty($services_category) && !empty($services_category->img_url) ? get_picture("service_categories_v", $services_category->banner_url) : get_picture("settings_v", $settings->service_logo) ?>);">
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(<?= !empty($services_category) && !empty($services_category->img_url) ? get_picture("service_categories_v", $services_category->banner_url) : get_picture("settings_v", $settings->service_logo) ?>);"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pageBannerContent text-center">
-                    <h2 class="text-white mb-0"><?= $page_title ?></h2>
-                </div>
-            </div>
+        <div class="page-header__inner">
+            <h2><?= $page_title ?></h2>
         </div>
     </div>
 </section>
-<!-- END: Page Banner Section -->
-
-
+<!--Page Header End-->
 
 <!-- END: Categories Section -->
 <form class="w-100" id="searchServiceForm" action="<?= !empty($this->uri->segment(4) && !is_numeric($this->uri->segment(5))) ? base_url(lang("routes_services") . "/" . $this->uri->segment(3) . "/" . $this->uri->segment(4) . "/" . $this->uri->segment(5)) : base_url(lang("routes_services") . "/" . $this->uri->segment(3) . "/" . $this->uri->segment(4)) ?>" method="GET" enctype="multipart/form-data">

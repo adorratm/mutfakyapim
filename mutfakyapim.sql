@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 16, 2023 at 10:30 PM
+-- Host: localhost
+-- Generation Time: Mar 17, 2023 at 03:55 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -746,11 +746,9 @@ INSERT INTO `menus` (`id`, `page_id`, `top_id`, `position`, `target`, `title`, `
 (5, 4, 2, 'HEADER', '_self', 'Değerlerimiz', NULL, 'tr', 5, 1, '2023-01-02 12:54:16', '2023-03-16 20:17:54', 0, 0),
 (6, 0, 0, 'HEADER', '_self', 'Neler Yapıyoruz?', '/hizmetlerimiz', 'tr', 6, 1, '2022-11-14 14:15:06', '2023-03-16 20:17:56', 1, 0),
 (7, 1, 0, 'HEADER', '_self', 'Kariyer', NULL, 'tr', 7, 1, '2023-03-16 20:18:27', '2023-03-16 20:18:49', 0, 0),
-(8, 0, 0, 'HEADER', '_self', 'Galeri', '/galeriler/galeri/resim-galerisi', 'tr', 8, 1, '2022-12-13 11:25:46', '2023-03-16 20:19:08', 0, 0),
 (9, 0, 0, 'HEADER', '_self', 'İletişim', '/iletisim', 'tr', 9, 1, '2022-01-03 07:52:56', '2023-03-16 20:19:13', 0, 0),
 (10, 1, 0, 'FOOTER', '_self', 'Biz Kimiz?', NULL, 'tr', 10, 1, '2022-03-05 11:46:13', '2023-03-16 20:19:23', 0, 0),
 (11, 0, 0, 'FOOTER2', '_self', 'İletişim', '/iletisim', 'tr', 11, 1, '2022-03-05 14:31:32', '2023-03-16 20:19:36', 0, 0),
-(12, 0, 0, 'FOOTER2', '_self', 'Galeri', '/galeriler/galeri/resim-galerisi', 'tr', 12, 1, '2022-12-13 11:25:46', '2023-03-16 20:19:34', 0, 0),
 (13, 9, 0, 'FOOTER2', '_self', 'KVKK', NULL, 'tr', 13, 1, '2022-03-05 22:02:08', '2023-03-16 20:19:33', 0, 0);
 
 -- --------------------------------------------------------
@@ -833,20 +831,10 @@ CREATE TABLE `service_categories` (
 --
 
 INSERT INTO `service_categories` (`id`, `title`, `seo_url`, `img_url`, `home_url`, `banner_url`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`) VALUES
-(1, 'TREND', 'trend', NULL, NULL, NULL, 'tr', 1, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(2, 'BATTANİYE', 'battaniye', NULL, NULL, NULL, 'tr', 2, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(3, 'EXCELENCE-GALA', 'excelence-gala', NULL, NULL, NULL, 'tr', 3, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(4, 'NATURA', 'natura', NULL, NULL, NULL, 'tr', 4, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(5, 'EXCELLENCE JEL', 'excellence-jel', NULL, NULL, NULL, 'tr', 5, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(6, 'DİAMOND', 'diamond', NULL, NULL, NULL, 'tr', 6, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(7, 'ÇİM HALI', 'cim-hali', NULL, NULL, NULL, 'tr', 7, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(8, 'EXCELLENCE CLASSİC', 'excellence-classic', NULL, NULL, NULL, 'tr', 8, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(9, 'SARAR JEL', 'sarar-jel', NULL, NULL, NULL, 'tr', 9, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(10, 'ARMONİA', 'armonia', NULL, NULL, NULL, 'tr', 10, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(11, 'EXCELLENCE SARAYHAN', 'excellence-sarayhan', NULL, NULL, NULL, 'tr', 11, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(12, 'EXCELLENCE CASELLA', 'excellence-casella', NULL, NULL, NULL, 'tr', 12, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(13, 'NOVA JEL', 'nova-jel', NULL, NULL, NULL, 'tr', 13, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08'),
-(14, 'YORGAN', 'yorgan', NULL, NULL, NULL, 'tr', 14, 1, '2023-02-23 14:46:08', '2023-02-23 14:46:08');
+(1, 'Kurumsal İmaj Çalışmaları', 'kurumsal-imaj-calismalari', NULL, NULL, NULL, 'tr', 1, 1, '2023-02-23 14:46:08', '2023-03-17 09:35:27'),
+(2, 'Dijital Medya Çalışmaları', 'dijital-medya-calismalari', NULL, NULL, NULL, 'tr', 2, 1, '2023-02-23 14:46:08', '2023-03-17 09:35:37'),
+(3, 'Yazılım Çalışmaları', 'yazilim-calismalari', NULL, NULL, NULL, 'tr', 3, 1, '2023-02-23 14:46:08', '2023-03-17 09:35:44'),
+(4, 'İletişim Çalışmaları', 'iletisim-calismalari', NULL, NULL, NULL, 'tr', 4, 1, '2023-02-23 14:46:08', '2023-03-17 09:35:52');
 
 -- --------------------------------------------------------
 
@@ -1068,7 +1056,7 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`id`, `title`, `permissions`, `isActive`, `isCover`, `rank`, `createdAt`, `updatedAt`) VALUES
-(1, 'Admin', '{\"banks\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"blogs\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"blog_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"dashboard\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"emailsettings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"galleries\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"homeitems\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"menus\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"pages\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"services\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"service_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"settings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"slides\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"userop\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"users\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"user_role\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"}}', 1, 1, 1, '2020-07-22 20:58:34', '2023-03-16 21:09:19');
+(1, 'Admin', '{\"banks\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"blogs\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"blog_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"dashboard\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"emailsettings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"homeitems\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"menus\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"pages\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"services\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"service_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"settings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"slides\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"userop\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"users\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"user_role\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"}}', 1, 1, 1, '2020-07-22 20:58:34', '2023-03-17 09:06:31');
 
 -- --------------------------------------------------------
 
@@ -1397,7 +1385,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `service_categories`
 --
 ALTER TABLE `service_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `service_details`

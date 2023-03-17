@@ -786,8 +786,12 @@
       var stricky = $(".stricked-menu");
       if ($(window).scrollTop() > headerScrollPos) {
         stricky.addClass("stricky-fixed");
+        $(".triggerFixed").addClass("fixed-top");
+				$(".triggerFixed").css("top", stricky.height());
       } else if ($(this).scrollTop() <= headerScrollPos) {
         stricky.removeClass("stricky-fixed");
+        $(".triggerFixed").removeClass("fixed-top");
+				$(".triggerFixed").css("top", "0");
       }
     }
     if ($(".scroll-to-top").length) {

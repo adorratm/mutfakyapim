@@ -17,7 +17,7 @@
 						<button class="btn btn-sm btn-outline-danger rounded-0 " onclick="clearFilter('filter_form','userRoleTable')" id="clear_button" data-toggle="tooltip" data-placement="top" data-title="Filtreyi Temizle" data-original-title="" title=""><i class="fa fa-eraser"></i></button>
 					</label>
 					<label for="search_button" class="mx-1">
-						<button class="btn btn-sm btn-outline-success rounded-0 " onclick="reloadTable('userRoleTable')" id="search_button" data-toggle="tooltip" data-placement="top" data-title="Ürün Ara"><i class="fa fa-search"></i></button>
+						<button class="btn btn-sm btn-outline-success rounded-0 " onclick="reloadTable('userRoleTable')" id="search_button" data-toggle="tooltip" data-placement="top" data-title="Kullanıcı Rolü Ara"><i class="fa fa-search"></i></button>
 				</div>
 			</form>
 			<table class="table table-hover table-striped table-bordered content-container userRoleTable">

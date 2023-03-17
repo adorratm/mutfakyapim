@@ -71,7 +71,7 @@ class Services extends MY_Controller
         $data = $this->input->post();
         if (checkEmpty($data)["error"] && checkEmpty($data)["key"] !== "content" && checkEmpty($data)["key"] !== "description" && checkEmpty($data)["key"] !== "features") :
             $key = checkEmpty($data)["key"];
-            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ürün Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
+            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
         else :
             $data["content"] = clean($_POST["content"]) ? $_POST["content"] : NULL;
             $data["description"] = clean($_POST["description"]) ? $_POST["description"] : NULL;
@@ -85,9 +85,9 @@ class Services extends MY_Controller
                 $update = $this->service_detail_model->add($data);
             endif;
             if ($update) :
-                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Ürün Başarıyla Güncelleştirildi."]);
+                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Hizmet Başarıyla Güncelleştirildi."]);
             else :
-                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ürün Güncelleştirilirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
+                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Güncelleştirilirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
             endif;
         endif;
     }
@@ -189,9 +189,9 @@ class Services extends MY_Controller
             if (!is_dir($url) && file_exists($url)) :
                 unlink($url);
             endif;
-            echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Ürün Görseli Başarıyla Silindi."]);
+            echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Hizmet Görseli Başarıyla Silindi."]);
         else :
-            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ürün Görseli Silinirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
+            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Görseli Silinirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
         endif;
     }
     public function fileIsActiveSetter($id)

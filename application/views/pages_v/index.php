@@ -1,16 +1,14 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-
-<section class="pageBannerSection" style="background-image: url(<?= !empty($item->banner_url) ? get_picture("pages_v", $item->banner_url)  : get_picture("settings_v", $settings->about_logo) ?>);">
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(<?= !empty($item->banner_url) ? get_picture("pages_v", $item->banner_url)  : get_picture("settings_v", $settings->about_logo) ?>);"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pageBannerContent text-center">
-                    <h2 class="text-white mb-0"><?= $page_title ?></h2>
-                </div>
-            </div>
+        <div class="page-header__inner">
+            <h2><?= $page_title ?></h2>
         </div>
     </div>
 </section>
+<!--Page Header End-->
 
 
 <!-- BEGIN: About Section -->
@@ -42,7 +40,7 @@
         <?php $i = 0 ?>
         <!-- BEGIN: About Section -->
         <?php foreach ($pages as $key => $value) : ?>
-            <div class="container-fluid  <?= $i % 2 != 0 ? "bg-dark py-4" : null ?>" id="<?= $value->url ?>">
+            <div class="container-fluid  <?= $i % 2 == 0 ? "py-4" : null ?>" id="<?= $value->url ?>" <?= $i % 2 == 0 ? "style='background-color:var(--bcorz-black)'" : null ?>>
                 <div class="container">
                     <div class="row align-items-center align-self-center align-content-center my-4">
                         <?php if (!empty($value->img_url)) : ?>
@@ -52,8 +50,8 @@
                         <?php endif ?>
                         <?php if (!empty(clean($value->content))) : ?>
                             <div class="col-lg-6 order-lg-<?= $i % 2 == 0 ? "0" : "1" ?> h-100">
-                                <h2 class="font-weight-bold mb-4 <?= $i % 2 == 0 ? "text-dark" : "text-white" ?>"><?= $value->title ?></h2>
-                                <div class="text <?= $i % 2 != 0 ? "text-white" : null ?>">
+                                <h2 class="font-weight-bold mb-4 <?= $i % 2 != 0 ? "text-dark" : "text-white" ?>"><?= $value->title ?></h2>
+                                <div class="text <?= $i % 2 == 0 ? "text-white" : null ?>">
                                     <?= $value->content ?>
                                 </div>
                             </div>
@@ -150,12 +148,9 @@
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
                     let hashval = item.getAttribute('href');
-                    let target = (document.querySelector(hashval).getBoundingClientRect().top + window.pageYOffset) - ($(".triggerFixed").height());
-                    if (window.screen.width > 1139) {
-                        target -= $(".isSticky").height();
-                    }
+                    let target = (document.querySelector(hashval).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height() + $(".triggerFixed").height());
                     if (!$(".triggerFixed").hasClass("fixed-top")) {
-                        target -= $(".isSticky").height() + $(".topbarSection").height() + 20;
+                        target -= $(".main-menu-two").height() + $(".main-header-two__top").height();
                     }
                     $("html, body").animate({
                         scrollTop: target
@@ -183,21 +178,15 @@
 
         }).scroll();
 
-        $(window).on("load", function() {
-            let lastAnchor = window.location.href.split("/").pop();
+        setTimeout(function() {
+            let lastAnchor = window.location.href.split("/").pop().split("#").pop();
             if ($('#' + lastAnchor).length) {
-                let target = (document.querySelector('#' + lastAnchor).getBoundingClientRect().top + window.pageYOffset) - ($(".triggerFixed").height());
-                if (window.screen.width > 1139) {
-                    target -= $(".isSticky").height();
-                }
-                if (!$(".triggerFixed").hasClass("fixed-top")) {
-                    target -= $(".isSticky").height() + $(".topbarSection").height();
-                }
+                let target = (document.querySelector('#' + lastAnchor).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height()+$(".triggerFixed").height());
                 history.pushState(null, null, lastAnchor);
                 $('html, body').animate({
                     scrollTop: target
                 }, 'slow');
             }
-        });
+        },1000);
     });
 </script>

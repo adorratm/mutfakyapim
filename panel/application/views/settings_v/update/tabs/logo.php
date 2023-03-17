@@ -219,7 +219,7 @@
         <div class="form-group col-9">
             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Ürünler Görseli Seçimi</span>
+                    <span class="input-group-text">Hizmet Görseli Seçimi</span>
                 </div>
                 <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                 <span class="input-group-append">
@@ -240,7 +240,7 @@
         <div class="form-group col-9">
             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Ürün Detay Görseli Seçimi</span>
+                    <span class="input-group-text">Hizmet Detay Görseli Seçimi</span>
                 </div>
                 <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                 <span class="input-group-append">
@@ -261,7 +261,7 @@
         <div class="form-group col-9">
             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Koleksiyon Görseli Seçimi</span>
+                    <span class="input-group-text">Hizmet Kategorisi Görseli Seçimi</span>
                 </div>
                 <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                 <span class="input-group-append">
