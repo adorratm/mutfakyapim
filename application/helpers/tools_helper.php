@@ -892,9 +892,9 @@ function in_parent($in_parent = null, $position = null, $lang = null, $store_all
                 if (!empty($service_categories)) :
                     foreach ($service_categories as $pcKey => $pcValue) :
                         $services = $t->general_model->get_all("services", "title,seo_url,id", "rank ASC", ["isActive" => 1, "lang" => $lang, "category_id" => $pcValue->id]);
-                        $html .= '<li>';
+                        $html .= '<li ' . (!empty($services) ? "class='dropdown'" : null) . '>';
                         $html .= '<a rel="dofollow" ' . (($position == "MOBILE" || $position == "HEADER") && in_array($pcValue->id, $store_all_id) ? ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || $t->uri->segment(2) == strto("lower", seo($value->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') ? "class='current'" : "class=''") : ((!empty($pcValue->seo_url) && ($t->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $t->uri->segment(3) == strto("lower", seo($pcValue->seo_url)))) || ($t->uri->segment(2) === null && $pcValue->seo_url === '/') || $t->uri->segment(2) == strto("lower", seo($pcValue->title)) || $t->uri->segment(3) == strto("lower", seo($pcValue->title)) ? "class='current'" : "class=''")) . ' href="' . base_url(lang("routes_services") . "/" . $pcValue->seo_url) . '" target="' . $value->target . '" title="' . $pcValue->title . '">' . strto("lower|ucwords", $pcValue->title) . '</a>';
-                        if(!empty($services)):
+                        if (!empty($services)) :
                             $html .= "<ul>";
                             foreach ($services as $sKey => $sValue) :
                                 $html .= '<li>';
@@ -976,7 +976,7 @@ function show_header_categories($lang = "tr")
     return $html;
 }
 
-function get_secondary_image($service_id = null,$cover_url = null, $lang = "tr")
+function get_secondary_image($service_id = null, $cover_url = null, $lang = "tr")
 {
     $t = &get_instance();
     $result = $t->general_model->get("service_images", "url", ["service_id" => $service_id, "isActive" => 1, "isCover" => 0, "lang" => $lang]);
