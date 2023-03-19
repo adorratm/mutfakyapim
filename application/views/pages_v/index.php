@@ -17,14 +17,14 @@
         <div class="container-fluid">
             <div class="row triggerFixed align-items-stretch align-self-stretch align-content-stretch">
                 <div class="col-lg-12 image-column bg-white h-100">
-                    <div class="title-box rounded p-3">
+                    <div class="title-box rounded p-1 p-sm-3">
                         <div class="sec-title mb-0">
                             <?php $pages = $this->general_model->get_all("pages", null, "rank ASC", ["isActive" => 1, "type" => $item->type]); ?>
                             <?php if (!empty($pages)) : ?>
                                 <?php $l = 1 ?>
                                 <ul class="nav pageNav justify-content-center" id="fixingBar">
                                     <?php foreach ($pages as $key => $value) : ?>
-                                        <li class="nav-item <?= $l != count($pages) ? "border-end" : null ?>"><a class="nav-link text-dark <?= $this->uri->segment(3) == $value->url ? "active" : null ?>" style="font-weight: 600;font-size:13px;" rel="dofollow" title="<?= $value->title ?>" href="#<?= $value->url ?>"><?= $value->title ?></a></li>
+                                        <li class="nav-item <?= $l != count($pages) ? "border-end" : null ?>"><a class="nav-link p-1 p-lg-2 text-dark <?= $this->uri->segment(3) == $value->url ? "active" : null ?>" rel="dofollow" title="<?= $value->title ?>" style="font-weight: 600;font-size:13px" href="#<?= $value->url ?>"><?= $value->title ?></a></li>
                                         <?php $l++ ?>
                                     <?php endforeach ?>
                                 </ul>
@@ -138,55 +138,3 @@
     <?php endif ?>
 </section>
 <!-- END: About Section -->
-
-<script>
-    window.addEventListener('DOMContentLoaded', function() {
-        let anchorlinks = document.querySelectorAll('#fixingBar a[href^="#"]');
-
-        if (anchorlinks.length > 0) {
-            for (let item of anchorlinks) { // relitere 
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    let hashval = item.getAttribute('href');
-                    let target = (document.querySelector(hashval).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height() + $(".triggerFixed").height());
-                    if (!$(".triggerFixed").hasClass("fixed-top")) {
-                        target -= $(".main-menu-two").height() + $(".main-header-two__top").height();
-                    }
-                    $("html, body").animate({
-                        scrollTop: target
-                    }, 'slow');
-                    history.pushState(null, null, hashval);
-                });
-            }
-        }
-
-
-        $(window).scroll(function() {
-            var windscroll = $(window).scrollTop();
-            if (windscroll >= 100) {
-                $('#fixingBar a').each(function(i) {
-                    if ($($(this).attr("href")).position().top <= windscroll - 100) {
-                        $('#fixingBar a.active').removeClass('active');
-                        $('#fixingBar a').eq(i).addClass('active');
-                    }
-                });
-
-            } else {
-                $('#fixingBar a.active').removeClass('active');
-                $('#fixingBar a:first').addClass('active');
-            }
-
-        }).scroll();
-
-        setTimeout(function() {
-            let lastAnchor = window.location.href.split("/").pop().split("#").pop();
-            if ($('#' + lastAnchor).length) {
-                let target = (document.querySelector('#' + lastAnchor).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height()+$(".triggerFixed").height());
-                history.pushState(null, null, lastAnchor);
-                $('html, body').animate({
-                    scrollTop: target
-                }, 'slow');
-            }
-        },1000);
-    });
-</script>

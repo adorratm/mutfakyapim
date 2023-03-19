@@ -99,43 +99,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pcVariation align-items-center align-self-center align-content-center pcv2">
-                            <span><?= lang("servicePattern") ?> : </span>
-                            <div class="pcvContainer ms-2">
-                                <div class="pswItem">
-                                    <input checked type="radio" name="pattern" value="<?= $service->pattern_id ?>" id="<?= seo($service->pattern) ?>-<?= $service->pattern_id ?>">
-                                    <label for="<?= seo($service->pattern) ?>-<?= $service->pattern_id ?>"><?= $service->pattern ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pcVariation align-items-center align-self-center align-content-center">
-                            <span><?= lang("serviceColor") ?> : </span>
-                            <div class="pcvContainer ms-2">
-                                <div class="pi01VCItem d-flex align-items-center align-self-center align-content-center">
-                                    <input checked type="radio" name="color" value="<?= $service->color_id ?>" id="<?= seo($service->color) ?>-<?= $service->color_id ?>" />
-                                    <label for="<?= seo($service->color) ?>-<?= $service->color_id ?>"><span style="background: linear-gradient(90deg, #fa4750 0%, #e24597 13%, #a550ff 25%, #6c7ff8 38%, #70bbfd 50%, #2effd4 61%, #57e4a0 73%, #d2ab48 86%, #fdde0a 100%);"></span></label>
-                                    <span class="ms-2"><?= $service->color ?></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pcVariation align-items-center align-self-center align-content-center pcv2">
-                            <span><?= lang("serviceDimension") ?> : </span>
-                            <div class="pcvContainer ms-2">
-                                <div class="pswItem">
-                                    <input checked type="radio" name="dimension" value="<?= $service->dimension_id ?>" id="<?= seo($service->dimension) ?>-<?= $service->dimension_id ?>">
-                                    <label for="<?= seo($service->dimension) ?>-<?= $service->dimension_id ?>"><?= $service->dimension ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pcVariation align-items-center align-self-center align-content-center pcv2">
-                            <span><?= lang("serviceBrand") ?> : </span>
-                            <div class="pcvContainer ms-2">
-                                <div class="pswItem">
-                                    <input checked type="radio" name="brand" value="<?= $service->brand_id ?>" id="<?= seo($service->brand) ?>-<?= $service->brand_id ?>">
-                                    <label for="<?= seo($service->brand) ?>-<?= $service->brand_id ?>"><?= $service->brand ?></label>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="pcMeta">
                         <p>

@@ -44,8 +44,10 @@
                     <?php endif ?>
                 <?php endforeach ?>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <?= @$links ?>
+                    <div class="col-lg-12 text-center">
+                        <div class="blog-page__pagination">
+                            <?= @$links ?>
+                        </div>
                     </div>
                 </div>
             </div>

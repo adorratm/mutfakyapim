@@ -112,7 +112,7 @@ $lang['emptyMessageText'] = 'Bilgisini Doldurduğunuzdan Emin Olup Lütfen Tekra
 $lang['successMessageText'] = 'İletişim Formu Başarıyla Gönderildi. Göndermiş Olduğunuz Bilgiler İle Sizinle İletişime Geçilecektir.';
 $lang['errorEmailMessageText'] = 'İletişim Formu E-Maili Gönderilirken Hata Oluştu. Lütfen Tekrar Deneyin.';
 $lang['services'] = 'Hizmetlerimiz';
-$lang['service_categories'] = 'Hizmet Kategorileri';
+$lang['service_categories'] = 'Neler Yapıyoruz?';
 $lang['service'] = 'HİZMEt';
 
 // ROUTES

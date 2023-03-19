@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<form id="updateService" onsubmit="return false" method="post" enctype="multipart/form-data">
+<form id="saveService" onsubmit="return false" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
                 <label>Başlık</label>
-                <input class="form-control form-control-sm rounded-0" placeholder="Başlık" name="title" value="<?= !empty($item->title) ? $item->title : null; ?>" required>
+                <input class="form-control form-control-sm rounded-0" placeholder="Başlık" name="title" required>
             </div>
         </div>
     </div>
@@ -12,7 +12,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
                 <label>Kısa Açıklama</label>
-                <textarea name="content" class="m-0 tinymce" required><?= !empty($item->content) ? $item->content : null; ?></textarea>
+                <textarea name="content" class="m-0 tinymce" required></textarea>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
                 <label>Açıklama</label>
-                <textarea name="description" class="m-0 tinymce" required><?= !empty($item->description) ? $item->description : null; ?></textarea>
+                <textarea name="description" class="m-0 tinymce" required></textarea>
             </div>
         </div>
     </div>
@@ -28,17 +28,12 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
                 <label>Özellikler</label>
-                <textarea name="features" class="m-0 tinymce" required><?= !empty($item->features) ? $item->features : null; ?></textarea>
+                <textarea name="features" class="m-0 tinymce" required></textarea>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 my-auto py-auto">
-            <picture>
-                <img src="<?= get_picture($viewFolder, !empty($item->img_url) ? $item->img_url : null); ?>" alt="<?= !empty($item->title) ? $item->title : null ?>" class="img-fluid">
-            </picture>
-        </div>
-        <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 my-auto py-auto">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-auto py-auto">
             <div class="form-group">
                 <label>Görsel Seçiniz</label>
                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -59,7 +54,7 @@
                 <label>Hizmet Kategorisi</label>
                 <select class="rounded-0 tagsInput" name="category_id" required>
                     <?php foreach ($categories as $category) : ?>
-                        <option <?= ($category->id == $item->category_id ? "selected" : null) ?> value="<?= $category->id; ?>">
+                        <option value="<?= $category->id; ?>">
                             <?= $category->id ?> - <?= $category->title; ?>
                         </option>
                     <?php endforeach ?>
@@ -71,13 +66,19 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
                 <label>Dil</label>
-                <input type="text" class="form-control form-control-sm rounded-0" name="lang" disabled value="<?= !empty($item->lang) ? $item->lang : "tr" ?>">
+                <select name="lang" class="form-control form-control-sm rounded-0" required>
+                    <?php if (!empty($settings)) : ?>
+                        <?php foreach ($settings as $key => $value) : ?>
+                            <option value="<?= $value->lang ?>"><?= $value->lang ?></option>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </select>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <button role="button" data-url="<?= base_url("services/update/$item->id"); ?>" class="btn btn-sm btn-outline-primary rounded-0 btnUpdate">Güncelle</button>
+            <button role="button" data-url="<?= base_url("services/save"); ?>" class="btn btn-sm btn-outline-primary rounded-0 btnSave">Kaydet</button>
             <a href="javascript:void(0)" onclick="closeModal('#serviceModal')" class="btn btn-sm btn-outline-danger rounded-0">İptal</a>
         </div>
     </div>

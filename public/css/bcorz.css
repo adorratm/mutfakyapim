@@ -8982,7 +8982,7 @@ ul {
   transition: all 500ms ease;
 }
 
-.blog-page__pagination .pg-pagination li a:hover {
+.blog-page__pagination .pg-pagination li a:hover,.blog-page__pagination .pg-pagination li a.active {
   background-color: var(--bcorz-base);
   color: var(--bcorz-white);
 }

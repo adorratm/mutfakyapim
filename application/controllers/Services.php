@@ -36,7 +36,7 @@ class Services extends MY_Controller
         if (!empty(clean($this->input->get("search")))) :
             $search = clean($this->input->get("search"));
         endif;
-        $seo_url = $this->uri->segment(4);
+        $seo_url = $this->uri->segment(3);
         $category_id = null;
         $category = null;
         if (!empty($seo_url) && !is_numeric($seo_url)) :
@@ -50,7 +50,7 @@ class Services extends MY_Controller
         /**
          * Order
          */
-        $order = "s.id DESC";
+        $order = "s.id ASC";
         if (!empty($_GET["orderBy"]) && clean($_GET["orderBy"]) == 1) :
             $order = "s.id DESC";
         endif;
@@ -71,9 +71,9 @@ class Services extends MY_Controller
             $likes["s.title"] = $search;
             $likes["s.createdAt"] = $search;
             $likes["s.updatedAt"] = $search;
-            $likes["sd.description"] = $search;
-            $likes["sd.features"] = $search;
-            $likes["sd.content"] = $search;
+            $likes["s.description"] = $search;
+            $likes["s.features"] = $search;
+            $likes["s.content"] = $search;
         endif;
 
         $wheres = [];
@@ -86,48 +86,48 @@ class Services extends MY_Controller
         $wheres["s.isActive"] = 1;
         $wheres["si.isCover"] = 1;
         $wheres["s.lang"] = $this->viewData->lang;
-        $joins = ["service_details sd" => ["sd.service_id = s.id", "left"], "service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]];
+        $joins = ["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]];
 
-        $select = "s.id,s.title,s.seo_url,si.url img_url,s.isActive";
+        $select = "s.id,s.title,s.content,s.seo_url,si.url img_url,s.isActive";
         $distinct = true;
         $groupBy = ["s.id"];
         /**
          * Pagination
          */
         $config = [];
-        $config['base_url'] = (!empty($seo_url) && !is_numeric($seo_url) ? base_url(lang("routes_services") . "/" . $this->uri->segment(3) . "/{$seo_url}/") : base_url(lang("routes_services") . "/" . $this->uri->segment(3) . "/"));
+        $config['base_url'] = (!empty($seo_url) && !is_numeric($seo_url) ? base_url(lang("routes_services") . "/" . "/{$seo_url}/") : base_url(lang("routes_services") . "/" . $this->uri->segment(3) . "/"));
         $config['uri_segment'] = (!empty($seo_url) && !is_numeric($seo_url) && !empty($this->uri->segment(5)) ? 5 : (is_numeric($this->uri->segment(4)) ? 4 : 2));
         $config['use_page_numbers'] = TRUE;
-        $config["full_tag_open"] = "<ul class='pagination justify-content-center'>";
+        $config["full_tag_open"] = "<ul class='pg-pagination list-unstyled justify-content-center'>";
         $config["first_link"] = "<i class='fa fa-angles-left'></i>";
-        $config["first_tag_open"] = "<li class='page-item'>";
+        $config["first_tag_open"] = "<li class='prev'>";
         $config["first_tag_close"] = "</li>";
         $config["prev_link"] = "<i class='fa fa-angle-left'></i>";
-        $config["prev_tag_open"] = "<li class='page-item'>";
+        $config["prev_tag_open"] = "<li class='prev'>";
         $config["prev_tag_close"] = "</li>";
-        $config["cur_tag_open"] = "<li class='page-item active'><a class='page-link active' title='" . $this->viewData->settings->company_name . "' rel='dofollow' href='" . str_replace("tr/index.php/", "", current_url()) . "'>";
+        $config["cur_tag_open"] = "<li class='count active'><a class='active' title='" . $this->viewData->settings->company_name . "' rel='dofollow' href='" . str_replace("tr/index.php/", "", current_url()) . "'>";
         $config["cur_tag_close"] = "</a></li>";
-        $config["num_tag_open"] = "<li class='page-item'>";
+        $config["num_tag_open"] = "<li class='count'>";
         $config["num_tag_close"] = "</li>";
         $config["next_link"] = "<i class='fa fa-angle-right'></i>";
-        $config["next_tag_open"] = "<li class='page-item'>";
+        $config["next_tag_open"] = "<li class='next'>";
         $config["next_tag_close"] = "</li>";
         $config["last_link"] = "<i class='fa fa-angles-right'></i>";
-        $config["last_tag_open"] = "<li class='page-item'>";
+        $config["last_tag_open"] = "<li class='next'>";
         $config["last_tag_close"] = "</li>";
         $config["full_tag_close"] = "</ul>";
-        $config['attributes'] = array('class' => 'page-link');
+        $config['attributes'] = array('class' => '');
         $config['total_rows'] = $this->general_model->rowCount("services s", $wheres, $likes, $joins, [], $distinct, $groupBy, "s.id");
-        $config['per_page'] = 24;
+        $config['per_page'] = 12;
         $config["num_links"] = 5;
         $config['reuse_query_string'] = true;
         $this->pagination->initialize($config);
         if (!empty($seo_url) && !is_numeric($seo_url)) :
-            $uri_segment = $this->uri->segment(5);
-        elseif (!empty($this->uri->segment(4)) && is_numeric($this->uri->segment(4))) :
             $uri_segment = $this->uri->segment(4);
+        elseif (!empty($this->uri->segment(3)) && is_numeric($this->uri->segment(3))) :
+            $uri_segment = $this->uri->segment(3);
         else :
-            $uri_segment = $this->uri->segment(4);
+            $uri_segment = $this->uri->segment(3);
         endif;
         if (empty($uri_segment)) :
             $uri_segment = 1;
@@ -171,8 +171,8 @@ class Services extends MY_Controller
         $wheres["s.isActive"] = 1;
         $wheres["si.isCover"] = 1;
         $wheres["s.lang"] = $this->viewData->lang;
-        $joins = ["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"], "service_details sd" => ["sd.service_id = s.id", "left"]];
-        $select = "sc.title category,sc.seo_url category_seo_url,s.id,s.title,s.seo_url,si.url img_url,sd.description,sd.content,sd.features,s.isActive";
+        $joins = ["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]];
+        $select = "sc.title category,sc.seo_url category_seo_url,s.id,s.title,s.seo_url,si.url img_url,s.description,s.content,s.features,s.isActive";
         $distinct = true;
         $groupBy = ["s.id"];
         $wheres['s.seo_url'] =  $seo_url;

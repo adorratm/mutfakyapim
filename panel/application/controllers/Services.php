@@ -11,7 +11,6 @@ class Services extends MY_Controller
         $this->load->model("service_model");
         $this->load->model("service_category_model");
         $this->load->model("service_image_model");
-        $this->load->model("service_detail_model");
         if (!get_active_user()) :
             redirect(base_url("login"));
         endif;
@@ -32,6 +31,7 @@ class Services extends MY_Controller
         $i = (!empty($_POST['start']) ? $_POST['start'] : 0);
         if (!empty($items)) :
             foreach ($items as $item) :
+                $category = $this->service_category_model->get(["id" => $item->category_id]);
                 $i++;
                 $proccessing = '
                 <div class="dropdown">
@@ -44,7 +44,7 @@ class Services extends MY_Controller
                     </div>
                 </div>';
                 $checkbox = '<div class="custom-control custom-switch"><input data-id="' . $item->id . '" data-url="' . base_url("services/isActiveSetter/{$item->id}") . '" data-status="' . ($item->isActive == 1 ? "checked" : null) . '" id="customSwitch4' . $i . '" type="checkbox" ' . ($item->isActive == 1 ? "checked" : null) . ' class="my-check custom-control-input" >  <label class="custom-control-label" for="customSwitch4' . $i . '"></label></div>';
-                $data[] = [$item->rank, '<i class="fa fa-arrows" data-id="' . $item->id . '"></i>', $item->id, $item->title, $item->brand, $item->category, $item->pattern, $item->color, $item->dimension, $checkbox, turkishDate("d F Y, l H:i:s", $item->updatedAt), $proccessing];
+                $data[] = [$item->rank, '<i class="fa fa-arrows" data-id="' . $item->id . '"></i>', $item->id, $item->title, $category->title, $checkbox, turkishDate("d F Y, l H:i:s", $item->updatedAt), $proccessing];
             endforeach;
         endif;
         $output = [
@@ -56,13 +56,56 @@ class Services extends MY_Controller
         // Output to JSON format
         echo json_encode($output);
     }
+    public function new_form()
+    {
+        $viewData = new stdClass();
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "add";
+        $viewData->pages = $this->general_model->get_all("pages", null, "rank ASC", ["isActive" => 1]);
+        $viewData->categories = $this->general_model->get_all("service_categories", null, "rank ASC", ["isActive" => 1]);
+        $viewData->settings = $this->general_model->get_all("settings", null, null, ["isActive" => 1]);
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/content", $viewData);
+    }
+    public function save()
+    {
+        $data = rClean($this->input->post());
+        if (checkEmpty($data)["error"] && checkEmpty($data)["key"] !== "content" && checkEmpty($data)["key"] !== "description" && checkEmpty($data)["key"] !== "features") :
+            $key = checkEmpty($data)["key"];
+            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
+        else :
+            $getRank = $this->service_model->rowCount();
+            if (!empty($_FILES)) :
+                if (!empty($_FILES["img_url"]["name"])) :
+                    $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1920, "height" => 400], "*");
+                    if ($image["success"]) :
+                        $data["img_url"] = $image["file_name"];
+                    else :
+                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Kaydı Yapılırken Hata Oluştu. Hizmet Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
+                        die();
+                    endif;
+                endif;
+            endif;
+            $data["seo_url"] = seo($data["title"]);
+            $data["content"] = clean($_POST["content"]) ? $_POST["content"] : NULL;
+            $data["description"] = clean($_POST["description"]) ? $_POST["description"] : NULL;
+            $data["features"] = clean($_POST["features"]) ? $_POST["features"] : NULL;
+            $data["isActive"] = 1;
+            $data["rank"] = $getRank + 1;
+            $insert = $this->service_model->add($data);
+            if ($insert) :
+                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Hizmet Başarıyla Eklendi."]);
+            else :
+                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Eklenirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
+            endif;
+        endif;
+    }
     public function update_form($id)
     {
         $viewData = new stdClass();
-        $viewData->item = $this->general_model->get("services s", "s.*,sd.features features, sd.content content,sd.description description", ["s.id" => $id], ["service_details sd" => ["sd.service_id = s.id", "left"]], [], [], true, "s.id");
+        $viewData->item = $this->general_model->get("services", "*", ["id" => $id], [], [], [], true, "id");
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "update";
-        $viewData->categories = $this->service_category_model->get_all();
+        $viewData->categories = $this->general_model->get_all("service_categories", null, "rank ASC", ["isActive" => 1]);
         $viewData->settings = $this->general_model->get_all("settings", null, null, ["isActive" => 1]);
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/content", $viewData);
     }
@@ -73,18 +116,22 @@ class Services extends MY_Controller
             $key = checkEmpty($data)["key"];
             echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
         else :
+            if (!empty($_FILES)) :
+                if (!empty($_FILES["img_url"]["name"])) :
+                    $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1920, "height" => 400], "*");
+                    if ($image["success"]) :
+                        $data["img_url"] = $image["file_name"];
+                    else :
+                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Kaydı Yapılırken Hata Oluştu. Hizmet Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
+                        die();
+                    endif;
+                endif;
+            endif;
+            $data["seo_url"] = seo($data["title"]);
             $data["content"] = clean($_POST["content"]) ? $_POST["content"] : NULL;
             $data["description"] = clean($_POST["description"]) ? $_POST["description"] : NULL;
             $data["features"] = clean($_POST["features"]) ? $_POST["features"] : NULL;
-            $update = false;
-            if ($this->service_detail_model->rowCount(["id" => $id])) :
-                $update = $this->service_detail_model->update(["id" => $id], $data);
-            endif;
-            if (!$this->service_detail_model->rowCount(["id" => $id])) :
-                $data["id"] = $id;
-                $update = $this->service_detail_model->add($data);
-            endif;
-            if ($update) :
+            if ($this->service_model->update(["id" => $id], $data)) :
                 echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Hizmet Başarıyla Güncelleştirildi."]);
             else :
                 echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Güncelleştirilirken Hata Oluştu, Lütfen Tekrar Deneyin."]);

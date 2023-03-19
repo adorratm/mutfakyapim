@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 17, 2023 at 03:55 PM
+-- Host: 127.0.0.1
+-- Generation Time: Mar 19, 2023 at 11:06 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -797,6 +797,9 @@ INSERT INTO `pages` (`id`, `url`, `title`, `content`, `img_url`, `banner_url`, `
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
+  `content` longtext DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `features` longtext DEFAULT NULL,
   `seo_url` varchar(255) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `lang` char(2) NOT NULL DEFAULT 'tr',
@@ -805,6 +808,14 @@ CREATE TABLE `services` (
   `createdAt` timestamp NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `title`, `content`, `description`, `features`, `seo_url`, `category_id`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`) VALUES
+(1, 'test', NULL, NULL, NULL, 'test', 1, 'tr', 1, 1, '2023-03-19 21:47:07', '2023-03-19 21:56:21'),
+(2, 'test2', NULL, NULL, NULL, 'test2', 1, 'tr', 1, 1, '2023-03-19 21:47:07', '2023-03-19 21:47:07');
 
 -- --------------------------------------------------------
 
@@ -1379,7 +1390,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `service_categories`

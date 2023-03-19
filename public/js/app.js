@@ -1,4 +1,53 @@
 window.addEventListener('DOMContentLoaded', () => {
+    let anchorlinks = document.querySelectorAll('#fixingBar a[href^="#"]');
+
+    if (anchorlinks.length > 0) {
+        for (let item of anchorlinks) { // relitere 
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                let hashval = item.getAttribute('href');
+                let target = (document.querySelector(hashval).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height() + $(".triggerFixed").height());
+                if (!$(".triggerFixed").hasClass("fixed-top")) {
+                    target -= $(".main-menu-two").height() + $(".main-header-two__top").height();
+                }
+                $("html, body").animate({
+                    scrollTop: target
+                }, 'slow');
+                history.pushState(null, null, hashval);
+            });
+        }
+    }
+
+
+    $(window).scroll(function () {
+        var windscroll = $(window).scrollTop();
+        if (windscroll >= 130) {
+            $('#fixingBar a').each(function (i) {
+                if ($($(this).attr("href")).position().top <= windscroll - 130) {
+                    $('#fixingBar a.active').removeClass('active');
+                    $('#fixingBar a').eq(i).addClass('active');
+                }
+            });
+
+        } else {
+            $('#fixingBar a.active').removeClass('active');
+            $('#fixingBar a:first').addClass('active');
+        }
+
+    }).scroll();
+
+    setTimeout(function () {
+        let lastAnchor = window.location.href.split("/").pop().split("#").pop();
+        if ($('#' + lastAnchor).length) {
+            let target = (document.querySelector('#' + lastAnchor).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height() + $(".triggerFixed").height());
+            history.pushState(null, null, lastAnchor);
+            $('html, body').animate({
+                scrollTop: target
+            }, 'slow');
+        }
+    }, 1000);
+
+
     $("iframe").each(() => {
         $(this).attr("loading", "lazy");
         $(this).data("src", $(this).attr("src"));

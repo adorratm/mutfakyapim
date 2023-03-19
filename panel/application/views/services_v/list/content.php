@@ -4,7 +4,7 @@
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			<h4 class="mb-3">
 				Hizmet Listesi
-				<a href="javascript:void(0)" data-url="<?= base_url("services/getStocks"); ?>" class="btn btn-sm btn-outline-primary rounded-0 float-right syncServiceBtn"> <i class="fa fa-sync"></i> Hizmet Ekle</a>
+				<a href="javascript:void(0)" data-url="<?= base_url("services/new_form"); ?>" class="btn btn-sm btn-outline-primary rounded-0 float-right createServiceBtn"> <i class="fa fa-plus"></i> Hizmet Ekle</a>
 			</h4>
 		</div>
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -30,6 +30,7 @@
 					<th class="order"><i class="fa fa-reorder"></i></th>
 					<th class="w50">#id</th>
 					<th>Başlık</th>
+					<th>Hizmet Kategorisi</th>
 					<th>Durumu</th>
 					<th>Güncelleme Tarihi</th>
 					<th class="nosort">İşlem</th>
@@ -89,6 +90,40 @@
 	});
 
 	$(document).ready(function() {
+		$(document).on("click", ".createServiceBtn", function(e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			$('#serviceModal').iziModal('destroy');
+			let url = $(this).data("url");
+			createModal("#serviceModal", "Hizmet Ekle", "Hizmet Ekle", 600, true, "20px", 0, "#e20e17", "#fff", 1040, function() {
+				$.post(url, {}, function(response) {
+					$("#serviceModal .iziModal-content").html(response);
+					TinyMCEInit();
+					flatPickrInit();
+					$(".tagsInput").select2({
+						placeholder: 'Hizmet Kategorisi Seçiniz.',
+						width: 'resolve',
+						theme: "classic",
+						tags: false,
+						tokenSeparators: [',', ' '],
+						multiple: false
+					});
+				});
+			});
+			openModal("#serviceModal");
+			$("#serviceModal").iziModal("setFullscreen", false);
+		});
+		$(document).on("click", ".btnSave", function(e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			let url = $(this).data("url");
+			let formData = new FormData(document.getElementById("saveService"));
+			createAjax(url, formData, function() {
+				closeModal("#serviceModal");
+				$("#serviceModal").iziModal("setFullscreen", false);
+				reloadTable("serviceTable");
+			});
+		});
 		$(document).on("click", ".updateServiceBtn", function(e) {
 			e.preventDefault();
 			e.stopImmediatePropagation();
@@ -105,7 +140,7 @@
 						theme: "classic",
 						tags: false,
 						tokenSeparators: [',', ' '],
-						multiple: true
+						multiple: false
 					});
 				});
 			});
