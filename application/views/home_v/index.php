@@ -293,7 +293,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="why-choose-one__right">
+                    <div class="why-choose-one__right mx-0">
                         <div class="section-title text-left">
                             <span class="section-title__tagline text-center"><?= $settings->company_name ?></span>
                             <div class="section-title-shape text-center">
@@ -304,7 +304,7 @@
                     </div>
                 </div>
                 <div class="col-xl-12">
-                    <div class="why-choose-one__left">
+                    <div class="why-choose-one__left mx-0">
                         <div class="row align-items-stretch align-self-stretch align-content-stretch">
                             <?php foreach ($instagramPosts as $mediaKey => $mediaValue) : ?>
                                 <div class="col-lg-3 mb-3">
