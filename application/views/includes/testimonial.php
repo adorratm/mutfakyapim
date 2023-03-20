@@ -2,10 +2,10 @@
 <?php if (!empty($homeitems)) : ?>
     <!--Testimonial One Start-->
     <section class="testimonial-one">
-        <div class="testimonial-one__shape-1 float-bob-x">
+        <div class="testimonial-one__shape-1 float-bob-x d-none d-xxl-block">
             <img loading="lazy" class="img-fluid lazyload" data-src="<?= asset_url("public/images/shapes/testimonial-one-shape-1.webp") ?>" alt="<?= $settings->company_name ?>">
         </div>
-        <div class="testimonial-one__shape-3 float-bob-y">
+        <div class="testimonial-one__shape-3 float-bob-y d-none d-xxl-block">
             <img loading="lazy" class="img-fluid lazyload" data-src="<?= asset_url("public/images/shapes/testimonial-one-shape-3.webp") ?>" alt="<?= $settings->company_name ?>">
         </div>
         <div class="container">

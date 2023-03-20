@@ -23,17 +23,6 @@
         display: none;
     }
 
-    .why-choose-one__left {
-        max-width: 600px;
-        margin: 0 auto 0;
-    }
-
-
-    .why-choose-one__right {
-        max-width: 600px;
-        margin: 93px auto 0;
-    }
-
     .consulting-one__count-box {
         margin-left: 0;
         margin-top: 20px;
@@ -49,11 +38,11 @@
     }
 
     .consulting-one {
-        padding: 120px 0 110px;
+        padding: 90px 0 90px;
     }
 
     .testimonial-one {
-        padding: 105px 0 110px;
+        padding: 90px 0 90px;
     }
 
     .blog-one__top-left .section-title__title {
@@ -98,7 +87,7 @@
     }
 
     .about-two {
-        padding: 120px 0 110px;
+        padding: 90px 0 90px;
     }
 
     .video-one__right {
@@ -267,7 +256,7 @@
     }
 
     .about-one {
-        padding: 90px 0 111px;
+        padding: 90px 0 90px;
     }
 
     .services-one__shape-1,
@@ -278,16 +267,6 @@
 
     .service-one__bottom h3 br {
         display: none;
-    }
-
-    .why-choose-one__left {
-        max-width: 600px;
-        margin: 0 auto 0;
-    }
-
-    .why-choose-one__right {
-        max-width: 600px;
-        margin: 93px auto 0;
     }
 
     .why-choose-one__shape-3 {
@@ -315,7 +294,7 @@
     }
 
     .testimonial-one {
-        padding: 120px 0 110px;
+        padding: 90px 0 90px;
     }
 
     .blog-one__top {
@@ -364,7 +343,7 @@
     }
 
     .about-two {
-        padding: 120px 0 110px;
+        padding: 90px 0 90px;
     }
 
     .video-one__right {
@@ -586,7 +565,7 @@
     }
 
     .about-one {
-        padding: 90px 0 111px;
+        padding: 90px 0 90px;
     }
 
     .services-one__shape-1,
@@ -610,7 +589,6 @@
     .why-choose-one__right {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 50px;
     }
 
     .why-choose-one__shape-3 {
@@ -668,7 +646,7 @@
     }
 
     .testimonial-one {
-        padding: 120px 0 110px;
+        padding: 90px 0 90px;
     }
 
     .testimonial-one__client-img {
@@ -676,7 +654,7 @@
     }
 
     .testimonial-one__icon {
-        right: 0;
+        right: unset;
     }
 
     .testimonial-one__text {
@@ -745,7 +723,7 @@
     }
 
     .about-two {
-        padding: 120px 0 110px;
+        padding: 90px 0 90px;
     }
 
     .video-one__right {
@@ -887,7 +865,7 @@
     }
 
     .error-page {
-        padding: 101px 0 120px;
+        padding: 90px 0 90px;
     }
 
     .approach .section-title__title br {

@@ -78,6 +78,21 @@ window.addEventListener('DOMContentLoaded', () => {
             $this.removeAttr("disabled");
         });
     });
+    $(document).on("click", ".btnSubmitPaymentForm", function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        let $this = $(this);
+        $this.attr("disabled", "disabled");
+        createAjax($this.data("url"), new FormData(document.getElementById("payment-form")), function (response) {
+            $(".comment-form-2").hide();
+            $(".comment-form-2-iframe").html('<iframe id="paytriframe" loading="lazy" class="lazyload" data-src="https://www.paytr.com/odeme/guvenli/' + response.token + '" frameborder="0" style="min-height: 700px; width: 100%;"></iframe>');
+            iFrameResize({},'#paytriframe');
+            //$("#payment-form")[0].reset();
+            $this.removeAttr("disabled");
+        }, () => {
+            $this.removeAttr("disabled");
+        });
+    });
 });
 
 /** createModal */

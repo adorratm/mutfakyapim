@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 20, 2023 at 03:50 PM
+-- Host: 127.0.0.1
+-- Generation Time: Mar 20, 2023 at 11:45 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -451,9 +451,18 @@ CREATE TABLE `home_items` (
 --
 
 INSERT INTO `home_items` (`id`, `title`, `content`, `img_url`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`, `type`) VALUES
-(1, 'Angelique Arnauld', '<p>Mükemmellik Olağanüstü Şeyler Yapmakla Değil, Sıradan Şeyleri Olağanüstü İyi Yapmakla Elde Edilir.</p>', NULL, 'tr', 1, 1, '2022-03-05 21:32:07', '2023-03-20 14:20:30', '2022-03-05 21:31:19', 1),
-(2, 'Leo Burnett', '<p>Kendinizi Müşterinin Yerine Koyamıyorsanız, Büyük İhtimalle Siz Reklamcılık İşinde Olmamalısınız.</p>', NULL, 'tr', 2, 1, '2022-03-05 21:34:05', '2023-03-20 14:19:34', '2022-03-05 21:33:42', 1),
-(3, 'Bernard Shaw', '<p>Dünyaya ilham veren kişiler, istedikleri şartları arayan, bulamazlarsa da kolları sıvayıp kendisi yaratanlardır.</p>', NULL, 'tr', 3, 1, '2022-03-05 21:34:21', '2023-03-20 14:18:43', '2022-03-05 21:34:07', 1);
+(1, 'Angelique Arnauld', '<p>Mükemmellik olağanüstü şeyler yapmakla değil, sıradan şeyleri olağanüstü iyi yapmakla elde edilir.</p>', NULL, 'tr', 1, 1, '2022-03-05 21:32:07', '2023-03-20 19:30:47', '2022-03-05 21:31:19', 1),
+(2, 'Leo Burnett', '<p>Kendinizi müşterinin yerine koyamıyorsanız, büyük ihtimalle siz reklamcılık işinde olmamalısınız.</p>', NULL, 'tr', 2, 1, '2022-03-05 21:34:05', '2023-03-20 19:31:08', '2022-03-05 21:33:42', 1),
+(3, 'Bernard Shaw', '<p>Dünyaya ilham veren kişiler, istedikleri şartları arayan, bulamazlarsa da kolları sıvayıp kendisi yaratanlardır.</p>', NULL, 'tr', 3, 1, '2022-03-05 21:34:21', '2023-03-20 14:18:43', '2022-03-05 21:34:07', 1),
+(4, 'Hayal Et', '<p>Sizin için hayal ediyoruz.</p>', NULL, 'tr', 4, 1, '2023-03-20 19:29:24', '2023-03-20 19:33:06', '2023-03-20 19:29:00', 2),
+(5, 'Geliştir', '<p>Projelendirip geliştiriyoruz.</p>', NULL, 'tr', 5, 1, '2023-03-20 19:29:57', '2023-03-20 19:33:05', '2023-03-20 19:29:26', 2),
+(6, 'Tasarla', '<p>Tasarlayıp kullanımınıza sunuyoruz.</p>', NULL, 'tr', 6, 1, '2023-03-20 19:31:32', '2023-03-20 19:33:02', '2023-03-20 19:31:20', 2),
+(7, 'Kullanıcı Dostu', '<p>İşe müşterilerinizin gözünden bakmakla başlıyoruz.</p>', NULL, 'tr', 7, 1, '2023-03-20 19:20:09', '2023-03-20 19:33:00', '2023-03-20 19:18:47', 3),
+(8, 'Yenilikçi', '<p>Yarının teknolojisini bugün kullanımınıza sunuyoruz.</p>', NULL, 'tr', 8, 1, '2023-03-20 19:20:57', '2023-03-20 19:32:58', '2023-03-20 19:20:23', 3),
+(9, 'Zamanında', '<p>İşimizi söz verdiğimiz zamanda bitiriyoruz.</p>', NULL, 'tr', 9, 1, '2023-03-20 19:21:29', '2023-03-20 19:32:57', '2023-03-20 19:21:15', 3),
+(10, 'Esneklik', '<p>Alışkanlıklarınıza saygı duyuyoruz.</p>', NULL, 'tr', 10, 1, '2023-03-20 19:21:51', '2023-03-20 19:32:54', '2023-03-20 19:21:36', 3),
+(11, 'Ekonomik', '<p>Optimal fiyatlarımızı sizinle paylaşıyoruz.</p>', NULL, 'tr', 11, 1, '2023-03-20 19:22:13', '2023-03-20 19:32:52', '2023-03-20 19:21:58', 3),
+(12, 'Memnuniyet', '<p>Müşteri memnuniyetimizle gurur duyuyoruz.</p>', NULL, 'tr', 12, 1, '2023-03-20 19:22:36', '2023-03-20 19:32:50', '2023-03-20 19:22:21', 3);
 
 -- --------------------------------------------------------
 
@@ -741,13 +750,14 @@ INSERT INTO `menus` (`id`, `page_id`, `top_id`, `position`, `target`, `title`, `
 (3, 0, 0, 'HEADER', '_self', 'Neler Yapıyoruz?', '/hizmetlerimiz', 'tr', 3, 1, '2022-11-14 14:15:06', '2023-03-20 13:38:45', 1, 0),
 (4, 0, 0, 'HEADER', '_self', 'Çalışmalarımız', '/calismalarimiz', 'tr', 4, 1, '2023-03-20 11:06:16', '2023-03-20 13:38:49', 0, 0),
 (5, 2, 0, 'HEADER', '_self', 'Kariyer', NULL, 'tr', 5, 1, '2023-03-16 20:18:27', '2023-03-20 13:40:11', 0, 0),
-(6, 0, 0, 'HEADER', '_self', 'İletişim', '/iletisim', 'tr', 6, 1, '2022-01-03 07:52:56', '2023-03-20 13:38:52', 0, 0),
-(7, 1, 0, 'FOOTER', '_self', 'Biz Kimiz?', NULL, 'tr', 7, 1, '2022-03-05 11:46:13', '2023-03-20 13:38:54', 0, 0),
-(8, 0, 0, 'FOOTER', '_self', 'Neler Yapıyoruz?', '/hizmetlerimiz', 'tr', 8, 1, '2023-03-20 12:46:11', '2023-03-20 13:40:04', 0, 0),
-(9, 0, 0, 'FOOTER', '_self', 'Çalışmalarımız', '/calismalarimiz', 'tr', 9, 1, '2023-03-20 12:49:55', '2023-03-20 13:40:03', 0, 0),
-(10, 5, 0, 'FOOTER', '_self', 'Kariyer', NULL, 'tr', 10, 1, '2023-03-20 12:50:09', '2023-03-20 13:40:01', 0, 0),
-(11, 0, 0, 'FOOTER', '_self', 'İletişim', '/iletisim', 'tr', 11, 1, '2022-03-05 14:31:32', '2023-03-20 13:39:59', 0, 0),
-(12, 9, 0, 'FOOTER', '_self', 'KVKK', NULL, 'tr', 12, 1, '2022-03-05 22:02:08', '2023-03-20 13:39:58', 0, 0);
+(6, 0, 0, 'HEADER', '_self', 'Online Ödeme', '/online-odeme', 'tr', 6, 1, '2023-03-20 20:49:37', '2023-03-20 21:06:58', 0, 0),
+(7, 0, 0, 'HEADER', '_self', 'İletişim', '/iletisim', 'tr', 7, 1, '2022-01-03 07:52:56', '2023-03-20 21:07:27', 0, 0),
+(8, 1, 0, 'FOOTER', '_self', 'Biz Kimiz?', NULL, 'tr', 8, 1, '2022-03-05 11:46:13', '2023-03-20 21:07:33', 0, 0),
+(9, 0, 0, 'FOOTER', '_self', 'Neler Yapıyoruz?', '/hizmetlerimiz', 'tr', 9, 1, '2023-03-20 12:46:11', '2023-03-20 21:07:35', 0, 0),
+(10, 0, 0, 'FOOTER', '_self', 'Çalışmalarımız', '/calismalarimiz', 'tr', 10, 1, '2023-03-20 12:49:55', '2023-03-20 21:07:40', 0, 0),
+(11, 5, 0, 'FOOTER', '_self', 'Kariyer', NULL, 'tr', 11, 1, '2023-03-20 12:50:09', '2023-03-20 21:07:42', 0, 0),
+(12, 0, 0, 'FOOTER', '_self', 'İletişim', '/iletisim', 'tr', 12, 1, '2022-03-05 14:31:32', '2023-03-20 21:07:44', 0, 0),
+(13, 9, 0, 'FOOTER', '_self', 'KVKK', NULL, 'tr', 13, 1, '2022-03-05 22:02:08', '2023-03-20 21:07:45', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1336,7 +1346,7 @@ ALTER TABLE `galleries`
 -- AUTO_INCREMENT for table `home_items`
 --
 ALTER TABLE `home_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `images`
@@ -1378,7 +1388,7 @@ ALTER TABLE `linguo_language_strings`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `our_works`

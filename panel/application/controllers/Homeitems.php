@@ -41,7 +41,7 @@ class Homeitems extends MY_Controller
                 </div>
             </div>';
                 $checkbox = '<div class="custom-control custom-switch"><input data-id="' . $item->id . '" data-url="' . base_url("homeitems/isActiveSetter/{$item->id}") . '" data-status="' . ($item->isActive == 1 ? "checked" : null) . '" id="customSwitch' . $i . '" type="checkbox" ' . ($item->isActive == 1 ? "checked" : null) . ' class="my-check custom-control-input" >  <label class="custom-control-label" for="customSwitch' . $i . '"></label></div>';
-                $data[] = [$item->rank, '<i class="fa fa-arrows" data-id="' . $item->id . '"></i>', $item->id, $item->title, mb_word_wrap(clean($item->content), 30, "..."),$item->lang, $checkbox, turkishDate("d F Y, l H:i:s", $item->createdAt), turkishDate("d F Y, l H:i:s", $item->updatedAt), turkishDate("d F Y, l H:i:s", $item->sharedAt), $proccessing];
+                $data[] = [$item->rank, '<i class="fa fa-arrows" data-id="' . $item->id . '"></i>', $item->id, $item->title, mb_word_wrap(clean($item->content), 30, "..."), $item->lang, $checkbox, turkishDate("d F Y, l H:i:s", $item->createdAt), turkishDate("d F Y, l H:i:s", $item->updatedAt), turkishDate("d F Y, l H:i:s", $item->sharedAt), $proccessing];
             endforeach;
         endif;
         $output = [
@@ -69,21 +69,14 @@ class Homeitems extends MY_Controller
             echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Anasayfa İçeriği Kaydı Yapılırken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
         else :
             $getRank = $this->homeitem_model->rowCount();
-            if (!empty($_FILES)) :
-                if (empty($_FILES["img_url"]["name"])) :
-                    echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Anasayfa İçeriği Eklenirken Hata Oluştu. Anasayfa İçeriği Görseli Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
-                    die();
-                endif;
-                $image = upload_picture("img_url", "uploads/$this->viewFolder",[],"*");
+            if (!empty($_FILES["img_url"]["name"])) :
+                $image = upload_picture("img_url", "uploads/$this->viewFolder", [], "*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                 else :
                     echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Anasayfa İçeriği Kaydı Yapılırken Hata Oluştu. Anasayfa İçeriği Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
                     die();
                 endif;
-            else :
-                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Anasayfa İçeriği Kaydı Yapılırken Hata Oluştu. Anasayfa İçeriği Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
-                die();
             endif;
             $data["content"] = $_POST["content"];
             $data["isActive"] = 1;
@@ -115,7 +108,7 @@ class Homeitems extends MY_Controller
             $homeitem = $this->homeitem_model->get(["id" => $id]);
             $data["img_url"] = $homeitem->img_url;
             if (!empty($_FILES["img_url"]["name"])) :
-                $image = upload_picture("img_url", "uploads/$this->viewFolder",[],"*");
+                $image = upload_picture("img_url", "uploads/$this->viewFolder", [], "*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                     if (!empty($homeitem->img_url)) :

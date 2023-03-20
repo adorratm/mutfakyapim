@@ -3179,7 +3179,7 @@ ul {
 .intro-list-one {
   position: relative;
   display: block;
-  padding-top: 120px;
+  padding-top: 90px;
 }
 
 .intro-list-one .row {
@@ -3249,7 +3249,7 @@ ul {
 .about-one {
   position: relative;
   display: block;
-  padding: 90px 0 120px;
+  padding: 90px 0 90px;
   z-index: 1;
 }
 
@@ -3548,7 +3548,7 @@ ul {
   background-color: #f7f7f7;
   counter-reset: count;
   overflow: hidden;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .services-one .container {
@@ -3726,7 +3726,7 @@ ul {
 .why-choose-one {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
   z-index: 1;
 }
 
@@ -3912,7 +3912,7 @@ ul {
   position: relative;
   display: block;
   background-color: #8e2c1c;
-  padding: 120px 0 181px;
+  padding: 90px 0 90px;
   z-index: 1;
 }
 
@@ -4180,7 +4180,7 @@ ul {
   position: relative;
   display: block;
   background-color: #fdf7f6;
-  padding: 120px 0 90px;
+  padding: 90px 0 90px;
   z-index: 1;
 }
 
@@ -4218,7 +4218,6 @@ ul {
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 35px 0px rgba(222, 214, 212, 0.35);
-  margin-bottom: 30px;
 }
 
 .team-one__inner {
@@ -4385,7 +4384,7 @@ ul {
   position: relative;
   display: block;
   background-color: #292929;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
   z-index: 1;
 }
 
@@ -4643,7 +4642,7 @@ ul {
 .testimonial-one {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
   border-bottom: 1px solid #e6e6e6;
   z-index: 1;
 }
@@ -4848,7 +4847,7 @@ ul {
 .blog-one {
   position: relative;
   display: block;
-  padding: 120px 0 90px;
+  padding: 90px 0 90px;
 }
 
 .blog-one .row {
@@ -5564,7 +5563,7 @@ ul {
 .about-two {
   position: relative;
   display: block;
-  padding: 120px 0 110px;
+  padding: 90px 0 90px;
 }
 
 .about-two__left {
@@ -5916,7 +5915,7 @@ ul {
   position: relative;
   display: block;
   background-color: #494040;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
   overflow: hidden;
   z-index: 1;
 }
@@ -6163,7 +6162,7 @@ ul {
 .how-we-works {
   position: relative;
   display: block;
-  padding: 120px 0 0;
+  padding: 90px 0 90px;
   counter-reset: count;
   z-index: 1;
 }
@@ -6326,7 +6325,7 @@ ul {
 .testimonial-two {
   position: relative;
   display: block;
-  padding: 120px 0px 120px;
+  padding: 90px 0px 90px;
 }
 
 .testimonial-two__top {
@@ -6472,7 +6471,7 @@ ul {
   position: relative;
   display: block;
   background-color: #121110;
-  padding: 120px 0 225px;
+  padding: 90px 0 90px;
   overflow: hidden;
   z-index: 1;
 }
@@ -7373,7 +7372,7 @@ ul {
   position: relative;
   display: block;
   counter-reset: count;
-  padding: 120px 0 90px;
+  padding: 90px 0 90px;
 }
 
 
@@ -7612,7 +7611,7 @@ ul {
 .why-choose-two {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .why-choose-two__left {
@@ -7859,7 +7858,7 @@ ul {
 .blog-details {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .blog-details__left {
@@ -8772,7 +8771,7 @@ ul {
 .blog-list {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .blog-list__left {
@@ -8995,7 +8994,7 @@ ul {
 .project-details {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .project-details__banner {
@@ -9656,7 +9655,7 @@ ul {
   position: relative;
   display: block;
   background-color: #fdf7f6;
-  padding: 120px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .team-details__top {
@@ -9898,7 +9897,8 @@ ul {
 .comment-form-2__input-box input[type="text"],
 .comment-form-2__input-box input[type="email"],
 .comment-form-2__input-box select,
-.comment-form-2__input-box input[type="file"] {
+.comment-form-2__input-box input[type="file"],
+.comment-form-2__input-box input[type="number"] {
   height: 70px;
   width: 100%;
   border: none;
@@ -9961,7 +9961,7 @@ ul {
   position: relative;
   display: block;
   background-color: #fdf7f6;
-  padding: 112px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .contact-page__top {
@@ -10048,7 +10048,7 @@ ul {
 .contact-page__bottom .comment-form-2__input-box input[type="text"],
 .comment-form-2__input-box input[type="email"],
 .comment-form-2__input-box select,
-.comment-form-2__input-box input[type="file"] {
+.comment-form-2__input-box input[type="file"],.comment-form-2__input-box input[type="number"] {
   margin-bottom: 20px;
 }
 
@@ -10058,7 +10058,7 @@ ul {
 .error-page {
   position: relative;
   display: block;
-  padding: 89px 0 120px;
+  padding: 90px 0 90px;
   z-index: 1;
 }
 
@@ -10140,7 +10140,7 @@ ul {
 .faq-page {
   position: relative;
   display: block;
-  padding: 110px 0 120px;
+  padding: 90px 0 90px;
 }
 
 .faq-page__top {
@@ -10306,7 +10306,7 @@ ul {
 # About Four
 --------------------------------------------------------------*/
 .about-four {
-  padding: 120px 0 101px;
+  padding: 90px 0 90px;
 }
 
 /*--------------------------------------------------------------
@@ -10346,15 +10346,7 @@ ul {
 # Why Choose Three
 --------------------------------------------------------------*/
 .why-choose-three {
-  padding: 80px 0 120px;
-}
-
-/*--------------------------------------------------------------
-# Team Two
---------------------------------------------------------------*/
-.team-two {
-  padding-top: 250px;
-  margin-top: -130px;
+  padding: 90px 0 90px;
 }
 
 /*--------------------------------------------------------------
@@ -10363,7 +10355,7 @@ ul {
 .team-page {
   position: relative;
   display: block;
-  padding: 120px 0 220px;
+  padding: 90px 0 90px;
   background-color: #fdf7f6;
 }
 
@@ -10380,7 +10372,7 @@ ul {
 .services-page {
   position: relative;
   display: block;
-  padding: 120px 0 90px;
+  padding: 90px 0 90px;
   counter-reset: count;
 }
 
@@ -10390,7 +10382,7 @@ ul {
 .project-v-1 {
   position: relative;
   display: block;
-  padding: 120px 0 90px;
+  padding: 90px 0 90px;
 }
 
 .project-v-1 .project-one__single {
@@ -10403,7 +10395,7 @@ ul {
 .project-v-2 {
   position: relative;
   display: block;
-  padding: 120px 0 55px;
+  padding: 90px 0 90px;
 }
 
 

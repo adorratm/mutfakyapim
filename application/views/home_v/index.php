@@ -143,7 +143,7 @@
 
 <?php if (!empty($service_categories)) : ?>
     <!--Project V-1 Start-->
-    <section class="project-v-1">
+    <section class="project-v-1 pb-0">
         <div class="container-fluid px-5">
             <div class="section-title text-center">
                 <span class="section-title__tagline"><?= $settings->company_name ?></span>
@@ -183,7 +183,7 @@
     <?php $aboutPage = $pages[array_keys($pages)[0]] ?>
     <?php if ($aboutPage->id == 1) : ?>
         <!--Why Choose Two Start-->
-        <section class="why-choose-two why-choose-three">
+        <section class="why-choose-two why-choose-three pb-0">
             <div class="container">
                 <div class="row">
                     <?php if (!empty($aboutPage->img_url)) : ?>
@@ -220,7 +220,7 @@
 
 <?php if (!empty($our_works)) : ?>
     <!--Project V-1 Start-->
-    <section class="project-v-1">
+    <section class="project-v-1 pb-0">
         <div class="container">
             <div class="section-title text-center">
                 <span class="section-title__tagline"><?= $settings->company_name ?></span>
@@ -282,14 +282,14 @@
     <?php $userName = str_replace("/", "", (str_replace("https://www.instagram.com/", "", str_replace("https://instagram.com/", "", $this->viewData->settings->instagram)))); ?>
 
     <section class="why-choose-one">
-        <div class="why-choose-one__shape-4 float-bob-x" style="background-image: url(<?= asset_url("public/images/shapes/why-choose-one-shape-4.webp") ?>);"></div>
-        <div class="why-choose-one__shape-2 float-bob-y">
+        <div class="why-choose-one__shape-4 float-bob-x d-none d-xxl-block" style="background-image: url(<?= asset_url("public/images/shapes/why-choose-one-shape-4.webp") ?>);"></div>
+        <div class="why-choose-one__shape-2 float-bob-y d-none d-xxl-block">
             <img class="lazyload img-fluid" loading="lazy" data-src="<?= asset_url("public/images/shapes/why-choose-one-shape-2.webp") ?>" alt="<?= $settings->company_name ?>">
         </div>
-        <div class="why-choose-one__shape-3 float-bob-y">
+        <div class="why-choose-one__shape-3 float-bob-y d-none d-xxl-block">
             <img class="lazyload img-fluid" loading="lazy" data-src="<?= asset_url("public/images/shapes/why-choose-one-shape-3.webp") ?>" alt="<?= $settings->company_name ?>">
         </div>
-        <div class="why-choose-one__shape-5 float-bob-x"></div>
+        <div class="why-choose-one__shape-5 float-bob-x d-none d-xxl-block"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">

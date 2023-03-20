@@ -240,3 +240,94 @@
     <?php endif ?>
 </section>
 <!-- END: About Section -->
+
+<?php if (!empty($homeitems2)) : ?>
+    <!--Team One Start-->
+    <section class="team-one team-two">
+        <div class="container">
+            <div class="row align-items-stretch align-self-stretch align-content-stretch">
+                <?php $i = 100 ?>
+                <?php foreach ($homeitems2 as $key => $value) : ?>
+                    <!--Team One Single Start-->
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp mb-lg-3" data-wow-delay="<?= $i ?>ms">
+                        <div class="team-one__single h-100">
+                            <div class="team-one__inner">
+                                <div class="team-one__shape-1 float-bob-y d-none d-xxl-block"></div>
+                                <div class="team-one__img">
+                                    <img loading="lazy" class="img-fluid lazyload" data-src="<?= get_picture("home_items_v", $value->img_url) ?>" alt="<?= $value->title ?>">
+                                </div>
+                                <div class="team-one__content mt-3">
+                                    <h3 class="team-one__name"><?= $value->title ?></h3>
+                                    <p class="team-one__sub-title"><?= $value->content ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Team One Single End-->
+                    <?php $i += 100; ?>
+                    <?php if ($i == 300) : ?>
+                        <?php $i = 100 ?>
+                    <?php endif ?>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </section>
+    <!--Team One End-->
+<?php endif ?>
+
+
+<?php if (!empty($homeitems3)) : ?>
+    <!--How We Works Start-->
+    <section class="how-we-works">
+        <div class="container">
+            <div class="section-title text-center">
+                <span class="section-title__tagline"><?= $settings->company_name ?></span>
+                <div class="section-title-shape">
+                    <img loading="lazy" class="lazyload img-fluid" data-src="<?= asset_url("public/images/shapes/section-title-shape-1.webp") ?>" alt="<?= $settings->company_name ?>">
+                </div>
+                <h2 class="section-title__title"><?= str_replace("{company_name}", $settings->company_name, lang("whyWe")) ?></h2>
+            </div>
+
+            <?php $i = 1 ?>
+            <?php foreach ($homeitems3 as $key => $value) : ?>
+                <?php if ($i == 1) : ?>
+                    <div class="how-we-works__inner mb-5">
+                        <div class="how-we-works__round"></div>
+                        <ul class="list-unstyled how-we-works__list">
+                        <?php endif ?>
+
+                        <li>
+                            <div class="how-we-works__content">
+                                <div class="how-we-works__icon">
+                                    <img loading="lazy" class="lazyload img-fluid" data-src="<?= get_picture("home_items_v", $value->img_url) ?>" alt="<?= $value->title ?>">
+                                </div>
+                                <h3 class="how-we-works__title"><?= $value->title ?></a>
+                                </h3>
+                                <p class="how-we-works__text"><?= $value->content ?></p>
+                                <?php if ($i == 1) : ?>
+                                    <div class="how-we-works__shape-1">
+                                        <img class="img-fluid lazyload" loading="lazy" data-src="<?= asset_url("public/images/shapes/how-we-works-shape-1.webp") ?>" alt="<?= $settings->company_name ?>">
+                                    </div>
+                                <?php endif ?>
+                                <?php if ($i == 3) : ?>
+                                    <div class="how-we-works__shape-2">
+                                        <img class="img-fluid lazyload" loading="lazy" data-src="<?= asset_url("public/images/shapes/how-we-works-shape-2.webp") ?>" alt="<?= $settings->company_name ?>">
+                                    </div>
+                                    <div class="how-we-works__shape-3">
+                                        <img class="img-fluid lazyload" loading="lazy" data-src="<?= asset_url("public/images/shapes/how-we-works-shape-3.webp") ?>" alt="<?= $settings->company_name ?>">
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </li>
+
+                        <?php $i++ ?>
+                        <?php if ($i == 4) : ?>
+                        </ul>
+                    </div>
+                    <?php $i = 1 ?>
+                <?php endif ?>
+            <?php endforeach ?>
+        </div>
+    </section>
+    <!--How We Works End-->
+<?php endif ?>
