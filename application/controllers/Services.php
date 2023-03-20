@@ -72,8 +72,6 @@ class Services extends MY_Controller
             $likes["s.createdAt"] = $search;
             $likes["s.updatedAt"] = $search;
             $likes["s.description"] = $search;
-            $likes["s.features"] = $search;
-            $likes["s.content"] = $search;
         endif;
 
         $wheres = [];
@@ -88,7 +86,7 @@ class Services extends MY_Controller
         $wheres["s.lang"] = $this->viewData->lang;
         $joins = ["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]];
 
-        $select = "s.id,s.title,s.content,s.seo_url,si.url img_url,s.isActive";
+        $select = "s.id,s.title,s.description,s.seo_url,si.url img_url,s.isActive";
         $distinct = true;
         $groupBy = ["s.id"];
         /**
@@ -172,7 +170,7 @@ class Services extends MY_Controller
         $wheres["si.isCover"] = 1;
         $wheres["s.lang"] = $this->viewData->lang;
         $joins = ["service_categories sc" => ["s.category_id = sc.id", "left"], "service_images si" => ["si.service_id = s.id", "left"]];
-        $select = "sc.title category,sc.seo_url category_seo_url,s.id,s.title,s.seo_url,si.url img_url,s.description,s.content,s.features,s.isActive";
+        $select = "sc.id category_id,sc.title category_title,sc.seo_url category_seo_url,s.id,s.title,s.seo_url,si.url img_url,s.description,s.isActive";
         $distinct = true;
         $groupBy = ["s.id"];
         $wheres['s.seo_url'] =  $seo_url;
@@ -216,12 +214,12 @@ class Services extends MY_Controller
              */
             $this->viewData->page_title = strto("lower|ucwords", $this->viewData->service->title);
             $this->viewData->meta_title = strto("lower|ucwords", $this->viewData->service->title) . " - " . $this->viewData->settings->company_name;
-            $this->viewData->meta_desc  = !empty($this->viewData->service->content) ? str_replace("”", "\"", @stripslashes($this->viewData->service->content)) : str_replace("”", "\"", @stripslashes($this->viewData->settings->meta_description));
+            $this->viewData->meta_desc  = !empty($this->viewData->service->description) ? str_replace("”", "\"", @stripslashes($this->viewData->service->description)) : str_replace("”", "\"", @stripslashes($this->viewData->settings->meta_description));
             $this->viewData->og_url                 = clean(base_url(lang("routes_services") . "/" . lang("routes_service") . "/" . $seo_url));
             $this->viewData->og_image           = clean(get_picture("services_v", $imgURL));
             $this->viewData->og_type          = "service.item";
             $this->viewData->og_title           = strto("lower|ucwords", $this->viewData->service->title) . " - " . $this->viewData->settings->company_name;
-            $this->viewData->og_description           = clean(str_replace("”", "\"", @stripslashes($this->viewData->service->content)));
+            $this->viewData->og_description           = clean(str_replace("”", "\"", @stripslashes($this->viewData->service->description)));
             $this->viewFolder = "service_detail_v/index";
         else :
             $this->viewFolder = "404_v/index";

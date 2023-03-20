@@ -37,7 +37,7 @@ class MY_Controller extends CI_Controller
             if (empty($this->uri->segment(1))) :
                 redirect(base_url());
             endif;
-        else:
+        else :
             redirect(base_url("404"));
         endif;
 
@@ -69,7 +69,13 @@ class MY_Controller extends CI_Controller
         $this->viewData->footer_menus = show_tree('FOOTER', $this->viewData->lang);
         $this->viewData->footer_menus2 = show_tree('FOOTER2', $this->viewData->lang);
         $this->viewData->footer_menus3 = show_tree('FOOTER3', $this->viewData->lang);
+        $this->viewData->footer_service_categories = $this->general_model->get_all("service_categories", null, null, ["isActive" => 1], [], [], [6]);
         $this->viewData->languages = $languages;
+        /**
+         * Home Items
+         */
+        $this->viewData->homeitems = $this->general_model->get_all("home_items", null, "rank ASC", ["isActive" => 1, "type" => 1, "lang" => $this->viewData->lang]);
+
         /**
          * Get User Data
          */
@@ -81,7 +87,6 @@ class MY_Controller extends CI_Controller
 
         $this->ci_minifier->set_domparser(2);
         $this->ci_minifier->init(1);
-        
     }
 
     /**

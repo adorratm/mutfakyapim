@@ -689,7 +689,7 @@
 
   $(window).on("load", function () {
     if ($(".preloader").length) {
-      $(".preloader").fadeOut();
+      $(".preloader").delay(500).fadeOut();
     }
     thmSwiperInit();
     thmOwlInit();

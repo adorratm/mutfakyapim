@@ -47,7 +47,6 @@ class Home extends MY_Controller
         /**
          * Home Items
          */
-        $this->viewData->homeitems = $this->general_model->get_all("home_items", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [4]);
         $this->viewData->homeitemsFooter = $this->general_model->get_all("home_items", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [4, 4]);
         /**
          * Instagram Posts
@@ -56,7 +55,11 @@ class Home extends MY_Controller
         /**
          * Service Categories
          */
-        $this->viewData->service_categories = $this->general_model->get_all("service_categories", null, "rand()", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [8]);
+        $this->viewData->service_categories = $this->general_model->get_all("service_categories", null, "id ASC", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [8]);
+        /**
+         * Our Works
+         */
+        $this->viewData->our_works = $this->general_model->get_all("our_works", null, "rand()", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [6]);
 
         $this->viewData->meta_title = clean(strto("lower|ucwords", lang("home"))) . " - " . $this->viewData->settings->company_name;
         $this->viewData->meta_desc  = str_replace("”", "\"", @stripslashes($this->viewData->settings->meta_description));
@@ -75,6 +78,34 @@ class Home extends MY_Controller
      * ...:::!!! ================================== INDEX ================================== !!!:::...
      * -----------------------------------------------------------------------------------------------
      */
+
+    /**
+     * Career Form
+     */
+    public function career_form()
+    {
+        $data = rClean($this->input->post());
+        if (checkEmpty($data)["error"]) :
+            $key = checkEmpty($data)["key"];
+            echo json_encode(["success" => false, "title" => lang("errorMessageTitleText"), "message" => lang("careerErrorMessageText") . " \"{$key}\" " . lang("emptyMessageText")]);
+            die();
+        else :
+            $filename = $_FILES['cv']['name'];
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if ($ext == 'pdf' || $ext == 'docx') :
+                $attachments = [$_FILES["cv"]];
+                $message = "\"" . $data['full_name'] . "\" İsimli ziyaretçi iş başvurusunda bulundu. \n\n <b>Ad Soyad : </b> " . $data["full_name"] . "\n\n <b>Telefon : </b> " . $data["phone"] . "\n\n <b>E-mail : </b> " . $data["email"] . "\n\n <b>Çalışmak İstediği Departman : </b>" . $data["department"] . "\n\n <b>Mesaj : </b>" . $data["comment"];
+                $message = $this->load->view("includes/simple_mail_template", ["settings" => get_settings(), "subject" => "Yeni Bir İş Başvurusu Var! | " . $this->viewData->settings->company_name, "message" => $message, "lang" => $this->viewData->lang], true);
+                if (send_emailv2("", "Yeni Bir İş Başvurusu Var! | " . $this->viewData->settings->company_name, $message, $attachments, $this->viewData->lang,2)) :
+                    echo json_encode(["success" => true, "title" => lang("successMessageTitleText"), "message" => lang("careerSuccessMessageText")]);
+                    die();
+                else :
+                    echo json_encode(["success" => false, "title" => lang("errorMessageTitleText"), "message" => lang("careerErrorEmailMessageText")]);
+                    die();
+                endif;
+            endif;
+        endif;
+    }
 
     /**
      * -----------------------------------------------------------------------------------------------

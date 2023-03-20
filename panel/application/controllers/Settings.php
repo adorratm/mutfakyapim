@@ -85,17 +85,17 @@ class Settings extends MY_Controller
             $mobile_logo = upload_picture("mobile_logo", "uploads/$this->viewFolder",[],"*");
             $favicon = upload_picture("favicon", "uploads/$this->viewFolder",[],"*");
             $mobile_logo_2 = upload_picture("mobile_logo_2", "uploads/$this->viewFolder",[],"*");
-            $contact_logo = upload_picture("contact_logo", "uploads/$this->viewFolder",[],"*");
-            $blog_logo = upload_picture("blog_logo", "uploads/$this->viewFolder",[],"*");
-            $service_logo = upload_picture("service_logo", "uploads/$this->viewFolder",[],"*");
-            $sector_logo = upload_picture("sector_logo", "uploads/$this->viewFolder",[],"*");
-            $about_logo = upload_picture("about_logo", "uploads/$this->viewFolder",[],"*");
-            $gallery_logo = upload_picture("gallery_logo", "uploads/$this->viewFolder",[],"*");
-            $service_logo = upload_picture("service_logo", "uploads/$this->viewFolder",[],"*");
-            $service_detail_logo = upload_picture("service_detail_logo", "uploads/$this->viewFolder",[],"*");
-            $gallery_logo = upload_picture("gallery_logo", "uploads/$this->viewFolder",[],"*");
-            $category_logo = upload_picture("category_logo", "uploads/$this->viewFolder",[],"*");
-            $catalog = upload_picture("catalog", "uploads/$this->viewFolder",[],"*");
+            $contact_logo = upload_picture("contact_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $blog_logo = upload_picture("blog_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $service_logo = upload_picture("service_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $sector_logo = upload_picture("sector_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $about_logo = upload_picture("about_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $gallery_logo = upload_picture("gallery_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $service_logo = upload_picture("service_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $service_detail_logo = upload_picture("service_detail_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $gallery_logo = upload_picture("gallery_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $category_logo = upload_picture("category_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
+            $catalog = upload_picture("catalog", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
             $getRank = $this->settings_model->rowCount();
             if ($logo["success"]) :
                 $data["logo"] = $logo["file_name"];
@@ -241,7 +241,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["contact_logo"]["name"])) :
-                    $image = upload_picture("contact_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("contact_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["contact_logo"] = $image["file_name"];
                     else :
@@ -250,7 +250,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["blog_logo"]["name"])) :
-                    $image = upload_picture("blog_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("blog_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["blog_logo"] = $image["file_name"];
                     else :
@@ -259,7 +259,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["service_logo"]["name"])) :
-                    $image = upload_picture("service_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("service_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["service_logo"] = $image["file_name"];
                     else :
@@ -268,7 +268,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["sector_logo"]["name"])) :
-                    $image = upload_picture("sector_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("sector_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["sector_logo"] = $image["file_name"];
                     else :
@@ -277,7 +277,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["about_logo"]["name"])) :
-                    $image = upload_picture("about_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("about_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["about_logo"] = $image["file_name"];
                     else :
@@ -286,7 +286,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["gallery_logo"]["name"])) :
-                    $image = upload_picture("gallery_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("gallery_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["gallery_logo"] = $image["file_name"];
                     else :
@@ -295,7 +295,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["service_logo"]["name"])) :
-                    $image = upload_picture("service_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("service_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["service_logo"] = $image["file_name"];
                     else :
@@ -304,7 +304,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["service_detail_logo"]["name"])) :
-                    $image = upload_picture("service_detail_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("service_detail_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["service_detail_logo"] = $image["file_name"];
                     else :
@@ -313,7 +313,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["category_logo"]["name"])) :
-                    $image = upload_picture("category_logo", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("category_logo", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["category_logo"] = $image["file_name"];
                     else :
@@ -322,7 +322,7 @@ class Settings extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["catalog"]["name"])) :
-                    $image = upload_picture("catalog", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("catalog", "uploads/$this->viewFolder",["width" => 1920, "height" => 400],"*");
                     if ($image["success"]) :
                         $data["catalog"] = $image["file_name"];
                     else :

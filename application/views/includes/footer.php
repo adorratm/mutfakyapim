@@ -115,11 +115,17 @@
                                 </div>
                             </div>
                         <?php endif ?>
-                        <?php if (!empty($footer_menus2)) : ?>
+                        <?php if (!empty($footer_service_categories)) : ?>
                             <div class="col-xl-3 col-lg-6 col-md-12 mb-3 mb-lg-0 wow fadeInUp" data-wow-delay="300ms">
                                 <div class="footer-widget-two__quick-links ms-0">
-                                    <h4 class="footer-widget-two__title"><?= lang("menus") ?></h4>
-                                    <?= $footer_menus2 ?>
+                                    <h4 class="footer-widget-two__title"><?= lang("service_categories") ?></h4>
+                                    <ul class="footer-widget-two__quick-links-list list-unstyled">
+                                        <?php foreach ($footer_service_categories as $key => $value) : ?>
+                                            <li>
+                                                <a rel="dofollow" title="<?= $value->title ?>" href="<?= base_url(lang("routes_services") . "/" . $value->seo_url) ?>"><?= $value->title ?></a>
+                                            </li>
+                                        <?php endforeach ?>
+                                    </ul>
                                 </div>
                             </div>
                         <?php endif ?>
@@ -187,15 +193,22 @@
 </script>
 <!-- #Jquery -->
 <!--FOOTER END-->
+<?php if (!empty($settings->facebook)) : ?>
+    <a rel="dofollow" class="fixed-facebook bg-primary" href="<?= $settings->facebook ?>" target="_blank" title="Facebook" data-toggle="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a>
+<?php endif ?>
+<?php if (!empty($settings->instagram)) : ?>
+    <a rel="dofollow" class="fixed-instagram" href="<?= $settings->instagram ?>" target="_blank" title="Instagram" data-toggle="tooltip" data-placement="top"><i class="fa fa-instagram"></i></a>
+<?php endif ?>
+<?php if (!empty($settings->linkedin)) : ?>
+    <a rel="dofollow" class="fixed-linkedin bg-primary" href="<?= $settings->linkedin ?>" target="_blank" title="Linkedin" data-toggle="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a>
+<?php endif ?>
 <?php if (!empty(@json_decode($settings->phone, TRUE)[0])) : ?>
-    <a rel="dofollow" class="fixed-phone bg-danger d-none" href="tel:<?= @json_decode($settings->phone, TRUE)[0] ?>" title="<?= lang("phone") ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-phone"></i></a>
+    <a rel="dofollow" class="fixed-phone bg-danger" href="tel:<?= @json_decode($settings->phone, TRUE)[0] ?>" title="<?= lang("phone") ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-phone"></i></a>
 <?php endif ?>
 <?php if (!empty(@json_decode($settings->whatsapp, TRUE)[0])) : ?>
     <a rel="nofollow" target="_blank" class="fixed-whatsapp bg-success" href="https://api.whatsapp.com/send?phone=<?= str_replace(" ", "", @json_decode($settings->whatsapp, TRUE)[0]) ?>&amp;text=<?= urlencode(lang("hello") . " " . $settings->company_name) ?>." title="WhatsApp" data-toggle="tooltip" data-placement="top"><i class="fa fa-whatsapp"></i></a>
 <?php endif ?>
-<?php if (!empty($settings->linkedin)) : ?>
-    <a rel="dofollow" class="fixed-phone bg-primary" href="<?= $settings->linkedin ?>" target="_blank" title="Linkedin" data-toggle="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a>
-<?php endif ?>
+
 <!--layout end-->
 <!-- SCRIPTS -->
 <!-- Lazysizes -->

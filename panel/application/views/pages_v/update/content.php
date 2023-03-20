@@ -69,6 +69,20 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
+                <label>SAYFA TÜRÜ</label>
+                <select name="type" class="form-control form-control-sm rounded-0" required>
+                    <option <?= $item->type == "SIMPLE" ? "selected" : null ?> value="SIMPLE">BASİT SAYFA</option>
+                    <option <?= $item->type == "CAREER" ? "selected" : null ?> value="CAREER">KARİYER SAYFASI</option>
+                    <option <?= $item->type == "ABOUT" ? "selected" : null ?> value="ABOUT">HAKKIMIZDA SAYFASI</option>
+                    <option <?= $item->type == "KVKK" ? "selected" : null ?> value="KVKK">KVKK SAYFASI</option>
+                    <option <?= $item->type == "CONTENT" ? "selected" : null ?> value="CONTENT">İÇERİK SAYFASI</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="form-group">
                 <label>Dil</label>
                 <input type="text" class="form-control form-control-sm rounded-0" name="lang" disabled value="<?= !empty($item->lang) ? $item->lang : "tr" ?>">
             </div>
@@ -76,8 +90,8 @@
     </div>
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <button role="button" data-url="<?= base_url("pages/update/$item->id"); ?>" class="btn btn-sm btn-outline-primary rounded-0 btnUpdate">Güncelle</button>
-        <a href="javascript:void(0)" onclick="closeModal('#pageModal')" class="btn btn-sm btn-outline-danger rounded-0n">İptal</a>
+            <button role="button" data-url="<?= base_url("pages/update/$item->id"); ?>" class="btn btn-sm btn-outline-primary rounded-0 btnUpdate">Güncelle</button>
+            <a href="javascript:void(0)" onclick="closeModal('#pageModal')" class="btn btn-sm btn-outline-danger rounded-0n">İptal</a>
         </div>
     </div>
 </form>

@@ -77,13 +77,13 @@ class Galleries extends MY_Controller
             $path         = FCPATH . "uploads/$this->viewFolder/";
             $folder_name = seo($data["title"]);
             $path = "$path/$gallery_type/" . $folder_name;
-            
+
             if (!@mkdir($path, 0755, true)) :
                 echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Galeri Oluşturulurken Hata Oluştu. Klasör Erişim Yetkinizin Olduğundan Emin Olup Tekrar Deneyin."]);
                 die();
             endif;
             if (!empty($_FILES["img_url"]["name"])) :
-                $image = upload_picture("img_url", "uploads/$this->viewFolder/$gallery_type/$folder_name", [], "*");
+                $image = upload_picture("img_url", "uploads/$this->viewFolder/$gallery_type/$folder_name", ["width" => 1000, "height" => 1000], "*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                 endif;
@@ -136,7 +136,7 @@ class Galleries extends MY_Controller
                     die();
                 endif;
                 if (!empty($_FILES["img_url"]["name"])) :
-                    $image = upload_picture("img_url", "uploads/$this->viewFolder/$gallery_type/$folder_name", [], "*");
+                    $image = upload_picture("img_url", "uploads/$this->viewFolder/$gallery_type/$folder_name", ["width" => 1000, "height" => 1000], "*");
                     if ($image["success"]) :
                         $data["url"] =  seo($data["title"]);
                         $data["img_url"] = $image["file_name"];
@@ -303,7 +303,7 @@ class Galleries extends MY_Controller
             $model = "video_url_model";
         endif;
         if (!empty($_FILES["img_url"]["name"])) :
-            $image = upload_picture("img_url", "uploads/$this->viewFolder/$gallery->gallery_type", [], "*");
+            $image = upload_picture("img_url", "uploads/$this->viewFolder/$gallery->gallery_type", ["width" => 1000, "height" => 1000], "*");
             if ($image["success"]) :
                 $data["img_url"] = $image["file_name"];
             else :

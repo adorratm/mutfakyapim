@@ -150,11 +150,11 @@
                         </a>
                     </li>
                 <?php } ?>
-                <?php if (isAllowedViewModule("banks")) { ?>
-                    <li class="nav-item <?= ($this->uri->segment(1) == "banks") ? "active" : "" ?> ">
-                        <a class="nav-link" href="<?= base_url("banks"); ?>">
+                <?php if (isAllowedViewModule("our_works")) { ?>
+                    <li class="nav-item <?= ($this->uri->segment(1) == "our_works") ? "active" : "" ?> ">
+                        <a class="nav-link" href="<?= base_url("our_works"); ?>">
                             <i class="fa fa-university"></i>
-                            <span class="nav-link-text">Bankalar</span>
+                            <span class="nav-link-text">Çalışmalarımız</span>
                         </a>
                     </li>
                 <?php } ?>

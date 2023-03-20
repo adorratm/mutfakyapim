@@ -42,7 +42,7 @@ class Blogs extends MY_Controller
                     </div>
                 </div>';
                 $checkbox = '<div class="custom-control custom-switch"><input data-id="' . $item->id . '" data-url="' . base_url("blogs/isActiveSetter/{$item->id}") . '" data-status="' . ($item->isActive == 1 ? "checked" : null) . '" id="customSwitch' . $i . '" type="checkbox" ' . ($item->isActive == 1 ? "checked" : null) . ' class="my-check custom-control-input" >  <label class="custom-control-label" for="customSwitch' . $i . '"></label></div>';
-                $data[] = [$item->rank, '<i class="fa fa-arrows" data-id="' . $item->id . '"></i>', $item->id, $item->title,$item->lang,  $checkbox, turkishDate("d F Y, l H:i:s", $item->createdAt), turkishDate("d F Y, l H:i:s", $item->updatedAt), turkishDate("d F Y, l H:i:s", $item->sharedAt), $proccessing];
+                $data[] = [$item->rank, '<i class="fa fa-arrows" data-id="' . $item->id . '"></i>', $item->id, $item->title, $item->lang,  $checkbox, turkishDate("d F Y, l H:i:s", $item->createdAt), turkishDate("d F Y, l H:i:s", $item->updatedAt), turkishDate("d F Y, l H:i:s", $item->sharedAt), $proccessing];
             endforeach;
         endif;
         $output = [
@@ -76,7 +76,7 @@ class Blogs extends MY_Controller
                     echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Blog Eklenirken Hata Oluştu. Blog Görseli Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                     die();
                 endif;
-                $image = upload_picture("img_url", "uploads/$this->viewFolder",[],"*");
+                $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                 else :
@@ -119,7 +119,7 @@ class Blogs extends MY_Controller
             $blog = $this->blog_model->get(["id" => $id]);
             $data["img_url"] = $blog->img_url;
             if (!empty($_FILES["img_url"]["name"])) :
-                $image = upload_picture("img_url", "uploads/$this->viewFolder",[],"*");
+                $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                     if (!empty($blog->img_url)) :

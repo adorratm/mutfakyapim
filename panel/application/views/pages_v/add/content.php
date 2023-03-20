@@ -43,6 +43,20 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
+                <label>SAYFA TÜRÜ</label>
+                <select name="type" class="form-control form-control-sm rounded-0" required>
+                    <option value="SIMPLE">BASİT SAYFA</option>
+                    <option value="CAREER">KARİYER SAYFASI</option>
+                    <option value="ABOUT">HAKKIMIZDA SAYFASI</option>
+                    <option value="KVKK">KVKK SAYFASI</option>
+                    <option value="CONTENT">İÇERİK SAYFASI</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="form-group">
                 <label>Dil</label>
                 <select name="lang" class="form-control form-control-sm rounded-0" required>
                     <?php if (!empty($settings)) : ?>

@@ -13,6 +13,11 @@ $lang["(:any)/blog/(:any)"] = "blog/index/$2";
 $lang["(:any)/blog/(:any)/(:num)"] = "blog/index/$2/$3";
 $lang["(:any)/blog/detay/(:any)"] = "blog/blog_detail/$2";
 
+$lang["(:any)/calismalarimiz"] = "our_works/index";
+$lang["(:any)/calismalarimiz/(:num)"] = "our_works/index/$2";
+$lang["(:any)/calismalarimiz/(:any)"] = "our_works/index/$2";
+$lang["(:any)/calismalarimiz/(:any)/(:num)"] = "our_works/index/$2/$3";
+
 $lang["(:any)/hizmetlerimiz"] = "service_categories/index";
 $lang["(:any)/hizmetlerimiz/(:num)"] = "service_categories/index/$2";
 $lang["(:any)/hizmetlerimiz/(:any)"] = "services/index/$2";
@@ -21,6 +26,7 @@ $lang["(:any)/hizmetlerimiz/hizmet/(:any)"] = "services/service_detail/$2/$3";
 
 $lang['(:any)/iletisim'] = 'contact/index';
 $lang['(:any)/iletisim-formu'] = 'contact/contact_form';
+$lang['(:any)/kariyer-formu'] = 'home/career_form';
 
 $lang['(:any)/sayfa/(:any)'] = 'pages/index/$2';
 

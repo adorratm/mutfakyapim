@@ -74,7 +74,7 @@ class Service_categories extends MY_Controller
             $getRank = $this->service_category_model->rowCount(["lang" => $this->session->userdata('activeLang')]);
             if (!empty($_FILES)) :
                 if (!empty($_FILES["img_url"]["name"])) :
-                    $image = upload_picture("img_url", "uploads/$this->viewFolder", [], "*");
+                    $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                     if ($image["success"]) :
                         $data["img_url"] = $image["file_name"];
                     else :
@@ -83,7 +83,7 @@ class Service_categories extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["home_url"]["name"])) :
-                    $image = upload_picture("home_url", "uploads/$this->viewFolder", [], "*");
+                    $image = upload_picture("home_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                     if ($image["success"]) :
                         $data["home_url"] = $image["file_name"];
                     else :
@@ -92,7 +92,7 @@ class Service_categories extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["banner_url"]["name"])) :
-                    $image = upload_picture("banner_url", "uploads/$this->viewFolder", [], "*");
+                    $image = upload_picture("banner_url", "uploads/$this->viewFolder", ["width" => 1920, "height" => 400], "*");
                     if ($image["success"]) :
                         $data["banner_url"] = $image["file_name"];
                     else :
@@ -136,7 +136,7 @@ class Service_categories extends MY_Controller
                 $data["img_url"] = $service_category->img_url;
             endif;
             if (!empty($_FILES["img_url"]["name"])) :
-                $image = upload_picture("img_url", "uploads/$this->viewFolder", [], "*");
+                $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                     if (!empty($service_category->img_url)) :
@@ -153,7 +153,7 @@ class Service_categories extends MY_Controller
                 $data["home_url"] = $service_category->home_url;
             endif;
             if (!empty($_FILES["home_url"]["name"])) :
-                $image = upload_picture("home_url", "uploads/$this->viewFolder", [], "*");
+                $image = upload_picture("home_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                 if ($image["success"]) :
                     $data["home_url"] = $image["file_name"];
                     if (!empty($service_category->home_url)) :
@@ -170,7 +170,7 @@ class Service_categories extends MY_Controller
                 $data["banner_url"] = $service_category->banner_url;
             endif;
             if (!empty($_FILES["banner_url"]["name"])) :
-                $image = upload_picture("banner_url", "uploads/$this->viewFolder", [], "*");
+                $image = upload_picture("banner_url", "uploads/$this->viewFolder", ["width" => 1920, "height" => 400], "*");
                 if ($image["success"]) :
                     $data["banner_url"] = $image["file_name"];
                     if (!empty($service_category->banner_url)) :

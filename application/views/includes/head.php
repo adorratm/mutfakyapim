@@ -87,6 +87,43 @@
     <link type="text/css" href="<?= asset_url("public/css/lightgallery.min.css") ?>" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link type="text/css" href="<?= asset_url("public/css/iziModal.min.css") ?>" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <style>
+        .fixed-linkedin {
+            position: fixed;
+            bottom: 190px;
+            right: 16px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 9;
+            -webkit-box-shadow: -4px 1px 7px 0 rgb(84 84 84 / 35%);
+            box-shadow: -1px 1px 5px 0 rgb(84 84 84 / 35%)
+        }
+
+        .fixed-instagram {
+            position: fixed;
+            bottom: 245px;
+            right: 16px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: #c83085;
+            z-index: 9;
+            -webkit-box-shadow: -4px 1px 7px 0 rgb(84 84 84 / 35%);
+            box-shadow: -1px 1px 5px 0 rgb(84 84 84 / 35%)
+        }
+
+        .fixed-facebook {
+            position: fixed;
+            bottom: 300px;
+            right: 16px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 9;
+            -webkit-box-shadow: -4px 1px 7px 0 rgb(84 84 84 / 35%);
+            box-shadow: -1px 1px 5px 0 rgb(84 84 84 / 35%)
+        }
+
         .fixed-phone {
             position: fixed;
             bottom: 135px;
@@ -112,6 +149,9 @@
         }
 
         .fixed-maps i,
+        .fixed-instagram i,
+        .fixed-facebook i,
+        .fixed-linkedin i,
         .fixed-phone i,
         .fixed-phone2 i,
         .fixed-whatsapp i,
@@ -127,6 +167,9 @@
         }
 
         .fixed-maps:hover i,
+        .fixed-facebook:hover i,
+        .fixed-instagram:hover i,
+        .fixed-linkedin:hover i,
         .fixed-phone2:hover i,
         .fixed-phone:hover i,
         .fixed-whatsapp2:hover i,
@@ -149,6 +192,32 @@
             -webkit-box-shadow: -4px 1px 7px 0 rgb(84 84 84 / 35%);
             box-shadow: -1px 1px 5px 0 rgb(84 84 84 / 35%)
         }
+
+        .carousel-indicators [data-bs-target] {
+            height: unset;
+            width: unset;
+        }
+
+        .instagramPhoto {
+            display: block;
+            position: relative;
+            background: #9ebbbd;
+            overflow: hidden;
+        }
+
+        .instagramPhoto img {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: 1;
+            mix-blend-mode: unset;
+            transition: all ease 750ms;
+            -moz-transition: all ease 750ms;
+            -webkit-transition: all ease 750ms;
+            min-height: 250px;
+            max-height: 250px;
+            object-fit:cover;
+        }
     </style>
 
 
@@ -169,6 +238,6 @@
     <div class="custom-cursor__cursor-two"></div>
 
     <div class="preloader">
-        <div class="preloader__image"></div>
+        <div class="preloader__image" style="background-image: url(<?= get_picture("settings_v", $settings->logo) ?>);"></div>
     </div>
     <!-- /.preloader -->

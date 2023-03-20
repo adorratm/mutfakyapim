@@ -136,19 +136,19 @@ class General_model extends CI_Model
 					if ($i === 0) :
 						// open bracket
 						$this->db->group_start();
-						$this->db->like($key, $value, 'both');
-						$this->db->or_like($key, strto("lower", $value), 'both');
-						$this->db->or_like($key, strto("lower|upper", $value), 'both');
-						$this->db->or_like($key, strto("lower|ucwords", $value), 'both');
-						$this->db->or_like($key, strto("lower|capitalizefirst", $value), 'both');
-						$this->db->or_like($key, strto("lower|ucfirst", $value), 'both');
+						@$this->db->like($key, $value, 'both');
+						@$this->db->or_like($key, strto("lower", $value), 'both');
+						@$this->db->or_like($key, strto("lower|upper", $value), 'both');
+						@$this->db->or_like($key, strto("lower|ucwords", $value), 'both');
+						@$this->db->or_like($key, strto("lower|capitalizefirst", $value), 'both');
+						@$this->db->or_like($key, strto("lower|ucfirst", $value), 'both');
 					else :
-						$this->db->or_like($key, $value, 'both');
-						$this->db->or_like($key, strto("lower", $value), 'both');
-						$this->db->or_like($key, strto("lower|upper", $value), 'both');
-						$this->db->or_like($key, strto("lower|ucwords", $value), 'both');
-						$this->db->or_like($key, strto("lower|capitalizefirst", $value), 'both');
-						$this->db->or_like($key, strto("lower|ucfirst", $value), 'both');
+						@$this->db->or_like($key, $value, 'both');
+						@$this->db->or_like($key, strto("lower", $value), 'both');
+						@$this->db->or_like($key, strto("lower|upper", $value), 'both');
+						@$this->db->or_like($key, strto("lower|ucwords", $value), 'both');
+						@$this->db->or_like($key, strto("lower|capitalizefirst", $value), 'both');
+						@$this->db->or_like($key, strto("lower|ucfirst", $value), 'both');
 					endif;
 
 					// last loop

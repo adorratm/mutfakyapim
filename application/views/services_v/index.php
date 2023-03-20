@@ -13,12 +13,12 @@
 <!--Services Page Start-->
 <section class="services-page">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-stretch align-self-stretch align-content-stretch">
             <?php if (!empty($services)) : ?>
                 <?php foreach ($services as $key => $value) : ?>
                     <!--Services Two Single Start-->
-                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="services-two__single">
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-3 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="services-two__single h-100">
                             <div class="services-two__img">
                                 <img loading="lazy" width="1000" height="1000" data-src="<?= get_picture("services_v", $value->img_url) ?>" alt="<?= $value->title ?>" title="<?= $value->title ?>" class="img-fluid lazyload" />
                                 <div class="services-two__icon">
@@ -29,7 +29,7 @@
                                 <div class="services-two__title">
                                     <h3><a href="<?= base_url(lang("routes_services") . "/" . lang("routes_service") . "/" . $value->seo_url) ?>" rel="dofollow" title="<?= $value->title ?>"><?= $value->title ?></a></h3>
                                 </div>
-                                <p class="services-two__text"><?= @mb_word_wrap($value->content, 150, "...") ?></p>
+                                <p class="services-two__text"><?= @mb_word_wrap($value->description, 150, "...") ?></p>
                                 <div class="services-two__btn-box">
                                     <a href="<?= base_url(lang("routes_services") . "/" . lang("routes_service") . "/" . $value->seo_url) ?>" rel="dofollow" title="<?= $value->title ?>" class="thm-btn"><?= lang("viewService") ?><i class="fa fa-arrow-right"></i></a>
                                 </div>

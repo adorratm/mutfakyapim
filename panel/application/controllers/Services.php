@@ -69,7 +69,7 @@ class Services extends MY_Controller
     public function save()
     {
         $data = rClean($this->input->post());
-        if (checkEmpty($data)["error"] && checkEmpty($data)["key"] !== "content" && checkEmpty($data)["key"] !== "description" && checkEmpty($data)["key"] !== "features") :
+        if (checkEmpty($data)["error"] && checkEmpty($data)["key"] !== "description") :
             $key = checkEmpty($data)["key"];
             echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
         else :
@@ -86,9 +86,7 @@ class Services extends MY_Controller
                 endif;
             endif;
             $data["seo_url"] = seo($data["title"]);
-            $data["content"] = clean($_POST["content"]) ? $_POST["content"] : NULL;
             $data["description"] = clean($_POST["description"]) ? $_POST["description"] : NULL;
-            $data["features"] = clean($_POST["features"]) ? $_POST["features"] : NULL;
             $data["isActive"] = 1;
             $data["rank"] = $getRank + 1;
             $insert = $this->service_model->add($data);
@@ -112,7 +110,7 @@ class Services extends MY_Controller
     public function update($id)
     {
         $data = $this->input->post();
-        if (checkEmpty($data)["error"] && checkEmpty($data)["key"] !== "content" && checkEmpty($data)["key"] !== "description" && checkEmpty($data)["key"] !== "features") :
+        if (checkEmpty($data)["error"] && checkEmpty($data)["key"] !== "description") :
             $key = checkEmpty($data)["key"];
             echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Hizmet Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
         else :
@@ -128,9 +126,7 @@ class Services extends MY_Controller
                 endif;
             endif;
             $data["seo_url"] = seo($data["title"]);
-            $data["content"] = clean($_POST["content"]) ? $_POST["content"] : NULL;
             $data["description"] = clean($_POST["description"]) ? $_POST["description"] : NULL;
-            $data["features"] = clean($_POST["features"]) ? $_POST["features"] : NULL;
             if ($this->service_model->update(["id" => $id], $data)) :
                 echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Hizmet Başarıyla Güncelleştirildi."]);
             else :
@@ -246,9 +242,9 @@ class Services extends MY_Controller
         if (!empty($id)) :
             $isActive = (intval($this->input->post("data")) === 1) ? 1 : 0;
             if ($this->service_image_model->update(["id" => $id], ["isActive" => $isActive])) :
-                echo json_encode(["success" => True, "title" => "İşlem Başarıyla Gerçekleşti", "message" => "Güncelleme İşlemi Yapıldı"]);
+                echo json_encode(["success" => True, "title" => "İşlem Başarıyla Gerçekleşti", "msg" => "Güncelleme İşlemi Yapıldı"]);
             else :
-                echo json_encode(["success" => False, "title" => "İşlem Başarısız Oldu", "message" => "Güncelleme İşlemi Yapılamadı"]);
+                echo json_encode(["success" => False, "title" => "İşlem Başarısız Oldu", "msg" => "Güncelleme İşlemi Yapılamadı"]);
             endif;
         endif;
     }
@@ -273,9 +269,9 @@ class Services extends MY_Controller
             $isCover = (intval($this->input->post("data")) === 1) ? 1 : 0;
             if ($this->service_image_model->update(["id" => $id, "service_id" => $service_id], ["isCover" => $isCover, "lang" => $lang])) :
                 $this->service_image_model->update(["id!=" => $id, "service_id" => $service_id], ["isCover" => 0, "lang" => $lang]);
-                echo json_encode(["success" => True, "title" => "İşlem Başarıyla Gerçekleşti", "message" => "Güncelleme İşlemi Yapıldı"]);
+                echo json_encode(["success" => True, "title" => "İşlem Başarıyla Gerçekleşti", "msg" => "Güncelleme İşlemi Yapıldı"]);
             else :
-                echo json_encode(["success" => False, "title" => "İşlem Başarısız Oldu", "message" => "Güncelleme İşlemi Yapılamadı"]);
+                echo json_encode(["success" => False, "title" => "İşlem Başarısız Oldu", "msg" => "Güncelleme İşlemi Yapılamadı"]);
             endif;
         endif;
     }

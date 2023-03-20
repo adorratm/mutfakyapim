@@ -70,7 +70,7 @@ class Pages extends MY_Controller
             $getRank = $this->page_model->rowCount();
             if (!empty($_FILES)) :
                 if (!empty($_FILES["img_url"]["name"])) :
-                    $image = upload_picture("img_url", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                     if ($image["success"]) :
                         $data["img_url"] = $image["file_name"];
                     else :
@@ -79,7 +79,7 @@ class Pages extends MY_Controller
                     endif;
                 endif;
                 if (!empty($_FILES["banner_url"]["name"])) :
-                    $image = upload_picture("banner_url", "uploads/$this->viewFolder",[],"*");
+                    $image = upload_picture("banner_url", "uploads/$this->viewFolder", ["width" => 1920, "height" => 400], "*");
                     if ($image["success"]) :
                         $data["banner_url"] = $image["file_name"];
                     else :
@@ -120,7 +120,7 @@ class Pages extends MY_Controller
             $data["img_url"] = $page->img_url;
             $data["banner_url"] = $page->banner_url;
             if (!empty($_FILES["img_url"]["name"])) :
-                $image = upload_picture("img_url", "uploads/$this->viewFolder",[],"*");
+                $image = upload_picture("img_url", "uploads/$this->viewFolder", ["width" => 1000, "height" => 1000], "*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                     if (!empty($page->img_url)) :
@@ -134,7 +134,7 @@ class Pages extends MY_Controller
                 endif;
             endif;
             if (!empty($_FILES["banner_url"]["name"])) :
-                $image = upload_picture("banner_url", "uploads/$this->viewFolder",[],"*");
+                $image = upload_picture("banner_url", "uploads/$this->viewFolder", ["width" => 1920, "height" => 400], "*");
                 if ($image["success"]) :
                     $data["banner_url"] = $image["file_name"];
                     if (!empty($page->img_url)) :

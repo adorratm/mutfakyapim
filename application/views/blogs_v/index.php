@@ -10,48 +10,51 @@
 </section>
 <!--Page Header End-->
 
-<!-- BEGIN: Blog Page Section -->
-<section class="blogPageSection">
+<!--Blog List start-->
+<section class="blog-list">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <?php foreach ($blogs as $key => $value) : ?>
-                    <?php if (strtotime($value->sharedAt) <= strtotime("now")) : ?>
-                        <div class="blogItem04">
-                            <div class="bi04Thumb">
-                                <a href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>">
-                                    <img data-src="<?= get_picture("blogs_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="lazyload img-fluid w-100">
-                                </a>
-                            </div>
-                            <div class="bi04Detail">
-                                <div class="bi01Meta clearfix">
-                                    <span><i class="fa-solid fa-folder-open"></i>
-                                        <?php foreach ($categories as $k => $v) : ?>
-                                            <?php if ($v->id == $value->category_id) : ?>
-                                                <a rel="dofollow" href="<?= base_url(lang("routes_blog") . "/{$v->seo_url}") ?>" title="<?= $v->title ?>"><?= $v->title ?></a>
-                                            <?php endif ?>
-                                        <?php endforeach ?>
-                                    </span>
-                                    <span><i class="fa-solid fa-clock"></i><a href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>"><?= turkishDate("d F Y, l H:i", $value->updatedAt) ?></a></span>
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-7">
+                <div class="blog-list__left ms-0">
+                    <?php foreach ($blogs as $key => $value) : ?>
+                        <?php if (strtotime($value->sharedAt) <= strtotime("now")) : ?>
+                            <!--Blog List Single Start-->
+                            <div class="blog-list__single">
+                                <div class="blog-list__img-1">
+                                    <a href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>">
+                                        <img data-src="<?= get_picture("blogs_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="lazyload img-fluid w-100">
+                                    </a>
                                 </div>
-                                <h2><a rel="dofollow" href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>"><?= $value->title ?></a></h2>
-                                <div class="bi04Excerpt"><?= mb_word_wrap($value->content, 500, "...") ?></div>
-                                <div class="bi04Footer">
-                                    <a rel="dofollow" href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>" class="ulinaBTN"><span><?= lang("viewBlog") ?></span></a>
+                                <div class="blog-list__content">
+                                    <ul class="blog-list__meta list-unstyled">
+                                        <li>
+                                            <a href="<?= base_url() ?>" rel="dofollow" title="<?= $settings->company_name ?>"><i class="fa fa-user"></i><?= $settings->company_name ?></a>
+                                        </li>
+                                        <li>
+                                            <?php foreach ($categories as $k => $v) : ?>
+                                                <?php if ($v->id == $value->category_id) : ?>
+                                                    <a rel="dofollow" href="<?= base_url(lang("routes_blog") . "/{$v->seo_url}") ?>" title="<?= $v->title ?>"><?= $v->title ?></a>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
+                                        </li>
+                                    </ul>
+                                    <h3 class="blog-list__title"><a href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>"><?= $value->title ?></a></h3>
+                                    <div class="blog-list__btn-and-comment">
+                                        <div class="blog-list__btn">
+                                            <a href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>"><?= lang("viewBlog") ?> <i class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endif ?>
-                <?php endforeach ?>
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="blog-page__pagination">
-                            <?= @$links ?>
-                        </div>
+                            <!--Blog List Single End-->
+                        <?php endif ?>
+                    <?php endforeach ?>
+                    <div class="blog-page__pagination">
+                        <?= @$links ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- END: Blog Page Section -->
+<!--Blog List End-->

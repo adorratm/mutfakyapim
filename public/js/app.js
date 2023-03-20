@@ -35,17 +35,18 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
     }).scroll();
-
-    setTimeout(function () {
-        let lastAnchor = window.location.href.split("/").pop().split("#").pop();
-        if ($('#' + lastAnchor).length) {
-            let target = (document.querySelector('#' + lastAnchor).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height() + $(".triggerFixed").height());
-            history.pushState(null, null, lastAnchor);
-            $('html, body').animate({
-                scrollTop: target
-            }, 'slow');
-        }
-    }, 1000);
+    $(window).on("load", function () {
+        setTimeout(function () {
+            let lastAnchor = window.location.href.split("/").pop().split("#").pop();
+            if ($('#' + lastAnchor).length) {
+                let target = (document.querySelector('#' + lastAnchor).getBoundingClientRect().top + window.pageYOffset) - ($(".main-menu-two").height() + $(".triggerFixed").height() * 2);
+                history.pushState(null, null, lastAnchor);
+                $('html, body').animate({
+                    scrollTop: target
+                }, 'slow');
+            }
+        }, 1000);
+    });
 
 
     $("iframe").each(() => {
@@ -53,13 +54,25 @@ window.addEventListener('DOMContentLoaded', () => {
         $(this).data("src", $(this).attr("src"));
         $(this).addClass("lazyload");
     });
-    $(document).on("click", ".btnSubmitForm", (e) => {
+    $(document).on("click", ".btnSubmitForm", function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
         let $this = $(this);
         $this.attr("disabled", "disabled");
         createAjax($this.data("url"), new FormData(document.getElementById("contact-form")), () => {
             $("#contact-form")[0].reset();
+            $this.removeAttr("disabled");
+        }, () => {
+            $this.removeAttr("disabled");
+        });
+    });
+    $(document).on("click", ".btnSubmitCareerForm", function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        let $this = $(this);
+        $this.attr("disabled", "disabled");
+        createAjax($this.data("url"), new FormData(document.getElementById("career-form")), () => {
+            $("#career-form")[0].reset();
             $this.removeAttr("disabled");
         }, () => {
             $this.removeAttr("disabled");
