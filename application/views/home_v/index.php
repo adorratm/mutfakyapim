@@ -307,7 +307,7 @@
                     <div class="why-choose-one__left mx-0">
                         <div class="row align-items-stretch align-self-stretch align-content-stretch">
                             <?php foreach ($instagramPosts as $mediaKey => $mediaValue) : ?>
-                                <div class="col-lg-3 mb-3">
+                                <div class="col-6 col-lg-3 mb-3">
                                     <div class="why-choose-one__img-1 wow slideInLeft animated h-100 d-block rounded" data-wow-delay="100ms" data-wow-duration="2500ms" style="visibility: visible; animation-duration: 2500ms; animation-delay: 100ms; animation-name: slideInLeft;">
                                         <a rel="nofollow" title="<?= $settings->company_name ?>" href="<?= $mediaValue->link ?>" target="_blank" class="instagramPhoto imgPopup rounded">
                                             <img data-src="<?= get_picture("instastory", $mediaValue->img_url) ?>" class="img-fluid lazyload rounded" alt="<?= $settings->company_name ?>">
