@@ -209,7 +209,7 @@
                                     <div class="row">
                                         <div class="col-xl-12">
                                             <div class="comment-form-2__input-box">
-                                                <?php $departments = $this->general_model->get_all("service_categories", [], "rank ASC", ["isActive" => 1]); ?>
+                                                <?php $departments = $this->general_model->get_all("departments", [], "rank ASC", ["isActive" => 1]); ?>
                                                 <select name="department" id="department">
                                                     <option value=""><?= lang("selectDepartment") ?></option>
                                                     <?php foreach ($departments as $department) : ?>

@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="content">
-        <img src="<?= get_picture("settings_v", $settings->logo) ?>" width="250" height="250">
+        <img src="<?= get_picture("settings_v", $settings->logo) ?>" width="250">
 		<h4 class="p-0 m-0"><?=$subject; ?></h4>
 		<p><?= $message ?></p>
 	</div>

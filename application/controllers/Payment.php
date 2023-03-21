@@ -8,12 +8,9 @@ class Payment extends MY_Controller
      * ...:::!!! ============================== CONSTRUCTOR ============================== !!!:::...
      * ---------------------------------------------------------------------------------------------
      */
-    //const merchant_id                                 = '150883'; // Mağaza numarası
-    //const merchant_key                                 = 'K8m39eREZitxrb3p'; // Mağaza Parolası - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
-    //const merchant_salt                             = 'DW4UoAi1Twr8xJxd'; // Mağaza Gizli Anahtarı - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
-    const merchant_id                                 = '288923'; // Mağaza numarası
-    const merchant_key                                 = 'Qd64UQXx7rY6aYWx'; // Mağaza Parolası - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
-    const merchant_salt                             = 'fijoHEqdh3j5UzAo'; // Mağaza Gizli Anahtarı - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
+    const merchant_id                                 = '150883'; // Mağaza numarası
+    const merchant_key                                 = 'K8m39eREZitxrb3p'; // Mağaza Parolası - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
+    const merchant_salt                             = 'DW4UoAi1Twr8xJxd'; // Mağaza Gizli Anahtarı - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
     /**
      * Constructor
      */
@@ -74,7 +71,7 @@ class Payment extends MY_Controller
             $email = $data["email"];
             #
             ## Tahsil edilecek tutar.
-            $payment_amount = $data["amount"] * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
+            $payment_amount = $data["amount"]; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
             #
             ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
             $merchant_oid = '9' . rand(100000, 999999) . strtoupper(substr(md5(time()), 0, 3));
@@ -99,7 +96,7 @@ class Payment extends MY_Controller
             $merchant_fail_url = base_url(lang("routes_payment-error"));
             #
             ## Müşterinin sepet/sipariş içeriği
-            $user_basket = base64_encode(json_encode([["Hizmet Bedeli", $data["amount"] * 100, "1"]]));
+            $user_basket = base64_encode(json_encode([["Hizmet Bedeli", $data["amount"], "1"]]));
             #
             /* ÖRNEK $user_basket oluşturma - Ürün adedine göre array'leri çoğaltabilirsiniz
             $user_basket = base64_encode(json_encode(array(
@@ -128,10 +125,10 @@ class Payment extends MY_Controller
             $timeout_limit = "60";
 
             ## Hata mesajlarının ekrana basılması için entegrasyon ve test sürecinde 1 olarak bırakın. Daha sonra 0 yapabilirsiniz.
-            $debug_on = 1;
+            $debug_on = 0;
 
             ## Mağaza canlı modda iken test işlem yapmak için 1 olarak gönderilebilir.
-            $test_mode = 1;
+            $test_mode = 0;
 
             $no_installment = 0; // Taksit yapılmasını istemiyorsanız, sadece tek çekim sunacaksanız 1 yapın
 

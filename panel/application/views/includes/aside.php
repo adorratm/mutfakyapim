@@ -158,6 +158,14 @@
                         </a>
                     </li>
                 <?php } ?>
+                <?php if (isAllowedViewModule("departments")) { ?>
+                    <li class="nav-item <?= ($this->uri->segment(1) == "departments") ? "active" : "" ?> ">
+                        <a class="nav-link" href="<?= base_url("departments"); ?>">
+                            <i class="fa fa-user"></i>
+                            <span class="nav-link-text">Departmanlar</span>
+                        </a>
+                    </li>
+                <?php } ?>
             </ul>
             <hr class="nav-separator">
             <div class="nav-header">
