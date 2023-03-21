@@ -32,6 +32,7 @@ $lang['(:any)/online-odeme'] = 'payment/index';
 $lang['(:any)/online-odeme-formu'] = 'payment/payment_form';
 $lang['(:any)/online-odeme-basarili'] = 'payment/payment_success';
 $lang['(:any)/online-odeme-basarisiz'] = 'payment/payment_error';
+$lang['(:any)/odeme'] = 'payment/make_payment';
 
 $lang['(:any)/sayfa/(:any)'] = 'pages/index/$2';
 

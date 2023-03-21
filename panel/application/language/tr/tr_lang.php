@@ -114,6 +114,8 @@ $lang['careerErrorMessageText'] = 'Kariyer Formu Gönderilirken Hata Oluştu.';
 $lang['emptyMessageText'] = 'Bilgisini Doldurduğunuzdan Emin Olup Lütfen Tekrar Deneyin.';
 $lang['successMessageText'] = 'İletişim Formu Başarıyla Gönderildi. Göndermiş Olduğunuz Bilgiler İle Sizinle İletişime Geçilecektir.';
 $lang['paymentSuccessMessageText'] = 'Ödeme Formu Başarıyla Gönderildi. Kredi Kartı Ekranı Getiriliyor Lütfen Bekleyin.';
+$lang['paymentSuccessMessage'] = 'Ödemeniz Başarıyla Alındı Teşekkür Ederiz.';
+$lang['paymentErrorMessage'] = 'Ödemeniz Alınırken Hata Oluştu Lütfen Yetkililerimiz İle İletişime Geçin.';
 $lang['errorEmailMessageText'] = 'İletişim Formu E-Maili Gönderilirken Hata Oluştu. Lütfen Tekrar Deneyin.';
 $lang['careerSuccessMessageText'] = 'İletişim Formu Başarıyla Gönderildi. Göndermiş Olduğunuz Bilgiler İle Sizinle İletişime Geçilecektir.';
 $lang['careerErrorEmailMessageText'] = 'İletişim Formu E-Maili Gönderilirken Hata Oluştu. Lütfen Tekrar Deneyin.';
@@ -132,6 +134,7 @@ $lang["submitPayment"] = "Ödeme Formunu Gönder";
 $lang["payment_success"] = "Ödeme Başarılı";
 $lang["payment_error"] = "Ödeme Başarısız";
 // ROUTES
+$lang['routes_make-payment'] = 'odeme';
 $lang["routes_payment"] = "online-odeme";
 $lang['routes_payment-form'] = 'online-odeme-formu';
 $lang["routes_payment-success"] = "online-odeme-basarili";
