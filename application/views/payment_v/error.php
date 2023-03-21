@@ -16,12 +16,8 @@
         <div class="row text-center justify-content-center">
             <div class="col-xl-12 text-center justify-content-center">
                 <div class="error-page__inner">
-                    <div class="error-page__title-box">
-                        <h2 class="error-page__title"><?= lang("payment_error") ?></h2>
-                        <h2 class="error-page__title-2"><?= lang("payment_error") ?></h2>
-                    </div>
                     <img loading="lazy" data-src="<?= asset_url("public/images/Error_96px.webp") ?>" alt="<?= $settings->company_name ?>" class="img-fluid lazyload" width="500" height="500">
-                    <h3 class="error-page__tagline"><?= lang("paymentErrorMessage") ?></h3>
+                    <h3 class="error-page__tagline my-3"><?= lang("paymentErrorMessage") ?></h3>
                     <a rel="dofollow" href="<?= base_url() ?>" title="<?= lang("goToHome") ?>" class="thm-btn error-page__btn"><?= lang("goToHome") ?></a>
                 </div>
             </div>
